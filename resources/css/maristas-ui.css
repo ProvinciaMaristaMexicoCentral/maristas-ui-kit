@@ -1,0 +1,457 @@
+/*
+ * Maristas UI · sistema de diseño
+ * Tokens (--maristas-*) y componentes (.mr-*) compartidos entre los sistemas Maristas.
+ * Se apoya en Bootstrap 5; todo lo que cambia el aspecto de Bootstrap vive bajo .mr-scope.
+ */
+
+:root {
+    /* Marca */
+    --maristas-brand: #0b3a6f;
+    --maristas-brand-strong: #082b54;
+    --maristas-brand-soft: #e7eefb;
+    --maristas-accent: #2f6fed;
+
+    /* Neutros con sesgo azul */
+    --maristas-ink: #172033;
+    --maristas-muted: #6a7489;
+    --maristas-line: #e6e9f1;
+    --maristas-soft: #f4f6fb;
+    --maristas-canvas: #f4f6fb;
+    --maristas-surface: #ffffff;
+
+    /* Estados (independientes de la marca) */
+    --maristas-success: #12805c;   --maristas-success-soft: #e3f5ee;
+    --maristas-warning: #a96a00;   --maristas-warning-soft: #fdf1d8;
+    --maristas-danger: #c93a3a;    --maristas-danger-soft: #fce8e8;
+    --maristas-info: #1f6aa8;      --maristas-info-soft: #e3f0fb;
+
+    /* Tipografía */
+    --maristas-font: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --maristas-text-xs: .75rem;
+    --maristas-text-sm: .85rem;
+    --maristas-text-md: 1rem;
+    --maristas-text-lg: 1.25rem;
+    --maristas-text-xl: 1.6rem;
+
+    /* Forma */
+    --maristas-radius-sm: 8px;
+    --maristas-radius-md: 10px;
+    --maristas-radius-lg: 16px;
+    --maristas-shadow-card: 0 1px 2px rgba(23, 32, 51, .04), 0 6px 20px rgba(23, 32, 51, .05);
+
+    /* Espaciado (múltiplos de 4px) */
+    --maristas-space-1: .25rem; --maristas-space-2: .5rem; --maristas-space-3: .75rem;
+    --maristas-space-4: 1rem;   --maristas-space-5: 1.5rem; --maristas-space-6: 2rem;
+}
+
+body:has(.mr-scope) { background: var(--maristas-canvas); }
+.mr-scope { color: var(--maristas-ink); font-family: var(--maristas-font); }
+.mr-scope code { color: var(--maristas-brand); background: var(--maristas-brand-soft); padding: .1rem .35rem; border-radius: 6px; font-size: .85em; }
+.mr-scope pre code { background: none; color: inherit; padding: 0; }
+
+.mr-scope .card { border: 0; border-radius: var(--maristas-radius-lg); box-shadow: 0 1px 2px rgba(23,32,51,.04), 0 6px 20px rgba(23,32,51,.05); }
+        .mr-scope .card-header { background: transparent; border-bottom: 1px solid var(--maristas-line); }
+
+        /* Hero */
+        .mr-hero { padding: 1.5rem 1.5rem 1.25rem; }
+        .mr-hero-top { display: flex; flex-wrap: wrap; gap: 1.25rem; justify-content: space-between; align-items: flex-start; }
+        .mr-person { display: flex; gap: 1rem; align-items: center; min-width: 0; }
+        .mr-avatar { width: 64px; height: 64px; border-radius: 50%; flex: none; display: grid; place-items: center; font-size: 1.35rem; font-weight: 700; color: #fff; background: linear-gradient(135deg, #0b3a6f, #2f6fed); }
+        .mr-eyebrow { font-size: .8rem; color: var(--maristas-muted); margin-bottom: .2rem; }
+        .mr-name { font-size: 1.6rem; line-height: 1.15; font-weight: 700; margin: 0 0 .2rem; text-wrap: balance; }
+        .mr-relation { color: var(--maristas-muted); margin-bottom: .65rem; }
+        .mr-chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+        .mr-chip { display: inline-flex; align-items: center; gap: .4rem; padding: .3rem .7rem; border-radius: 999px; background: var(--maristas-soft); color: var(--maristas-ink); font-size: .85rem; text-decoration: none; transition: background .15s; }
+        a.mr-chip:hover { background: var(--maristas-brand-soft); color: var(--maristas-brand); }
+        .mr-chip i { color: var(--maristas-muted); }
+.mr-block-head { display: flex; align-items: center; gap: .65rem; margin-bottom: .2rem; }
+.mr-block-head .mr-eyebrow { margin: 0; }
+.mr-chip-action { border: 1px dashed #b8c0d0; background: transparent; color: var(--maristas-accent); cursor: pointer; font-weight: 600; }
+button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-soft); color: var(--maristas-brand); }
+.mr-chip-action i { color: inherit; }
+.mr-chip-action:disabled { color: var(--maristas-muted); cursor: not-allowed; border-color: var(--maristas-line); }
+.mr-pill { display: inline-block; padding: .15rem .6rem; border-radius: 999px; background: var(--maristas-brand-soft); color: var(--maristas-brand); font-size: .78rem; font-weight: 600; text-transform: capitalize; }
+        .mr-actions { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+        .mr-btn-ghost { display: inline-flex; align-items: center; gap: .4rem; border: 1px solid var(--maristas-line); background: #fff; color: var(--maristas-ink); border-radius: 10px; padding: .45rem .8rem; font-size: .85rem; font-weight: 500; text-decoration: none; }
+        .mr-btn-ghost:hover { background: var(--maristas-soft); color: var(--maristas-ink); }
+        .mr-btn-main { border-radius: 10px; padding: .5rem 1rem; font-weight: 600; }
+
+        /* Progreso del embudo */
+        .mr-progress { margin-top: 1.5rem; }
+        .mr-progress-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .5rem; margin-bottom: .85rem; }
+        .mr-steps { display: flex; gap: .5rem; list-style: none; padding: 0; margin: 0; }
+        .mr-step { flex: 1; min-width: 0; }
+        .mr-step-bar { height: 6px; border-radius: 999px; background: var(--maristas-line); margin-bottom: .45rem; }
+        .mr-step-label { font-size: .8rem; color: var(--maristas-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .mr-step.is-done .mr-step-bar { background: #9db9e6; }
+        .mr-step.is-current .mr-step-bar { background: var(--maristas-brand); }
+        .mr-step.is-current .mr-step-label { color: var(--maristas-ink); font-weight: 600; }
+        .mr-step.is-danger.is-current .mr-step-bar { background: #e5484d; }
+        @media (max-width: 575.98px) { .mr-step:not(.is-current) .mr-step-label { visibility: hidden; } }
+
+        /* Datos clave: una fila con divisores, sin cajas */
+        .mr-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--maristas-line); }
+        .mr-fact { min-width: 0; padding: .25rem 1.25rem; }
+        .mr-fact:first-child { padding-left: 0; }
+        .mr-fact + .mr-fact { border-left: 1px solid var(--maristas-line); }
+        @media (max-width: 767.98px) { .mr-fact, .mr-fact:first-child { padding: .75rem 0; border-left: 0; } .mr-fact + .mr-fact { border-top: 1px solid var(--maristas-line); } }
+        .mr-fact-value { font-weight: 600; line-height: 1.3; word-break: break-word; }
+        .mr-fact-sub { font-size: .85rem; color: var(--maristas-muted); line-height: 1.4; }
+        .mr-fact .form-select { border-color: var(--maristas-line); background-color: #fff; font-weight: 600; }
+
+        /* Bandeja de correo: lista a la izquierda, lectura a la derecha */
+        .mr-inbox-bar { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: space-between; align-items: center; padding: .85rem 1.25rem; border-bottom: 1px solid var(--maristas-line); }
+        .mr-inbox { display: grid; grid-template-columns: minmax(300px, 380px) 1fr; min-height: 520px; }
+        .mr-mail-list { max-height: 720px; overflow-y: auto; border-right: 1px solid var(--maristas-line); }
+        .mr-mail { border-bottom: 1px solid var(--maristas-line); }
+        .mr-mail-row { display: flex; gap: .75rem; width: 100%; text-align: left; background: none; border: 0; padding: .85rem 1rem; color: inherit; align-items: flex-start; border-left: 3px solid transparent; }
+        .mr-mail-row:hover { background: var(--maristas-soft); }
+        .mr-mail.is-selected .mr-mail-row { background: var(--maristas-brand-soft); border-left-color: var(--maristas-brand); }
+        .mr-mail-dir { width: 32px; height: 32px; border-radius: 50%; flex: none; display: grid; place-items: center; font-size: 1rem; background: var(--maristas-soft); color: var(--maristas-muted); position: relative; }
+        .mr-mail.is-in .mr-mail-dir { background: var(--maristas-brand-soft); color: var(--maristas-brand); }
+        .mr-mail.is-unread .mr-mail-dir::after { content: ''; position: absolute; top: -1px; right: -1px; width: 10px; height: 10px; border-radius: 50%; background: #2f6fed; border: 2px solid #fff; }
+        .mr-mail-main { flex: 1; min-width: 0; }
+        .mr-mail-who { font-size: .88rem; color: var(--maristas-muted); }
+        .mr-mail-date { font-size: .78rem; color: var(--maristas-muted); white-space: nowrap; }
+        .mr-mail.is-unread .mr-mail-who, .mr-mail.is-unread .mr-mail-subject { color: var(--maristas-ink); font-weight: 700; }
+        .mr-mail-subject { font-weight: 600; margin: .1rem 0; }
+        .mr-mail-snippet { color: var(--maristas-muted); font-size: .84rem; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; }
+        .mr-reader { display: flex; flex-direction: column; min-width: 0; }
+        .mr-reader-head { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--maristas-line); }
+        .mr-reader-body { flex: 1; background: #fff; }
+        .mr-reader-foot { padding: .85rem 1.5rem; border-top: 1px solid var(--maristas-line); }
+        .mr-reader-empty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: var(--maristas-muted); padding: 3rem 1.5rem; }
+        @media (max-width: 991.98px) {
+            .mr-inbox { grid-template-columns: 1fr; min-height: 0; }
+            .mr-mail-list { border-right: 0; max-height: none; }
+            .mr-inbox:not(.has-selection) .mr-reader { display: none; }
+            .mr-inbox.has-selection .mr-mail-list { display: none; }
+        }
+
+        /* Pestañas */
+        .mr-tabs { border-bottom: 1px solid var(--maristas-line) !important; gap: .25rem; }
+        .mr-tabs .nav-link { border: 0 !important; background: none !important; color: var(--maristas-muted) !important; font-weight: 600; padding: .75rem 1rem; border-radius: 0; }
+        .mr-tabs .nav-link:hover { color: var(--maristas-ink) !important; }
+        .mr-tabs .nav-link.active { color: var(--maristas-brand) !important; box-shadow: inset 0 -2px 0 var(--maristas-brand); }
+        .mr-tabs .nav-link::after, .mr-tabs .nav-link::before { display: none !important; }
+
+        /* Propiedades (pestaña Detalles) */
+        .mr-prop { margin-bottom: .9rem; }
+        .mr-prop:last-child { margin-bottom: 0; }
+        .mr-prop-label { font-size: .75rem; color: var(--maristas-muted); margin-bottom: .15rem; }
+        .min-w-0 { min-width: 0; }
+        .mr-scope .card-title { font-weight: 700; font-size: 1rem; }
+
+        /* Línea de tiempo */
+        .mr-filters { display: flex; flex-wrap: wrap; gap: .35rem; }
+        .mr-filter { border: 0; background: var(--maristas-soft); color: var(--maristas-muted); border-radius: 999px; padding: .25rem .8rem; font-size: .8rem; font-weight: 600; }
+        .mr-filter.is-active { background: var(--maristas-brand); color: #fff; }
+        .mr-events { list-style: none; margin: 0; padding: 0; position: relative; }
+        .mr-event { display: flex; gap: .9rem; padding-bottom: 1.25rem; position: relative; }
+        .mr-event:not(:last-child)::before { content: ''; position: absolute; left: 17px; top: 38px; bottom: 0; width: 2px; background: var(--maristas-line); }
+        .mr-event-icon { width: 36px; height: 36px; border-radius: 50%; flex: none; display: grid; place-items: center; font-size: 1rem; }
+        .mr-event-body { flex: 1; min-width: 0; padding: .3rem 0 .25rem; }
+        .mr-event-title { font-weight: 600; margin: 0; }
+        .mr-event-text { color: #3f4a60; margin: .25rem 0 .4rem; overflow-wrap: anywhere; }
+        .mr-event-meta { font-size: .8rem; color: var(--maristas-muted); display: flex; flex-wrap: wrap; gap: .25rem 1rem; }
+
+/* ---------- Botones: una sola familia, mismos tamaños y estados ---------- */
+.mr-scope .btn,
+.mr-scope .mr-btn-ghost {
+    display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+    border-radius: var(--maristas-radius-md); font-weight: 600; font-size: .875rem; line-height: 1.25;
+    padding: .5rem 1rem; transition: background-color .15s, border-color .15s, color .15s;
+}
+.mr-scope .btn-sm { padding: .4rem .8rem; font-size: .8125rem; }
+.mr-scope .btn-lg { padding: .75rem 1.5rem; font-size: 1rem; border-radius: var(--maristas-radius-md); }
+.mr-scope .btn:focus-visible, .mr-scope .mr-btn-ghost:focus-visible { outline: 2px solid var(--maristas-accent); outline-offset: 2px; box-shadow: none; }
+.mr-scope .btn-primary { background: var(--maristas-brand); border-color: var(--maristas-brand); color: #fff; }
+.mr-scope .btn-primary:hover, .mr-scope .btn-primary:focus, .mr-scope .btn-primary:active { background: var(--maristas-brand-strong); border-color: var(--maristas-brand-strong); color: #fff; }
+.mr-scope .btn-light, .mr-scope .btn-outline-primary, .mr-scope .btn-outline-secondary, .mr-scope .btn-outline-info, .mr-scope .mr-btn-ghost {
+    background: var(--maristas-surface); border: 1px solid var(--maristas-line); color: var(--maristas-ink);
+}
+.mr-scope .btn-light:hover, .mr-scope .btn-outline-primary:hover, .mr-scope .btn-outline-secondary:hover, .mr-scope .btn-outline-info:hover, .mr-scope .mr-btn-ghost:hover {
+    background: var(--maristas-soft); border-color: var(--maristas-line); color: var(--maristas-ink);
+}
+.mr-scope .btn-danger { background: var(--maristas-danger); border-color: var(--maristas-danger); color: #fff; }
+.mr-scope .btn-success { background: var(--maristas-success); border-color: var(--maristas-success); color: #fff; }
+/* Deshabilitado: tono azul claro de la marca, nunca gris */
+.mr-scope .btn:disabled, .mr-scope .btn.disabled { opacity: .45; cursor: not-allowed; pointer-events: none; }
+.mr-scope .btn-primary:disabled { background: var(--maristas-brand-soft); border-color: var(--maristas-brand-soft); color: var(--maristas-brand); opacity: .75; }
+
+/* ---------- Formularios ---------- */
+.mr-scope .form-control, .mr-scope .form-select {
+    border-radius: var(--maristas-radius-md); border-color: var(--maristas-line); font-size: .9rem; padding: .55rem .8rem;
+}
+.mr-scope .form-select { padding-right: 2.25rem; }
+/* Tamaños: sm, normal (por defecto) y lg. Van después de la regla base para ganar por orden. */
+.mr-scope .form-control-sm, .mr-scope .form-select-sm { padding: .35rem .65rem; font-size: .8125rem; border-radius: var(--maristas-radius-sm); min-height: 0; }
+.mr-scope .form-select-sm { padding-right: 2rem; }
+.mr-scope .form-control-lg, .mr-scope .form-select-lg { padding: .75rem 1rem; font-size: 1rem; border-radius: var(--maristas-radius-md); }
+.mr-scope .form-select-lg { padding-right: 2.5rem; }
+.mr-scope .input-group-sm > .form-control, .mr-scope .input-group-sm > .input-group-text, .mr-scope .input-group-sm > .btn { padding: .35rem .65rem; font-size: .8125rem; }
+.mr-scope .input-group-lg > .form-control, .mr-scope .input-group-lg > .input-group-text, .mr-scope .input-group-lg > .btn { padding: .75rem 1rem; font-size: 1rem; }
+.mr-scope .form-control:focus, .mr-scope .form-select:focus { border-color: var(--maristas-accent); box-shadow: 0 0 0 3px rgba(47, 111, 237, .15); }
+.mr-scope .form-label { font-size: .8rem; color: var(--maristas-muted); font-weight: 500; }
+
+/* ---------- Badges, alertas y modales ---------- */
+.mr-scope .badge { font-weight: 600; }
+.mr-scope .alert { border: 0; border-radius: var(--maristas-radius-md); }
+.mr-scope .alert-dismissible { padding-right: 1rem; }
+.mr-scope .alert .btn-close { position: static; padding: .35rem; margin-left: auto; flex-shrink: 0; }
+.mr-scope .modal-content { border: 0; border-radius: var(--maristas-radius-lg); box-shadow: 0 20px 50px rgba(23, 32, 51, .2); }
+.mr-scope .modal-header, .mr-scope .modal-footer { border-color: var(--maristas-line); }
+
+.mr-scroll { max-height: 190px; overflow-y: auto; }
+
+/* ---------- Dato en línea con ícono e icono-botón ---------- */
+.mr-fact-inline { display: inline-flex; align-items: center; gap: .6rem; padding: .6rem .9rem; border-radius: var(--maristas-radius-md); background: var(--maristas-soft); }
+.mr-fact-inline i { font-size: 1.15rem; color: var(--maristas-brand); }
+.mr-scope .btn.mr-btn-icon { width: 2rem; height: 2rem; padding: 0; flex: none; }
+
+
+/* ---------- Estados reutilizables ---------- */
+.mr-state { display: inline-flex; align-items: center; gap: .35rem; padding: .2rem .65rem; border-radius: 999px; font-size: var(--maristas-text-xs); font-weight: 600; }
+.mr-state-success { background: var(--maristas-success-soft); color: var(--maristas-success); }
+.mr-state-warning { background: var(--maristas-warning-soft); color: var(--maristas-warning); }
+.mr-state-danger  { background: var(--maristas-danger-soft);  color: var(--maristas-danger); }
+.mr-state-info    { background: var(--maristas-info-soft);    color: var(--maristas-info); }
+.mr-state-neutral { background: var(--maristas-soft);         color: var(--maristas-muted); }
+
+.mr-empty { display: flex; flex-direction: column; align-items: center; text-align: center; gap: .35rem; padding: 2.5rem 1rem; color: var(--maristas-muted); }
+.mr-empty i { font-size: 2rem; }
+.mr-empty-title { color: var(--maristas-ink); font-weight: 600; }
+
+
+/* ---------- Foco visible y tipografía utilitaria ---------- */
+.mr-scope a:focus-visible, .mr-scope button:focus-visible, .mr-scope .nav-link:focus-visible,
+.mr-scope .page-link:focus-visible, .mr-scope .dropdown-item:focus-visible, .mr-scope summary:focus-visible {
+    outline: 2px solid var(--maristas-accent); outline-offset: 2px; box-shadow: none;
+}
+.mr-h1 { font-size: var(--maristas-text-xl); font-weight: 700; line-height: 1.2; }
+.mr-h2 { font-size: var(--maristas-text-lg); font-weight: 700; line-height: 1.25; }
+.mr-h3 { font-size: 1.1rem; font-weight: 600; line-height: 1.3; }
+.mr-body { font-size: var(--maristas-text-md); }
+.mr-small { font-size: var(--maristas-text-sm); color: var(--maristas-muted); }
+.mr-caption { font-size: var(--maristas-text-xs); color: var(--maristas-muted); }
+.mr-link { color: var(--maristas-accent); text-decoration: none; }
+.mr-link:hover { text-decoration: underline; }
+
+/* ---------- Tablas ---------- */
+.mr-scope .table { --bs-table-bg: transparent; color: var(--maristas-ink); margin-bottom: 0; }
+.mr-scope .table thead th { background: var(--maristas-soft); color: var(--maristas-muted); font-size: .78rem; font-weight: 600; border-bottom: 1px solid var(--maristas-line); white-space: nowrap; padding: .7rem 1rem; }
+.mr-scope .table td { border-color: var(--maristas-line); vertical-align: middle; padding: .8rem 1rem; font-size: .9rem; }
+.mr-scope .table-hover > tbody > tr:hover > * { background: var(--maristas-soft); color: var(--maristas-ink); }
+.mr-table-wrap { border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); overflow: hidden; background: var(--maristas-surface); }
+.mr-table-wrap .table-responsive { margin: 0; }
+
+/* ---------- Navegación ---------- */
+.mr-scope .nav-pills .nav-link { border-radius: 999px; color: var(--maristas-muted); font-weight: 600; font-size: .85rem; padding: .4rem .9rem; }
+.mr-scope .nav-pills .nav-link:hover { background: var(--maristas-soft); color: var(--maristas-ink); }
+.mr-scope .nav-pills .nav-link.active { background: var(--maristas-brand); color: #fff; }
+.mr-scope .page-link { border: 0; border-radius: var(--maristas-radius-sm); color: var(--maristas-ink); margin: 0 2px; font-size: .85rem; min-width: 36px; text-align: center; }
+.mr-scope .page-link:hover { background: var(--maristas-brand-soft); color: var(--maristas-brand); }
+.mr-scope .page-item.active .page-link { background: var(--maristas-brand); color: #fff; }
+.mr-scope .page-item.disabled .page-link { background: transparent; color: var(--maristas-muted); opacity: .5; }
+.mr-scope .dropdown-menu { border: 1px solid var(--maristas-line); border-radius: 12px; box-shadow: 0 12px 32px rgba(23, 32, 51, .12); padding: .35rem; }
+.mr-scope .dropdown-item { border-radius: var(--maristas-radius-sm); font-size: .875rem; padding: .45rem .75rem; }
+.mr-scope .dropdown-item:hover, .mr-scope .dropdown-item:focus { background: var(--maristas-soft); color: var(--maristas-ink); }
+.mr-scope .dropdown-item.active { background: var(--maristas-brand-soft); color: var(--maristas-brand); }
+.mr-scope .dropdown-divider { border-color: var(--maristas-line); }
+.mr-scope .breadcrumb { font-size: .85rem; }
+
+/* ---------- Disclosure y listas ---------- */
+.mr-scope .accordion-item { border: 1px solid var(--maristas-line); border-radius: 12px; overflow: hidden; margin-bottom: .5rem; }
+.mr-scope .accordion-button { font-weight: 600; font-size: .9rem; background: var(--maristas-surface); color: var(--maristas-ink); box-shadow: none; }
+.mr-scope .accordion-button:not(.collapsed) { background: var(--maristas-brand-soft); color: var(--maristas-brand); }
+.mr-scope .list-group-item { border-color: var(--maristas-line); font-size: .9rem; }
+.mr-scope .list-group-item.active { background: var(--maristas-brand-soft); color: var(--maristas-brand); border-color: var(--maristas-line); font-weight: 600; }
+
+/* ---------- Feedback ---------- */
+.mr-scope .progress { height: 8px; border-radius: 999px; background: var(--maristas-line); }
+.mr-scope .progress-bar { background: var(--maristas-brand); border-radius: 999px; }
+.mr-scope .progress-bar.is-success { background: var(--maristas-success); }
+.mr-scope .progress-bar.is-warning { background: var(--maristas-warning); }
+.mr-scope .progress-bar.is-danger { background: var(--maristas-danger); }
+.mr-scope .spinner-border { color: var(--maristas-brand); }
+.mr-scope .toast { border: 0; border-radius: 12px; box-shadow: 0 12px 32px rgba(23, 32, 51, .16); }
+.mr-scope .tooltip-inner { background: var(--maristas-ink); border-radius: var(--maristas-radius-sm); font-size: .78rem; }
+.mr-scope .popover { border: 1px solid var(--maristas-line); border-radius: 12px; box-shadow: 0 12px 32px rgba(23, 32, 51, .12); }
+.mr-scope .offcanvas { border: 0; box-shadow: 0 0 40px rgba(23, 32, 51, .2); }
+.mr-skeleton { display: block; border-radius: var(--maristas-radius-sm); background: linear-gradient(90deg, var(--maristas-line) 25%, var(--maristas-soft) 50%, var(--maristas-line) 75%); background-size: 200% 100%; animation: mr-shimmer 1.4s linear infinite; }
+@keyframes mr-shimmer { to { background-position: -200% 0; } }
+@media (prefers-reduced-motion: reduce) { .mr-skeleton { animation: none; } }
+
+/* ---------- Formularios: grupos, validación y controles ---------- */
+.mr-scope .input-group-text { background: var(--maristas-soft); border-color: var(--maristas-line); color: var(--maristas-muted); font-size: .9rem; }
+.mr-scope .input-group > .form-control:not(:first-child), .mr-scope .input-group > .btn:not(:first-child) { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+.mr-scope .input-group > .form-control:not(:last-child), .mr-scope .input-group-text:not(:last-child) { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+.mr-scope .form-control.is-invalid, .mr-scope .form-select.is-invalid { border-color: var(--maristas-danger); background-image: none; }
+.mr-scope .form-control.is-invalid:focus { box-shadow: 0 0 0 3px rgba(201, 58, 58, .15); }
+.mr-scope .form-control.is-valid, .mr-scope .form-select.is-valid { border-color: var(--maristas-success); background-image: none; }
+.mr-scope .invalid-feedback { color: var(--maristas-danger); font-size: .8rem; }
+.mr-scope .valid-feedback { color: var(--maristas-success); font-size: .8rem; }
+.mr-scope .form-text { color: var(--maristas-muted); font-size: .8rem; }
+.mr-scope .form-control:disabled, .mr-scope .form-select:disabled { background: var(--maristas-soft); color: var(--maristas-muted); }
+.mr-scope .form-check-input { border-color: #b8c0d0; }
+.mr-scope .form-check.form-check-sm, .mr-scope .form-check.form-check-lg { display: flex; align-items: center; gap: .6rem; padding-left: 0; }
+.mr-scope .form-check.form-check-sm .form-check-input, .mr-scope .form-check.form-check-lg .form-check-input { margin: 0; float: none; flex: none; }
+.mr-scope .form-check.form-check-sm .form-check-label, .mr-scope .form-check.form-check-lg .form-check-label { margin: 0; }
+.mr-scope .form-check.form-check-sm .form-check-input:not([role="switch"]) { width: 1rem; height: 1rem; }
+.mr-scope .form-check.form-check-lg .form-check-input:not([role="switch"]) { width: 1.5rem; height: 1.5rem; }
+.mr-scope .form-check.form-check-sm .form-check-label { font-size: .8rem; }
+.mr-scope .form-check.form-check-lg .form-check-label { font-size: 1rem; }
+.mr-scope .form-check-input:checked { background-color: var(--maristas-brand); border-color: var(--maristas-brand); }
+.mr-scope .form-check-input:focus { box-shadow: 0 0 0 3px rgba(47, 111, 237, .15); border-color: var(--maristas-accent); }
+.mr-scope .form-range::-webkit-slider-thumb { background: var(--maristas-brand); }
+
+
+/* ---------- Interruptores (switch): normal, sm y lg ---------- */
+.mr-scope .form-switch { --mr-sw-w: 2.75rem; --mr-sw-h: 1.5rem; padding-left: 0; min-height: var(--mr-sw-h); display: flex; align-items: center; gap: .75rem; }
+.mr-scope .form-switch .form-check-input {
+    width: var(--mr-sw-w); height: var(--mr-sw-h); margin: 0; float: none; flex: none;
+    border-radius: 999px; cursor: pointer; background-color: #c5ccdb; border-color: #c5ccdb;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e"); background-size: contain; background-position: left center; background-repeat: no-repeat;
+    transition: background-color .15s, background-position .15s;
+}
+.mr-scope .form-switch .form-check-input:focus { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e"); border-color: var(--maristas-accent); box-shadow: 0 0 0 3px rgba(47, 111, 237, .2); }
+.mr-scope .form-switch .form-check-input:checked { background-color: var(--maristas-brand); border-color: var(--maristas-brand); background-position: right center; background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e"); }
+.mr-scope .form-switch .form-check-input:disabled { opacity: .5; cursor: not-allowed; }
+.mr-scope .form-switch .form-check-label { cursor: pointer; font-size: .9rem; margin: 0; }
+.mr-scope .form-switch.form-switch-sm { --mr-sw-w: 2.1rem; --mr-sw-h: 1.15rem; }
+.mr-scope .form-switch.form-switch-sm .form-check-label { font-size: .8rem; }
+.mr-scope .form-switch.form-switch-lg { --mr-sw-w: 3.5rem; --mr-sw-h: 1.9rem; }
+.mr-scope .form-switch.form-switch-lg .form-check-label { font-size: 1rem; }
+@media (prefers-reduced-motion: reduce) { .mr-scope .form-switch .form-check-input { transition: none; } }
+
+/* ---------- Tarjetas y KPI ---------- */
+.mr-card-flat { box-shadow: none !important; border: 1px solid var(--maristas-line) !important; }
+.mr-card-accent { border-left: 4px solid var(--maristas-brand) !important; }
+.mr-stat { padding: 1.1rem 1.25rem; }
+.mr-stat-label { font-size: var(--maristas-text-sm); color: var(--maristas-muted); }
+.mr-stat-value { font-size: var(--maristas-text-xl); font-weight: 700; line-height: 1.15; margin: .15rem 0; font-variant-numeric: tabular-nums; }
+.mr-stat-delta { font-size: var(--maristas-text-xs); font-weight: 600; }
+.mr-stat-delta.is-up { color: var(--maristas-success); }
+.mr-stat-delta.is-down { color: var(--maristas-danger); }
+
+/* ---------- Avatares ---------- */
+.mr-av { display: inline-grid; place-items: center; line-height: 1; padding-top: 1px; box-sizing: border-box; border-radius: 50%; font-weight: 700; flex: none; color: #fff; background: linear-gradient(135deg, #0b3a6f, #2f6fed); }
+.mr-av-sm { width: 32px; height: 32px; font-size: .75rem; }
+.mr-av-md { width: 44px; height: 44px; font-size: .95rem; }
+.mr-av-lg { width: 64px; height: 64px; font-size: 1.35rem; }
+.mr-av-soft { background: var(--maristas-brand-soft); color: var(--maristas-brand); }
+.mr-av-stack { display: inline-flex; }
+.mr-av-stack .mr-av + .mr-av { margin-left: -10px; box-shadow: 0 0 0 2px #fff; }
+
+/* ---------- Reglas de uso (sí / no) ---------- */
+.mr-rule { border-radius: var(--maristas-radius-md); padding: .85rem 1rem; background: var(--maristas-surface); border: 1px solid var(--maristas-line); border-top-width: 3px; font-size: var(--maristas-text-sm); height: 100%; }
+.mr-rule-do { border-top-color: var(--maristas-success); }
+.mr-rule-dont { border-top-color: var(--maristas-danger); }
+.mr-rule strong { display: block; margin-bottom: .25rem; }
+.mr-rule-do strong { color: var(--maristas-success); }
+.mr-rule-dont strong { color: var(--maristas-danger); }
+
+/* ---------- Íconos ---------- */
+.mr-icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); gap: .5rem; }
+.mr-icon-tile { display: flex; flex-direction: column; align-items: center; gap: .35rem; padding: .85rem .5rem; border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); background: var(--maristas-surface); color: var(--maristas-ink); font-size: var(--maristas-text-xs); cursor: pointer; text-align: center; }
+.mr-icon-tile i { font-size: 1.4rem; color: var(--maristas-brand); }
+.mr-icon-tile:hover { background: var(--maristas-brand-soft); }
+
+/* ---------- Documentación del kit (/ui-kit) ---------- */
+.mr-doc-nav { position: sticky; top: 1.5rem; max-height: calc(100vh - 3rem); overflow-y: auto; display: flex; flex-direction: column; gap: .15rem; padding-right: .25rem; scrollbar-width: thin; }
+.mr-doc-nav a { padding: .35rem .75rem; border-radius: var(--maristas-radius-sm); color: var(--maristas-muted); text-decoration: none; font-size: var(--maristas-text-sm); }
+.mr-doc-nav a:hover { background: var(--maristas-brand-soft); color: var(--maristas-brand); }
+.mr-doc-section { scroll-margin-top: 1.5rem; }
+/* En el kit el salto a una sección es directo: la animación de Bootstrap recorre miles de píxeles y desorienta */
+:root:has(.mr-doc-nav) { scroll-behavior: auto; }
+.mr-doc-section > h2 { font-size: var(--maristas-text-lg); font-weight: 700; margin-bottom: .25rem; }
+.mr-doc-section > .lead-text { color: var(--maristas-muted); margin-bottom: 1.25rem; max-width: 70ch; }
+.mr-example { margin-bottom: 1.5rem; }
+.mr-example-title { font-weight: 600; margin-bottom: .5rem; }
+.mr-example-preview { background: var(--maristas-surface); border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); padding: 1.25rem; display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+.mr-example-preview.is-block { display: block; }
+.mr-example-code summary { cursor: pointer; font-size: var(--maristas-text-sm); color: var(--maristas-accent); padding: .5rem 0; }
+.mr-example-code pre { background: #101828; color: #e5eaf5; border-radius: var(--maristas-radius-md); padding: 1rem; font-size: .8rem; overflow-x: auto; margin: 0; }
+.mr-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .75rem; }
+.mr-swatch { border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); overflow: hidden; background: var(--maristas-surface); }
+.mr-swatch-color { height: 56px; }
+.mr-swatch-meta { padding: .5rem .65rem; font-size: var(--maristas-text-xs); }
+.mr-swatch-meta code { display: block; color: var(--maristas-ink); font-size: var(--maristas-text-xs); }
+.mr-type-row { display: flex; align-items: baseline; gap: 1.25rem; padding: .6rem 0; border-bottom: 1px solid var(--maristas-line); }
+.mr-type-row:last-child { border-bottom: 0; }
+.mr-type-row code { width: 150px; flex: none; font-size: var(--maristas-text-xs); color: var(--maristas-muted); }
+
+/* ---------- Barra de navegación principal ---------- */
+.mr-topbar { background: var(--maristas-brand); color: #fff; border-radius: var(--maristas-radius-md); }
+.mr-topbar-main { display: flex; align-items: center; gap: .75rem; padding: .6rem 1rem; }
+.mr-topbar-brand { display: inline-flex; align-items: center; gap: .5rem; color: #fff; font-weight: 700; font-size: 1.05rem; text-decoration: none; letter-spacing: .02em; }
+.mr-topbar-brand:hover { color: #fff; }
+.mr-topbar-tools { margin-left: auto; display: flex; align-items: center; gap: .35rem; }
+.mr-topbar-toggler { display: none; background: transparent; border: 0; color: #fff; font-size: 1.5rem; line-height: 1; padding: .15rem .4rem; border-radius: var(--maristas-radius-sm); }
+.mr-topbar-toggler:hover { background: rgba(255,255,255,.12); }
+.mr-topbar-btn { display: inline-flex; align-items: center; gap: .45rem; background: transparent; border: 0; color: #fff; border-radius: var(--maristas-radius-sm); padding: .4rem .6rem; font-size: .85rem; font-weight: 500; position: relative; }
+.mr-topbar-btn:hover, .mr-topbar-btn.show { background: rgba(255,255,255,.14); color: #fff; }
+.mr-topbar-btn i { font-size: 1.15rem; }
+.mr-topbar-btn::after { display: none; }
+.mr-topbar-btn:has(.mr-topbar-count) { padding: .4rem .75rem; }
+.mr-topbar-count { position: absolute; top: -.05rem; right: -.1rem; min-width: .9rem; height: .9rem; padding: 0 .25rem; border-radius: 999px; background: var(--maristas-danger); color: #fff; font-size: .62rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; border: 2px solid var(--maristas-brand); box-sizing: content-box; }
+.mr-topbar-inst { max-width: 15rem; }
+.mr-topbar-inst span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mr-topbar-nav { background: var(--maristas-brand-strong); border-radius: 0 0 var(--maristas-radius-md) var(--maristas-radius-md); padding: 0 .75rem; }
+.mr-topbar-nav ul { display: flex; flex-wrap: wrap; gap: .15rem; list-style: none; margin: 0; padding: 0; }
+.mr-topbar-link { display: inline-flex; align-items: center; gap: .4rem; color: rgba(255,255,255,.78); padding: .7rem .8rem; font-size: .85rem; font-weight: 500; text-decoration: none; background: transparent; border: 0; border-bottom: 2px solid transparent; border-radius: 0; }
+.mr-topbar-link:hover, .mr-topbar-link.show { color: #fff; background: rgba(255,255,255,.08); }
+.mr-topbar-link.is-active { color: #fff; font-weight: 600; border-bottom-color: #fff; }
+.mr-topbar-link.dropdown-toggle::after { border-width: .28em .28em 0; margin-left: .15rem; }
+.mr-scope .mr-topbar .dropdown-menu { border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); box-shadow: 0 12px 30px rgba(23,32,51,.15); padding: .35rem; margin-top: .35rem; min-width: 14rem; }
+.mr-scope .mr-topbar .dropdown-item { border-radius: var(--maristas-radius-sm); font-size: .85rem; padding: .5rem .7rem; display: flex; align-items: center; gap: .55rem; color: var(--maristas-ink); }
+.mr-scope .mr-topbar .dropdown-item i { color: var(--maristas-muted); font-size: 1.05rem; }
+.mr-scope .mr-topbar .dropdown-item.active, .mr-scope .mr-topbar .dropdown-item:active { background: var(--maristas-brand-soft); color: var(--maristas-brand); }
+.mr-scope .mr-topbar .dropdown-item.active i { color: var(--maristas-brand); }
+.mr-menu-head { padding: .5rem .7rem .6rem; border-bottom: 1px solid var(--maristas-line); margin-bottom: .35rem; }
+.mr-menu-head strong { display: block; font-size: .85rem; color: var(--maristas-ink); }
+.mr-menu-head span { font-size: .75rem; color: var(--maristas-muted); }
+.mr-notif { display: flex; gap: .65rem; padding: .6rem .7rem; border-radius: var(--maristas-radius-sm); color: var(--maristas-ink); text-decoration: none; font-size: .82rem; }
+.mr-notif:hover { background: var(--maristas-soft); color: var(--maristas-ink); }
+.mr-notif.is-new { background: var(--maristas-brand-soft); }
+.mr-notif .mr-notif-time { display: block; font-size: .72rem; color: var(--maristas-muted); margin-top: .1rem; }
+.mr-topbar-panel { width: 22rem; max-width: calc(100vw - 2rem); }
+@media (max-width: 991.98px) {
+    .mr-topbar-toggler { display: inline-flex; }
+    .mr-topbar-inst-label { display: none; }
+    .mr-topbar-user-name { display: none; }
+    .mr-topbar-nav { display: none; }
+    .mr-topbar-nav.is-open { display: block; padding: .5rem; }
+    .mr-topbar-nav ul { flex-direction: column; }
+    .mr-topbar-link { width: 100%; padding: .65rem .75rem; border-bottom: 0; border-radius: var(--maristas-radius-sm); }
+    .mr-topbar-link.is-active { background: rgba(255,255,255,.14); }
+    .mr-scope .mr-topbar-nav .dropdown-menu { position: static !important; transform: none !important; width: 100%; box-shadow: none; margin: .15rem 0 .35rem; }
+}
+
+.mr-scroll-menu { max-height: 20rem; overflow-y: auto; }
+button.mr-notif { width: 100%; border: 0; background: transparent; }
+button.mr-notif.is-new { background: var(--maristas-brand-soft); }
+.mr-notif-icon i { font-size: 1rem; }
+.mr-notif-info { background: var(--maristas-info-soft); color: var(--maristas-info); }
+.mr-notif-success { background: var(--maristas-success-soft); color: var(--maristas-success); }
+.mr-notif-neutral { background: var(--maristas-soft); color: var(--maristas-muted); }
+.mr-notif-dot { width: .5rem; height: .5rem; border-radius: 50%; background: var(--maristas-accent); flex: none; align-self: center; }
+
+.mr-topbar-inst { max-width: 24rem; }
+@keyframes mr-spin { to { transform: rotate(360deg); } }
+.mr-spin { display: inline-block; animation: mr-spin .8s linear infinite; }
+
+/* ---------- Línea de tiempo agrupada por día ---------- */
+.mr-day { display: flex; align-items: center; gap: .75rem; margin: 1.4rem 0 .5rem; font-size: .75rem; font-weight: 600; color: var(--maristas-muted); }
+.mr-day::after { content: ''; flex: 1; height: 1px; background: var(--maristas-line); }
+.mr-tl { list-style: none; margin: 0; padding: 0; position: relative; }
+.mr-tl::before { content: ''; position: absolute; left: 15px; top: 1rem; bottom: 1rem; width: 2px; background: var(--maristas-line); }
+.mr-tl-item { position: relative; display: flex; gap: .75rem; padding: .45rem 0; align-items: flex-start; }
+.mr-tl-dot { width: 32px; height: 32px; border-radius: 50%; flex: none; display: grid; place-items: center; font-size: .95rem; box-shadow: 0 0 0 4px var(--maristas-surface); position: relative; }
+.mr-tl-main { flex: 1; min-width: 0; padding-top: .2rem; }
+.mr-tl-line { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; font-size: .875rem; min-height: 1.5rem; }
+.mr-tl-time { margin-left: auto; font-size: .75rem; color: var(--maristas-muted); white-space: nowrap; }
+.mr-tl-quote { margin-top: .2rem; color: #3f4a60; font-size: .85rem; overflow-wrap: anywhere; }
+.mr-tl-note { margin-top: .35rem; padding: .65rem .85rem; background: var(--maristas-soft); border-radius: var(--maristas-radius-md); color: var(--maristas-ink); font-size: .875rem; overflow-wrap: anywhere; }
+.mr-filter-count { margin-left: .4rem; opacity: .7; font-weight: 500; }
+.mr-tl-author { display: inline-block; max-width: 14rem; overflow: hidden; text-overflow: ellipsis; vertical-align: bottom; }

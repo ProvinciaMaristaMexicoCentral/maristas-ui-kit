@@ -1,0 +1,6 @@
+providers:
+  - Maristas\UiKit\UiKitServiceProvider
+
+workbench:
+  start: /ui-kit
+  install: false
