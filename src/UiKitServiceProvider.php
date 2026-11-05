@@ -5,6 +5,7 @@ namespace Maristas\UiKit;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Maristas\UiKit\Http\DocsController;
 
 class UiKitServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,8 @@ class UiKitServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../resources/css/maristas-ui.css' => public_path('vendor/maristas-ui/maristas-ui.css'),
+            __DIR__.'/../resources/js/maristas-ui.js' => public_path('vendor/maristas-ui/maristas-ui.js'),
+            __DIR__.'/../resources/images/maristas-logo.png' => public_path('vendor/maristas-ui/maristas-logo.png'),
         ], 'maristas-ui-assets');
 
         $this->publishes([
@@ -45,11 +48,8 @@ class UiKitServiceProvider extends ServiceProvider
         $ruta = trim(config('maristas-ui.docs.route', 'ui-kit'), '/');
 
         Route::middleware(config('maristas-ui.docs.middleware', ['web']))->group(function () use ($ruta) {
-            Route::view($ruta, 'maristas::docs.index')->name('maristas-ui.docs');
-
-            Route::get($ruta.'/maristas-ui.css', function () {
-                return response()->file(__DIR__.'/../resources/css/maristas-ui.css', ['Content-Type' => 'text/css']);
-            })->name('maristas-ui.css');
+            Route::get($ruta.'/_assets/{archivo}', [DocsController::class, 'asset'])->name('maristas-ui.asset');
+            Route::get($ruta.'/{slug?}', [DocsController::class, 'show'])->name('maristas-ui.docs');
         });
     }
 }

@@ -456,3 +456,136 @@ button.mr-notif.is-new { background: var(--maristas-brand-soft); }
 .mr-tl-note { margin-top: .35rem; padding: .65rem .85rem; background: var(--maristas-soft); border-radius: var(--maristas-radius-md); color: var(--maristas-ink); font-size: .875rem; overflow-wrap: anywhere; }
 .mr-filter-count { margin-left: .4rem; opacity: .7; font-weight: 500; }
 .mr-tl-author { display: inline-block; max-width: 14rem; overflow: hidden; text-overflow: ellipsis; vertical-align: bottom; }
+
+/* =====================================================================
+   Documentación: barra superior, índice, contenido y "en esta página"
+   ===================================================================== */
+.mr-docs { background: var(--maristas-canvas); }
+.mr-docbar { position: sticky; top: 0; z-index: 1040; height: 60px; display: flex; align-items: center; gap: 1rem; padding: 0 1.25rem; background: var(--maristas-brand-strong); color: #fff; box-shadow: 0 1px 0 rgba(255,255,255,.08); }
+.mr-docbar-brand { display: inline-flex; align-items: center; gap: .7rem; color: #fff; text-decoration: none; }
+.mr-docbar-brand img { height: 26px; width: auto; filter: brightness(0) invert(1); }
+.mr-docbar-tag { padding: .15rem .55rem; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; }
+.mr-docbar-menu { display: none; background: transparent; border: 0; color: #fff; font-size: 1.4rem; line-height: 1; padding: .2rem .4rem; border-radius: var(--maristas-radius-sm); }
+.mr-docbar-search { position: relative; margin-left: auto; width: 20rem; max-width: 40vw; }
+.mr-docbar-search i { position: absolute; left: .75rem; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,.6); }
+.mr-docbar-search input { width: 100%; height: 36px; padding: 0 2.2rem 0 2.2rem; border-radius: var(--maristas-radius-md); border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.08); color: #fff; font-size: .85rem; outline: none; }
+.mr-docbar-search input::placeholder { color: rgba(255,255,255,.55); }
+.mr-docbar-search input:focus { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.4); }
+.mr-docbar-search kbd { position: absolute; right: .55rem; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,.14); color: rgba(255,255,255,.8); font-size: .7rem; padding: .05rem .4rem; border-radius: 5px; }
+.mr-docbar-version { font-size: .75rem; color: rgba(255,255,255,.7); }
+
+.mr-doclayout { display: grid; grid-template-columns: 17rem minmax(0, 1fr) 15rem; gap: 2rem; max-width: 1500px; margin: 0 auto; padding: 0 1.5rem; }
+.mr-docside { position: sticky; top: 60px; align-self: start; height: calc(100vh - 60px); overflow-y: auto; padding: 1.5rem 0 2rem; border-right: 1px solid var(--maristas-line); padding-right: 1rem; }
+.mr-docmain { min-width: 0; padding: 2rem 0 4rem; max-width: 56rem; }
+.mr-doctoc { position: sticky; top: 60px; align-self: start; padding: 2rem 0; }
+.mr-doctoc-inner { border-left: 1px solid var(--maristas-line); padding-left: 1rem; }
+.mr-doctoc nav { display: flex; flex-direction: column; gap: .1rem; margin-top: .5rem; max-height: calc(100vh - 12rem); overflow-y: auto; }
+.mr-doctoc nav a { color: var(--maristas-muted); text-decoration: none; font-size: .8rem; padding: .25rem 0; line-height: 1.35; }
+.mr-doctoc nav a:hover { color: var(--maristas-brand); }
+.mr-doctoc nav a.is-active { color: var(--maristas-brand); font-weight: 600; }
+@media (max-width: 1199.98px) { .mr-doclayout { grid-template-columns: 17rem minmax(0, 1fr); } }
+@media (max-width: 991.98px) {
+    .mr-doclayout { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .mr-docbar-menu { display: inline-flex; }
+    .mr-docbar-search { max-width: 50vw; }
+    .mr-docbar-version { display: none; }
+}
+
+.mr-docnav { display: flex; flex-direction: column; gap: 1.1rem; }
+.mr-docnav-group { display: flex; flex-direction: column; gap: .1rem; }
+.mr-docnav-group .mr-caption { padding: 0 .75rem; margin-bottom: .2rem; text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; font-weight: 700; color: var(--maristas-muted); }
+.mr-docnav a { padding: .38rem .75rem; border-radius: var(--maristas-radius-sm); color: var(--maristas-ink); text-decoration: none; font-size: .86rem; }
+.mr-docnav a:hover { background: var(--maristas-brand-soft); color: var(--maristas-brand); }
+.mr-docnav a.is-active { background: var(--maristas-brand-soft); color: var(--maristas-brand); font-weight: 600; }
+.mr-docnav [hidden] { display: none !important; }
+
+.mr-pagehead { margin-bottom: 1.75rem; }
+.mr-crumbs { display: flex; align-items: center; gap: .15rem; font-size: .78rem; color: var(--maristas-muted); margin-bottom: .5rem; }
+.mr-pagetitle { font-size: 2rem; font-weight: 700; letter-spacing: -.01em; margin: 0 0 .5rem; }
+.mr-pagelead { font-size: 1rem; color: var(--maristas-muted); max-width: 62ch; margin: 0; }
+.mr-pager { display: flex; justify-content: space-between; gap: 1rem; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--maristas-line); }
+.mr-pager-link { display: flex; flex-direction: column; gap: .15rem; min-width: 12rem; padding: .85rem 1.1rem; border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); background: var(--maristas-surface); text-decoration: none; color: var(--maristas-ink); }
+.mr-pager-link:hover { border-color: var(--maristas-accent); }
+.mr-pager-link strong { font-size: .9rem; color: var(--maristas-brand); }
+.mr-pager-link.is-next { text-align: right; margin-left: auto; }
+.mr-tile { display: flex; align-items: center; gap: .9rem; padding: 1rem 1.1rem; border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); background: var(--maristas-surface); text-decoration: none; color: var(--maristas-ink); transition: border-color .15s, box-shadow .15s; }
+.mr-tile:hover { border-color: var(--maristas-accent); box-shadow: var(--maristas-shadow-card); color: var(--maristas-ink); }
+.mr-tile-icon { width: 42px; height: 42px; border-radius: 12px; flex: none; display: grid; place-items: center; font-size: 1.3rem; background: var(--maristas-brand-soft); color: var(--maristas-brand); }
+
+/* Ejemplos con pestañas Vista previa / Código */
+.mr-example { margin-bottom: 2rem; scroll-margin-top: 80px; }
+.mr-example-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: .5rem; }
+.mr-example-head .mr-example-title { margin: 0; }
+.mr-example-tabs { display: inline-flex; background: var(--maristas-soft); border-radius: var(--maristas-radius-sm); padding: 2px; }
+.mr-example-tabs button { border: 0; background: transparent; padding: .22rem .7rem; font-size: .75rem; font-weight: 600; color: var(--maristas-muted); border-radius: 6px; }
+.mr-example-tabs button.is-active { background: var(--maristas-surface); color: var(--maristas-brand); box-shadow: 0 1px 2px rgba(23,32,51,.12); }
+.mr-example-codebox { position: relative; border-radius: var(--maristas-radius-md); background: #0f1b33; }
+.mr-example-codebox pre { margin: 0; padding: 1rem 1.1rem; overflow: auto; max-height: 26rem; }
+.mr-example-codebox code { color: #d6e2ff; font-size: .78rem; background: none; }
+.mr-example-codebox[hidden] { display: none; }
+.mr-copy { position: absolute; top: .6rem; right: .6rem; display: inline-flex; align-items: center; gap: .3rem; border: 0; border-radius: var(--maristas-radius-sm); padding: .25rem .6rem; font-size: .72rem; font-weight: 600; background: rgba(255,255,255,.12); color: #d6e2ff; }
+.mr-copy:hover { background: rgba(255,255,255,.22); }
+
+/* Introducción: plano arquitectónico (blueprint) con el logo */
+.mr-blueprint { position: relative; overflow: hidden; border-radius: var(--maristas-radius-lg); min-height: 21rem; display: grid; place-items: center; color: rgba(255,255,255,.75);
+    background-color: #0a3d78;
+    background-image:
+        linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.15) 1px, transparent 1px),
+        radial-gradient(ellipse at center, rgba(47,111,237,.35), transparent 65%);
+    background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px, 100% 100%;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.18), var(--maristas-shadow-card); }
+.mr-blueprint-marks { position: absolute; inset: 0; width: 100%; height: 100%; }
+.mr-blueprint-logo { position: relative; width: min(58%, 30rem); height: auto; filter: brightness(0) invert(1); }
+.mr-blueprint-label { position: absolute; transform: translate(-50%, -50%); padding: .05rem .4rem; background: #0a3d78; font: 600 .68rem/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .06em; color: rgba(255,255,255,.85); }
+.mr-blueprint-title { position: absolute; right: 1.25rem; bottom: 1.1rem; display: flex; border: 1px solid rgba(255,255,255,.55); background: rgba(10,61,120,.85); }
+.mr-blueprint-title > div { padding: .3rem .75rem; display: flex; flex-direction: column; border-right: 1px solid rgba(255,255,255,.35); }
+.mr-blueprint-title > div:last-child { border-right: 0; }
+.mr-blueprint-title span { font: 500 .6rem/1.2 ui-monospace, Menlo, monospace; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.6); }
+.mr-blueprint-title strong { font: 600 .78rem/1.3 ui-monospace, Menlo, monospace; color: #fff; }
+@media (max-width: 575.98px) { .mr-blueprint { min-height: 15rem; } .mr-blueprint-label { display: none; } .mr-blueprint-title strong { font-size: .68rem; } }
+
+/* Tablas de datos */
+.mr-dt-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; margin-bottom: .75rem; }
+.mr-dt-search { position: relative; flex: 1 1 14rem; max-width: 22rem; }
+.mr-dt-search i { position: absolute; left: .7rem; top: 50%; transform: translateY(-50%); color: var(--maristas-muted); pointer-events: none; }
+.mr-scope .mr-dt-search input.form-control { padding-left: 2.1rem; }
+.mr-dt td, .mr-dt th { white-space: nowrap; }
+.mr-dt-filter { width: auto; }
+.mr-dt-bulk { display: flex; align-items: center; gap: .6rem; margin-left: auto; padding: .25rem .5rem .25rem .8rem; background: var(--maristas-brand-soft); border-radius: var(--maristas-radius-md); font-size: .82rem; color: var(--maristas-brand); }
+.mr-dt-bulk[hidden] { display: none; }
+.mr-dt-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; margin-top: .75rem; }
+.mr-dt th[data-mr-sort] { cursor: pointer; user-select: none; white-space: nowrap; }
+.mr-dt th[data-mr-sort]::after { content: '\21C5'; margin-left: .35rem; font-size: .75rem; opacity: .35; }
+.mr-dt th[aria-sort="ascending"]::after { content: '\2191'; opacity: 1; color: var(--maristas-brand); }
+.mr-dt th[aria-sort="descending"]::after { content: '\2193'; opacity: 1; color: var(--maristas-brand); }
+.mr-dt tr[hidden] { display: none; }
+
+/* Etiquetas, carga de archivos y pasos */
+.mr-tags { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; min-height: 2.5rem; padding: .3rem .5rem; border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); background: var(--maristas-surface); cursor: text; }
+.mr-tags:focus-within { border-color: var(--maristas-accent); box-shadow: 0 0 0 3px rgba(47,111,237,.15); }
+.mr-tags input[type="text"] { flex: 1; min-width: 6rem; border: 0; outline: none; background: transparent; font-size: .9rem; padding: .15rem; }
+.mr-tag { display: inline-flex; align-items: center; gap: .3rem; padding: .15rem .3rem .15rem .65rem; border-radius: 999px; background: var(--maristas-brand-soft); color: var(--maristas-brand); font-size: .8rem; font-weight: 600; }
+.mr-tag button { border: 0; background: transparent; color: inherit; line-height: 1; font-size: 1rem; width: 1.2rem; height: 1.2rem; border-radius: 50%; padding: 0; }
+.mr-tag button:hover { background: rgba(11,58,111,.15); }
+.mr-dropzone { display: flex; flex-direction: column; align-items: center; gap: .25rem; padding: 2rem 1rem; border: 2px dashed #b8c0d0; border-radius: var(--maristas-radius-md); background: var(--maristas-soft); cursor: pointer; text-align: center; transition: border-color .15s, background .15s; }
+.mr-dropzone i { font-size: 2rem; color: var(--maristas-accent); }
+.mr-dropzone:hover, .mr-dropzone.is-over { border-color: var(--maristas-accent); background: var(--maristas-brand-soft); }
+.mr-files { list-style: none; margin: .75rem 0 0; padding: 0; display: flex; flex-direction: column; gap: .5rem; }
+.mr-file { display: flex; align-items: center; gap: .75rem; padding: .65rem .85rem; border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); background: var(--maristas-surface); font-size: .85rem; }
+.mr-file > i { font-size: 1.4rem; color: var(--maristas-muted); }
+.mr-stepper { list-style: none; margin: 0; padding: 0; display: flex; gap: .5rem; }
+.mr-stepper-item { flex: 1; display: flex; align-items: center; gap: .6rem; position: relative; font-size: .85rem; color: var(--maristas-muted); }
+.mr-stepper:not(.mr-stepper-vertical) .mr-stepper-item:not(:last-child)::after { content: ''; flex: 1; height: 2px; background: var(--maristas-line); margin: 0 .25rem; }
+.mr-stepper-dot { width: 28px; height: 28px; border-radius: 50%; flex: none; display: grid; place-items: center; font-size: .78rem; font-weight: 700; background: var(--maristas-soft); color: var(--maristas-muted); border: 2px solid var(--maristas-line); }
+.mr-stepper-label { font-weight: 600; }
+.mr-stepper-item.is-done .mr-stepper-dot { background: var(--maristas-brand); border-color: var(--maristas-brand); color: #fff; }
+.mr-stepper-item.is-done::after { background: var(--maristas-brand) !important; }
+.mr-stepper-item.is-done { color: var(--maristas-ink); }
+.mr-stepper-item.is-current { color: var(--maristas-brand); }
+.mr-stepper-item.is-current .mr-stepper-dot { background: var(--maristas-surface); border-color: var(--maristas-brand); color: var(--maristas-brand); box-shadow: 0 0 0 4px var(--maristas-brand-soft); }
+.mr-stepper-vertical { flex-direction: column; gap: 1.2rem; }
+.mr-stepper-vertical .mr-stepper-item { align-items: flex-start; }
+.mr-stepper-vertical .mr-stepper-item:not(:last-child)::before { content: ''; position: absolute; left: 13px; top: 32px; bottom: -1.1rem; width: 2px; background: var(--maristas-line); }
+.mr-stepper-vertical .mr-stepper-item.is-done:not(:last-child)::before { background: var(--maristas-brand); }
+@media (max-width: 575.98px) { .mr-stepper:not(.mr-stepper-vertical) .mr-stepper-label { display: none; } .mr-stepper-item.is-current .mr-stepper-label { display: inline; } }

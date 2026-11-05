@@ -44,6 +44,23 @@ class ComponentesTest extends TestCase
 
     public function test_el_css_se_sirve_con_el_tipo_correcto(): void
     {
-        $this->get('/ui-kit/maristas-ui.css')->assertOk()->assertHeader('Content-Type', 'text/css; charset=UTF-8');
+        $this->get('/ui-kit/_assets/maristas-ui.css')->assertOk()->assertHeader('Content-Type', 'text/css; charset=UTF-8');
+    }
+
+    public function test_todas_las_paginas_del_catalogo_responden(): void
+    {
+        foreach (array_keys(\Maristas\UiKit\Docs\Catalogo::paginas()) as $slug) {
+            $this->get('/ui-kit/'.$slug)->assertOk();
+        }
+    }
+
+    public function test_una_pagina_inexistente_da_404(): void
+    {
+        $this->get('/ui-kit/no-existe')->assertNotFound();
+    }
+
+    public function test_los_assets_fuera_de_la_lista_blanca_dan_404(): void
+    {
+        $this->get('/ui-kit/_assets/composer.json')->assertNotFound();
     }
 }
