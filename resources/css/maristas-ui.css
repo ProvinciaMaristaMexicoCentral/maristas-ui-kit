@@ -361,6 +361,7 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-so
 .mr-doc-nav { position: sticky; top: 1.5rem; max-height: calc(100vh - 3rem); overflow-y: auto; display: flex; flex-direction: column; gap: .15rem; padding-right: .25rem; scrollbar-width: thin; }
 .mr-doc-nav a { padding: .35rem .75rem; border-radius: var(--maristas-radius-sm); color: var(--maristas-muted); text-decoration: none; font-size: var(--maristas-text-sm); }
 .mr-doc-nav a:hover { background: var(--maristas-brand-soft); color: var(--maristas-brand); }
+.mr-doc-nav a.is-active { background: var(--maristas-brand-soft); color: var(--maristas-brand); font-weight: 600; }
 .mr-doc-section { scroll-margin-top: 1.5rem; }
 /* En el kit el salto a una sección es directo: la animación de Bootstrap recorre miles de píxeles y desorienta */
 :root:has(.mr-doc-nav) { scroll-behavior: auto; }
