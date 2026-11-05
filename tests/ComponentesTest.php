@@ -63,4 +63,45 @@ class ComponentesTest extends TestCase
     {
         $this->get('/ui-kit/_assets/composer.json')->assertNotFound();
     }
+
+    public function test_la_guia_para_ia_cubre_tokens_componentes_y_paginas(): void
+    {
+        $guia = \Maristas\UiKit\Docs\GuiaIA::generar();
+
+        $this->assertStringContainsString('`--maristas-brand`: `#0b3a6f`', $guia);
+        $this->assertStringContainsString('x-maristas::button', $guia);
+        $this->assertStringContainsString('variant = \'primary\'', $guia);
+        $this->assertStringContainsString('`mr-dt-toolbar`', $guia);
+        $this->assertStringNotContainsString('x-maristas::example`', $guia);
+
+        foreach (\Maristas\UiKit\Docs\Catalogo::paginas() as $slug => $pagina) {
+            if ($slug !== 'introduccion') {
+                $this->assertStringContainsString('(`'.$slug.'`)', $guia, "Falta la página {$slug}");
+            }
+        }
+
+        $this->assertLessThan(strlen($guia), strlen(\Maristas\UiKit\Docs\GuiaIA::generar(false)));
+    }
+
+    public function test_la_guia_para_ia_se_sirve_como_markdown(): void
+    {
+        $this->get('/ui-kit/ia.md')->assertOk()->assertHeader('Content-Type', 'text/markdown; charset=UTF-8');
+    }
+
+    public function test_el_comando_escribe_la_guia_y_enlaza_a_los_agentes_sin_duplicar(): void
+    {
+        $dir = sys_get_temp_dir().'/mr-ia-'.uniqid();
+        mkdir($dir);
+        file_put_contents($dir.'/CLAUDE.md', "# Proyecto\n\nTexto previo.\n");
+        $this->app->setBasePath($dir);
+
+        $this->artisan('maristas-ui:ia', ['--agentes' => true])->assertSuccessful();
+        $this->artisan('maristas-ui:ia', ['--agentes' => true])->assertSuccessful();
+
+        $this->assertFileExists($dir.'/docs/maristas-ui.md');
+        $claude = file_get_contents($dir.'/CLAUDE.md');
+        $this->assertStringContainsString('Texto previo.', $claude);
+        $this->assertSame(1, substr_count($claude, 'maristas-ui:inicio'));
+        $this->assertFileDoesNotExist($dir.'/AGENTS.md');
+    }
 }

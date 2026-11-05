@@ -13,6 +13,7 @@ class Catalogo
             'Empezar' => [
                 'introduccion' => ['titulo' => 'Introducción', 'descripcion' => ''],
                 'uso' => ['titulo' => 'Cómo usarlo', 'descripcion' => 'Tres pasos para una pantalla nueva o una que se migre.'],
+                'ia' => ['titulo' => 'Para asistentes de IA', 'descripcion' => 'Una guía en Markdown generada desde este mismo kit, para que Claude, Copilot o Cursor escriban pantallas que respeten el sistema de diseño.'],
             ],
             'Fundamentos' => [
                 'colores' => ['titulo' => 'Colores', 'descripcion' => 'La marca es el azul institucional. Los estados (éxito, atención, error, información) son independientes de la marca y nunca se usan como acento decorativo.'],

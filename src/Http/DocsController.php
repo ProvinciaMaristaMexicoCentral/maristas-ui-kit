@@ -2,9 +2,11 @@
 
 namespace Maristas\UiKit\Http;
 
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\View;
 use Maristas\UiKit\Docs\Catalogo;
+use Maristas\UiKit\Docs\GuiaIA;
 
 class DocsController extends Controller
 {
@@ -18,6 +20,13 @@ class DocsController extends Controller
         [$anterior, $siguiente] = Catalogo::vecinas($slug);
 
         return view('maristas::docs.pagina', compact('pagina', 'anterior', 'siguiente'));
+    }
+
+    public function guiaIA(Request $request)
+    {
+        return response(GuiaIA::generar(! $request->boolean('resumen')), 200, [
+            'Content-Type' => 'text/markdown; charset=UTF-8',
+        ]);
     }
 
     public function asset(string $archivo)

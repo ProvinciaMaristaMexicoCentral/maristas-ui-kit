@@ -33,3 +33,14 @@ vendor/bin/testbench serve      # documentación en http://127.0.0.1:8000/ui-kit
 ## Estado
 
 Primer corte: tokens, formularios, botones, tablas, tarjetas, alertas, navegación, barra principal y patrones de página, migrados desde el CRM. Pendiente: tablas de datos, selectores, calendarios, gráficas, compilar Bootstrap con los tokens propios y la guía `.md` para IA.
+
+## Para asistentes de IA
+
+El paquete genera una guía en Markdown (reglas, tokens, props de cada componente, clases `.mr-*` y todos los ejemplos) a partir de sus propias fuentes, para que Claude Code, Cursor o Copilot escriban pantallas que respeten el sistema de diseño.
+
+```bash
+php artisan maristas-ui:ia --agentes   # escribe docs/maristas-ui.md y avisa en CLAUDE.md / AGENTS.md
+php artisan maristas-ui:ia --resumen   # sin ejemplos
+```
+
+También se ve en la documentación (`/ui-kit/ia`) y se descarga en `/ui-kit/ia.md` (`?resumen=1` para la versión corta). La guía no se edita a mano: se regenera al actualizar el paquete.

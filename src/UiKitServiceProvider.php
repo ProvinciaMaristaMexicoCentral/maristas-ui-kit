@@ -5,6 +5,7 @@ namespace Maristas\UiKit;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Maristas\UiKit\Console\GuiaIACommand;
 use Maristas\UiKit\Http\DocsController;
 
 class UiKitServiceProvider extends ServiceProvider
@@ -33,6 +34,10 @@ class UiKitServiceProvider extends ServiceProvider
             __DIR__.'/../config/maristas-ui.php' => config_path('maristas-ui.php'),
         ], 'maristas-ui-config');
 
+        if ($this->app->runningInConsole()) {
+            $this->commands([GuiaIACommand::class]);
+        }
+
         $this->registrarDocumentacion();
     }
 
@@ -48,6 +53,7 @@ class UiKitServiceProvider extends ServiceProvider
         $ruta = trim(config('maristas-ui.docs.route', 'ui-kit'), '/');
 
         Route::middleware(config('maristas-ui.docs.middleware', ['web']))->group(function () use ($ruta) {
+            Route::get($ruta.'/ia.md', [DocsController::class, 'guiaIA'])->name('maristas-ui.ia');
             Route::get($ruta.'/_assets/{archivo}', [DocsController::class, 'asset'])->name('maristas-ui.asset');
             Route::get($ruta.'/{slug?}', [DocsController::class, 'show'])->name('maristas-ui.docs');
         });
