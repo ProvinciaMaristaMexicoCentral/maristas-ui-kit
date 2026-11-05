@@ -25,7 +25,7 @@ class DocsController extends Controller
         $archivos = [
             'maristas-ui.css' => [__DIR__.'/../../resources/css/maristas-ui.css', 'text/css'],
             'maristas-ui.js' => [__DIR__.'/../../resources/js/maristas-ui.js', 'application/javascript'],
-            'maristas-logo.png' => [__DIR__.'/../../resources/images/maristas-logo.png', 'image/png'],
+            'maristas-logo.svg' => [__DIR__.'/../../resources/images/maristas-logo.svg', 'image/svg+xml'],
         ];
 
         abort_unless(isset($archivos[$archivo]), 404);

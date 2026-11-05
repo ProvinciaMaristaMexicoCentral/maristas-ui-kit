@@ -7,24 +7,12 @@
             <circle cx="40" cy="380" r="10"/><path d="M20 380h40M40 360v40"/>
             <circle cx="960" cy="380" r="10"/><path d="M940 380h40M960 360v40"/>
         </g>
-        {{-- cota horizontal bajo el logo --}}
-        <g stroke="currentColor" fill="currentColor" stroke-width="1">
-            <path d="M250 262h500" fill="none"/>
-            <path d="M250 254v16M750 254v16" fill="none"/>
-            <path d="M250 262l8-4v8zM750 262l-8-4v8z"/>
-        </g>
-        {{-- cota vertical a la derecha --}}
-        <g stroke="currentColor" fill="currentColor" stroke-width="1">
-            <path d="M800 130v80" fill="none"/>
-            <path d="M792 130h16M792 210h16" fill="none"/>
-            <path d="M800 130l-4 8h8zM800 210l-4-8h8z"/>
-        </g>
-        {{-- línea guía de la base de la tipografía --}}
-        <path d="M200 205h600" stroke="currentColor" stroke-width="1" stroke-dasharray="4 5" fill="none" opacity=".7"/>
     </svg>
-    <span class="mr-blueprint-label" style="left: 29%; top: 66%">1500 px</span>
-    <span class="mr-blueprint-label" style="left: 81%; top: 42%">234 px</span>
-    <img class="mr-blueprint-logo" src="{{ route('maristas-ui.asset', 'maristas-logo.png') }}" alt="Maristas">
+    <div class="mr-blueprint-figure">
+        <img class="mr-blueprint-logo" src="{{ route('maristas-ui.asset', 'maristas-logo.svg') }}" alt="Maristas">
+        <span class="mr-dim mr-dim-h"><b>800 px</b></span>
+        <span class="mr-dim mr-dim-v"><b>800 px</b></span>
+    </div>
     <div class="mr-blueprint-title">
         <div><span>Proyecto</span><strong>Maristas UI Kit</strong></div>
         <div><span>Rev.</span><strong>0.1</strong></div>

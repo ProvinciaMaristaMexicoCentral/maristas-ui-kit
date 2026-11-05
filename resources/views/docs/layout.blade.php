@@ -1,3 +1,4 @@
+@php $v = filemtime(app('view')->getFinder()->getHints()['maristas'][0].'/../css/maristas-ui.css'); @endphp
 <!DOCTYPE html>
 <html lang="es" data-bs-theme="light">
 <head>
@@ -7,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
-    <link href="{{ route('maristas-ui.asset', 'maristas-ui.css') }}" rel="stylesheet">
+    <link href="{{ route('maristas-ui.asset', 'maristas-ui.css') }}?v={{ $v }}" rel="stylesheet">
 </head>
 <body class="mr-scope mr-docs">
 @php $grupos = \Maristas\UiKit\Docs\Catalogo::grupos(); $actual = $pagina['slug'] ?? 'introduccion'; @endphp
@@ -15,7 +16,7 @@
 <header class="mr-docbar">
     <button type="button" class="mr-docbar-menu" data-bs-toggle="offcanvas" data-bs-target="#mr-doc-offcanvas" aria-label="Abrir el índice"><i class="ri-menu-2-line"></i></button>
     <a class="mr-docbar-brand" href="{{ route('maristas-ui.docs') }}">
-        <img src="{{ route('maristas-ui.asset', 'maristas-logo.png') }}" alt="Maristas">
+        <img src="{{ route('maristas-ui.asset', 'maristas-logo.svg') }}" alt="Maristas">
         <span class="mr-docbar-tag">UI Kit</span>
     </a>
     <div class="mr-docbar-search">
@@ -51,7 +52,7 @@
 @include('maristas::docs.partials.modals')
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="{{ route('maristas-ui.asset', 'maristas-ui.js') }}"></script>
+<script src="{{ route('maristas-ui.asset', 'maristas-ui.js') }}?v={{ $v }}"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Tooltips, popovers y el aviso de ejemplo

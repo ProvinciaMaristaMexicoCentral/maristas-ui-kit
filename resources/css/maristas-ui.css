@@ -463,7 +463,7 @@ button.mr-notif.is-new { background: var(--maristas-brand-soft); }
 .mr-docs { background: var(--maristas-canvas); }
 .mr-docbar { position: sticky; top: 0; z-index: 1040; height: 60px; display: flex; align-items: center; gap: 1rem; padding: 0 1.25rem; background: var(--maristas-brand-strong); color: #fff; box-shadow: 0 1px 0 rgba(255,255,255,.08); }
 .mr-docbar-brand { display: inline-flex; align-items: center; gap: .7rem; color: #fff; text-decoration: none; }
-.mr-docbar-brand img { height: 26px; width: auto; filter: brightness(0) invert(1); }
+.mr-docbar-brand img { height: 30px; width: auto; }
 .mr-docbar-tag { padding: .15rem .55rem; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; }
 .mr-docbar-menu { display: none; background: transparent; border: 0; color: #fff; font-size: 1.4rem; line-height: 1; padding: .2rem .4rem; border-radius: var(--maristas-radius-sm); }
 .mr-docbar-search { position: relative; margin-left: auto; width: 20rem; max-width: 40vw; }
@@ -527,7 +527,7 @@ button.mr-notif.is-new { background: var(--maristas-brand-soft); }
 .mr-copy:hover { background: rgba(255,255,255,.22); }
 
 /* Introducción: plano arquitectónico (blueprint) con el logo */
-.mr-blueprint { position: relative; overflow: hidden; border-radius: var(--maristas-radius-lg); min-height: 21rem; display: grid; place-items: center; color: rgba(255,255,255,.75);
+.mr-blueprint { position: relative; overflow: hidden; border-radius: var(--maristas-radius-lg); min-height: 21rem; display: grid; place-items: center; padding: 1rem; color: rgba(255,255,255,.75);
     background-color: #0a3d78;
     background-image:
         linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px),
@@ -536,7 +536,17 @@ button.mr-notif.is-new { background: var(--maristas-brand-soft); }
     background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px, 100% 100%;
     box-shadow: inset 0 0 0 1px rgba(255,255,255,.18), var(--maristas-shadow-card); }
 .mr-blueprint-marks { position: absolute; inset: 0; width: 100%; height: 100%; }
-.mr-blueprint-logo { position: relative; width: min(58%, 30rem); height: auto; filter: brightness(0) invert(1); }
+.mr-blueprint-figure { position: relative; height: 13rem; aspect-ratio: 1; margin: 1rem 2.5rem 2.5rem 0; outline: 1px dashed rgba(255,255,255,.4); outline-offset: 0; }
+.mr-blueprint-logo { width: 100%; height: 100%; display: block; }
+.mr-dim { position: absolute; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.85); }
+.mr-dim b { padding: .05rem .4rem; background: #0a3d78; font: 600 .68rem/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .06em; position: relative; }
+.mr-dim-h { left: 0; right: 0; bottom: -1.6rem; height: 0; border-top: 1px solid currentColor; }
+.mr-dim-h::before, .mr-dim-h::after { content: ''; position: absolute; top: -6px; height: 12px; border-left: 1px solid currentColor; }
+.mr-dim-h::before { left: 0; } .mr-dim-h::after { right: 0; }
+.mr-dim-v { top: 0; bottom: 0; right: -1.6rem; width: 0; border-left: 1px solid currentColor; }
+.mr-dim-v::before, .mr-dim-v::after { content: ''; position: absolute; left: -6px; width: 12px; border-top: 1px solid currentColor; }
+.mr-dim-v::before { top: 0; } .mr-dim-v::after { bottom: 0; }
+.mr-dim-v b { transform: rotate(-90deg); white-space: nowrap; }
 .mr-blueprint-label { position: absolute; transform: translate(-50%, -50%); padding: .05rem .4rem; background: #0a3d78; font: 600 .68rem/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .06em; color: rgba(255,255,255,.85); }
 .mr-blueprint-title { position: absolute; right: 1.25rem; bottom: 1.1rem; display: flex; border: 1px solid rgba(255,255,255,.55); background: rgba(10,61,120,.85); }
 .mr-blueprint-title > div { padding: .3rem .75rem; display: flex; flex-direction: column; border-right: 1px solid rgba(255,255,255,.35); }
