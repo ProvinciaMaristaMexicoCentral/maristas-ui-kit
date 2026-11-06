@@ -628,3 +628,6 @@ body.mr-palette-open { overflow: hidden; }
 .mr-palette-empty { padding: 2rem 1rem; text-align: center; color: var(--maristas-muted); font-size: .9rem; }
 .mr-palette-foot { display: flex; gap: 1rem; padding: .55rem 1rem; border-top: 1px solid var(--maristas-line); background: var(--maristas-soft); font-size: .72rem; color: var(--maristas-muted); }
 .mr-palette-foot kbd { margin-right: .2rem; }
+
+/* Botón de cerrar flotante dentro de un modal sin encabezado propio */
+.mr-scope .modal-content .mr-modal-close { position: absolute; top: 1rem; right: 1rem; z-index: 5; }
