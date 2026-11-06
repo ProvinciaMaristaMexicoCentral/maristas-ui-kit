@@ -19,6 +19,32 @@
     </div>
 </x-maristas::example>
 
+<x-maristas::example title="Campos obligatorios y errores" note="Marca los obligatorios con la clase mr-req en la etiqueta: pone el asterisco en rojo sin escribirlo a mano. El error va debajo del campo con is-invalid e invalid-feedback.">
+    <div class="row g-3 w-100">
+        <div class="col-md-6">
+            <label class="form-label mr-req" for="kit-ob-nombre">Nombre</label>
+            <input id="kit-ob-nombre" class="form-control" type="text">
+        </div>
+        <div class="col-md-6">
+            <label class="form-label mr-req" for="kit-ob-correo">Correo</label>
+            <input id="kit-ob-correo" class="form-control is-invalid" type="email" value="correo-sin-arroba">
+            <div class="invalid-feedback">Escribe un correo válido.</div>
+        </div>
+        <div class="col-12">
+            <div class="mr-box">Usa <code>mr-box</code> para agrupar un bloque dentro de un formulario, por ejemplo un registro similar que el asesor debe revisar.</div>
+        </div>
+    </div>
+    <x-slot:code>
+@verbatim
+<label class="form-label mr-req" for="nombre">Nombre</label>
+<input id="nombre" class="form-control @error('nombre') is-invalid @enderror" wire:model="nombre">
+@error('nombre')<div class="invalid-feedback">{{ $message }}</div>@enderror
+
+<div class="mr-box">…bloque…</div>           {{-- is-muted para atenuarlo --}}
+@endverbatim
+    </x-slot:code>
+</x-maristas::example>
+
 <x-maristas::example title="Tamaños de campos" note="Pequeño en filtros y celdas de tabla, normal en formularios, grande en pantallas táctiles. Se piden con form-control-sm, form-control-lg, form-select-sm y form-select-lg.">
     <div class="row g-3 w-100">
         <div class="col-md-4">

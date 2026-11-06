@@ -290,6 +290,11 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-so
 .mr-scope .form-control.is-invalid:focus { box-shadow: 0 0 0 3px rgba(201, 58, 58, .15); }
 .mr-scope .form-control.is-valid, .mr-scope .form-select.is-valid { border-color: var(--maristas-success); background-image: none; }
 .mr-scope .invalid-feedback { color: var(--maristas-danger); font-size: .8rem; }
+/* Campo obligatorio: asterisco en la etiqueta */
+.mr-scope .form-label.mr-req::after { content: ' *'; color: var(--maristas-danger); font-weight: 600; }
+/* Caja neutra para agrupar un bloque dentro de un formulario o modal */
+.mr-box { padding: .85rem 1rem; background: var(--maristas-surface); border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); }
+.mr-box.is-muted { opacity: .55; }
 .mr-scope .valid-feedback { color: var(--maristas-success); font-size: .8rem; }
 .mr-scope .form-text { color: var(--maristas-muted); font-size: .8rem; }
 .mr-scope .form-control:disabled, .mr-scope .form-select:disabled { background: var(--maristas-soft); color: var(--maristas-muted); }
