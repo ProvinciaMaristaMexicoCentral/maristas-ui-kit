@@ -50,7 +50,8 @@ body:has(.mr-scope) { background: var(--maristas-canvas); }
 .mr-scope pre code { background: none; color: inherit; padding: 0; }
 
 .mr-scope .card { border: 0; border-radius: var(--maristas-radius-lg); box-shadow: 0 1px 2px rgba(23,32,51,.04), 0 6px 20px rgba(23,32,51,.05); }
-        .mr-scope .card-header { background: transparent; border-bottom: 1px solid var(--maristas-line); }
+        .mr-scope .card-header { background: transparent; border-bottom: 0; padding: 1.1rem 1.25rem .4rem; }
+        .mr-scope .card-header + .card-body.p-0 > :first-child { margin-top: .35rem; }
 
         /* Hero */
         .mr-hero { padding: 1.5rem 1.5rem 1.25rem; }
