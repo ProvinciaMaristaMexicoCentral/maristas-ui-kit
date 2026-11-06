@@ -45,6 +45,38 @@
     </x-slot:code>
 </x-maristas::example>
 
+<x-maristas::example title="Revisión antes de confirmar y acciones al pie" note="mr-kv ordena pares dato-valor en columnas que se adaptan al ancho. mr-form-actions separa los botones del paso: «Atrás» a la izquierda y la acción principal a la derecha, una sola.">
+    <div class="w-100">
+        <div class="mr-box">
+            <div class="mr-block-head mb-3"><h6 class="card-title mb-0">Contacto</h6><button type="button" class="mr-chip mr-chip-action"><i class="ri-pencil-fill"></i>Editar</button></div>
+            <dl class="mr-kv">
+                <div><dt>Nombre</dt><dd>María López Soto</dd></div>
+                <div><dt>Teléfono</dt><dd>55 1234 5678</dd></div>
+                <div class="is-wide"><dt>Correo</dt><dd>maria@example.com</dd></div>
+            </dl>
+        </div>
+        <div class="mr-form-actions">
+            <x-maristas::button variant="secondary" icon="ri-arrow-left-line">Atrás</x-maristas::button>
+            <x-maristas::button icon="ri-check-line">Confirmar y guardar</x-maristas::button>
+        </div>
+    </div>
+    <x-slot:code>
+@verbatim
+<div class="mr-box">
+    <div class="mr-block-head mb-3"><h6 class="card-title mb-0">Contacto</h6> <button class="mr-chip mr-chip-action">Editar</button></div>
+    <dl class="mr-kv">
+        <div><dt>Nombre</dt><dd>María López Soto</dd></div>
+        <div class="is-wide"><dt>Correo</dt><dd>maria@example.com</dd></div>   {{-- is-wide ocupa toda la fila --}}
+    </dl>
+</div>
+<div class="mr-form-actions">
+    <button class="btn btn-light">Atrás</button>
+    <button class="btn btn-primary">Confirmar y guardar</button>
+</div>
+@endverbatim
+    </x-slot:code>
+</x-maristas::example>
+
 <x-maristas::example title="Tamaños de campos" note="Pequeño en filtros y celdas de tabla, normal en formularios, grande en pantallas táctiles. Se piden con form-control-sm, form-control-lg, form-select-sm y form-select-lg.">
     <div class="row g-3 w-100">
         <div class="col-md-4">

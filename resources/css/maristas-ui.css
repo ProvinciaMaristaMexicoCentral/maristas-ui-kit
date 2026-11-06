@@ -295,6 +295,13 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-so
 /* Caja neutra para agrupar un bloque dentro de un formulario o modal */
 .mr-box { padding: .85rem 1rem; background: var(--maristas-surface); border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); }
 .mr-box.is-muted { opacity: .55; }
+/* Acciones al pie de un formulario o paso: separadas del contenido por una línea */
+.mr-form-actions { display: flex; justify-content: space-between; align-items: center; gap: .75rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--maristas-line); }
+/* Datos clave-valor para revisar antes de confirmar */
+.mr-kv { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .9rem 1.5rem; margin: 0; }
+.mr-kv dt { margin: 0 0 .1rem; font-size: .75rem; font-weight: 500; color: var(--maristas-muted); }
+.mr-kv dd { margin: 0; font-weight: 600; word-break: break-word; }
+.mr-kv .is-wide { grid-column: 1 / -1; }
 .mr-scope .valid-feedback { color: var(--maristas-success); font-size: .8rem; }
 .mr-scope .form-text { color: var(--maristas-muted); font-size: .8rem; }
 .mr-scope .form-control:disabled, .mr-scope .form-select:disabled { background: var(--maristas-soft); color: var(--maristas-muted); }
