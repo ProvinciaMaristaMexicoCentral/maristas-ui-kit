@@ -44,6 +44,12 @@ class ExportarDocsCommand extends Command
         $ruta = trim(config('maristas-ui.docs.route', 'ui-kit'), '/');
         $destino = rtrim($this->argument('destino'), '/');
 
+        // El grupo de middleware web cifra cookies y exige una clave; la exportación no guarda nada
+        // secreto, así que si no hay una se usa una temporal (por ejemplo en CI, sin .env).
+        if (blank(config('app.key'))) {
+            config(['app.key' => 'base64:'.base64_encode(random_bytes(32))]);
+        }
+
         URL::forceRootUrl(self::ORIGEN);
         Indice::reiniciar();
 
