@@ -44,3 +44,13 @@ php artisan maristas-ui:ia --resumen   # sin ejemplos
 ```
 
 También se ve en la documentación (`/ui-kit/ia`) y se descarga en `/ui-kit/ia.md` (`?resumen=1` para la versión corta). La guía no se edita a mano: se regenera al actualizar el paquete.
+
+## Revisar las vistas (lint)
+
+```bash
+php artisan maristas-ui:lint                       # todo resources/views
+php artisan maristas-ui:lint resources/views/alumnos
+php artisan maristas-ui:lint --estricto            # los avisos también hacen fallar (útil en CI)
+```
+
+Solo lee, nunca modifica. **Errores** (hacen fallar el comando): clases `.mr-*` que no existen, componentes `x-maristas::*` inexistentes, propiedades mal escritas, tonos inválidos, colores sueltos en `style` e íconos solos sin `aria-label`. **Avisos**: clases de color de Bootstrap (`text-danger`, `bg-primary`…) y más de un botón principal por vista. La guía para IA le indica al asistente que lo ejecute al terminar cada vista.

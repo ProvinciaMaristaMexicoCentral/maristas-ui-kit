@@ -11,7 +11,7 @@
 
 <x-maristas::example title="Con secciones y acción destructiva" note="Separa con encabezado y línea; la acción que borra va al final, en rojo.">
     <div class="dropdown">
-        <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="ri-more-2-fill"></i></button>
+        <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Más acciones"><i class="ri-more-2-fill"></i></button>
         <div class="dropdown-menu">
             <h6 class="dropdown-header">Registro</h6>
             <a class="dropdown-item" href="#"><i class="ri-pencil-line"></i>Editar</a>

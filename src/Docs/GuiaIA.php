@@ -66,6 +66,10 @@ MD;
 8. **Textos en español**, claros y sin jerga. Datos de ejemplo ficticios; nunca datos reales de personas.
 9. **No uses clases que no aparezcan en esta guía.** Si dudas de que una clase exista, revisa la sección «Clases disponibles».
 10. Entre página y pie deja respiro; no pegues contenido al borde.
+
+## Verifica tu trabajo
+
+Al terminar una vista ejecuta `php artisan maristas-ui:lint <ruta de la vista>` y corrige todos los errores que reporte (clases inventadas, colores sueltos, componentes o propiedades inexistentes, íconos sin `aria-label`). Los avisos son para revisar con criterio.
 MD;
     }
 

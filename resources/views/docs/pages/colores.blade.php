@@ -49,7 +49,7 @@
 <div class="d-flex flex-wrap gap-2 mb-4">
     <span class="px-3 py-2 rounded" style="background: var(--maristas-surface); color: var(--maristas-ink); border: 1px solid var(--maristas-line);">Ink sobre superficie</span>
     <span class="px-3 py-2 rounded" style="background: var(--maristas-surface); color: var(--maristas-muted); border: 1px solid var(--maristas-line);">Muted sobre superficie</span>
-    <span class="px-3 py-2 rounded" style="background: var(--maristas-brand); color: #fff;">Blanco sobre marca</span>
+    <span class="px-3 py-2 rounded" style="background: var(--maristas-brand); color: var(--maristas-surface);">Blanco sobre marca</span>
     <span class="px-3 py-2 rounded" style="background: var(--maristas-brand-soft); color: var(--maristas-brand);">Marca sobre marca suave</span>
     <span class="px-3 py-2 rounded" style="background: var(--maristas-success-soft); color: var(--maristas-success);">Éxito sobre éxito suave</span>
     <span class="px-3 py-2 rounded" style="background: var(--maristas-danger-soft); color: var(--maristas-danger);">Error sobre error suave</span>

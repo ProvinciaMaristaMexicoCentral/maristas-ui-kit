@@ -8,7 +8,7 @@
         </div>
     @endforeach
     <div class="text-center">
-        <div style="padding: 12px; background: var(--maristas-canvas); border-radius: var(--maristas-radius-lg);"><div style="width: 72px; height: 40px; background: #fff; border-radius: var(--maristas-radius-lg); box-shadow: var(--maristas-shadow-card);"></div></div>
+        <div style="padding: 12px; background: var(--maristas-canvas); border-radius: var(--maristas-radius-lg);"><div style="width: 72px; height: 40px; background: var(--maristas-surface); border-radius: var(--maristas-radius-lg); box-shadow: var(--maristas-shadow-card);"></div></div>
         <code class="small d-block mt-1">--maristas-shadow-card</code>
         <span class="text-muted small">Tarjetas</span>
     </div>

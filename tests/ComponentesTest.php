@@ -104,4 +104,48 @@ class ComponentesTest extends TestCase
         $this->assertSame(1, substr_count($claude, 'maristas-ui:inicio'));
         $this->assertFileDoesNotExist($dir.'/AGENTS.md');
     }
+
+    public function test_el_lint_detecta_los_problemas_de_una_vista_mala(): void
+    {
+        $h = (new \Maristas\UiKit\Lint\Linter)->revisar(file_get_contents(__DIR__.'/fixtures/mala.blade.php'));
+        $mensajes = implode("\n", array_map(fn ($x) => $x['linea'].': '.$x['mensaje'], $h));
+
+        $this->assertStringContainsString('2: clase inventada: `mr-boton-grande`', $mensajes);
+        $this->assertStringNotContainsString('mr-state-', $mensajes);
+        $this->assertStringNotContainsString('mr-comentado', $mensajes);
+        $this->assertStringContainsString('3: tono inválido `rojo`', $mensajes);
+        $this->assertStringContainsString('locked-lable', $mensajes);
+        $this->assertStringContainsString('componente inexistente: `x-maristas::inventado`', $mensajes);
+        $this->assertStringContainsString('color suelto `#ff6600`', $mensajes);
+        $this->assertStringContainsString('ícono solo sin `aria-label`', $mensajes);
+        $this->assertStringContainsString('text-danger', $mensajes);
+        $this->assertStringContainsString('2 botones principales', $mensajes);
+    }
+
+    public function test_el_lint_no_marca_una_vista_correcta(): void
+    {
+        $this->assertSame([], (new \Maristas\UiKit\Lint\Linter)->revisar(file_get_contents(__DIR__.'/fixtures/buena.blade.php')));
+    }
+
+    public function test_el_comando_lint_falla_con_errores_y_pasa_sin_ellos(): void
+    {
+        $this->artisan('maristas-ui:lint', ['ruta' => __DIR__.'/fixtures/mala.blade.php'])->assertFailed();
+        $this->artisan('maristas-ui:lint', ['ruta' => __DIR__.'/fixtures/buena.blade.php'])->assertSuccessful();
+    }
+
+    public function test_las_vistas_de_la_documentacion_pasan_el_lint_sin_errores(): void
+    {
+        $linter = new \Maristas\UiKit\Lint\Linter;
+        $errores = [];
+
+        foreach (glob(__DIR__.'/../resources/views/docs/pages/*.blade.php') as $archivo) {
+            foreach ($linter->revisar(file_get_contents($archivo)) as $x) {
+                if ($x['nivel'] === 'error') {
+                    $errores[] = basename($archivo).':'.$x['linea'].' '.$x['mensaje'];
+                }
+            }
+        }
+
+        $this->assertSame([], $errores);
+    }
 }
