@@ -148,4 +148,22 @@ class ComponentesTest extends TestCase
 
         $this->assertSame([], $errores);
     }
+
+    public function test_la_paleta_de_busqueda_trae_paginas_y_ejemplos_y_el_script_se_sirve(): void
+    {
+        $html = $this->get('/ui-kit/botones')->assertOk()->getContent();
+        $this->assertStringContainsString('id="mr-palette"', $html);
+        $this->assertStringContainsString('data-mr-base="/ui-kit"', $html);
+
+        preg_match('#<script type="application/json" id="mr-search-index">(.*?)</script>#s', $html, $m);
+        $indice = json_decode($m[1], true);
+        $this->assertNotEmpty($indice);
+
+        $tipos = array_count_values(array_column($indice, 'tipo'));
+        $this->assertSame(count(\Maristas\UiKit\Docs\Catalogo::paginas()), $tipos['pagina']);
+        $this->assertGreaterThan(20, $tipos['ejemplo']);
+        $this->assertContains('/ui-kit/botones#variantes', array_map(fn ($e) => parse_url($e['url'], PHP_URL_PATH).'#'.(parse_url($e['url'], PHP_URL_FRAGMENT) ?? ''), $indice));
+
+        $this->get('/ui-kit/_assets/maristas-docs.js')->assertOk();
+    }
 }

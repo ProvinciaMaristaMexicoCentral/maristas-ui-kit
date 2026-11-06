@@ -34,6 +34,7 @@ class DocsController extends Controller
         $archivos = [
             'maristas-ui.css' => [__DIR__.'/../../resources/css/maristas-ui.css', 'text/css'],
             'maristas-ui.js' => [__DIR__.'/../../resources/js/maristas-ui.js', 'application/javascript'],
+            'maristas-docs.js' => [__DIR__.'/../../resources/js/maristas-docs.js', 'application/javascript'],
             'maristas-logo.svg' => [__DIR__.'/../../resources/images/maristas-logo.svg', 'image/svg+xml'],
         ];
 

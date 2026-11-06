@@ -146,10 +146,21 @@
         });
         pintar();
     }
-    $$('[data-mr-table]').forEach(iniciarTabla);
+    /* Devuelve los elementos que aún no se han iniciado y los marca (init se puede llamar varias veces). */
+    function nuevos(sel, contexto) {
+        return $$(sel, contexto).filter(function (el) {
+            if (el.hasAttribute('data-mr-ready')) return false;
+            el.setAttribute('data-mr-ready', '');
+            return true;
+        });
+    }
+
+    function iniciar(contexto) {
+    contexto = contexto || document;
+    nuevos('[data-mr-table]', contexto).forEach(iniciarTabla);
 
     /* ---------- Etiquetas ---------- */
-    $$('[data-mr-tags]').forEach(function (raiz) {
+    nuevos('[data-mr-tags]', contexto).forEach(function (raiz) {
         var campo = $('input[type="text"]', raiz);
         var nombre = raiz.getAttribute('data-mr-tags-name');
         var agregar = function (valor) {
@@ -174,7 +185,7 @@
     });
 
     /* ---------- Selección múltiple en menú ---------- */
-    $$('[data-mr-multiselect]').forEach(function (raiz) {
+    nuevos('[data-mr-multiselect]', contexto).forEach(function (raiz) {
         var etiqueta = $('[data-mr-multiselect-label]', raiz);
         var base = etiqueta.textContent;
         raiz.addEventListener('change', function () {
@@ -184,7 +195,7 @@
     });
 
     /* ---------- Rango con valor visible ---------- */
-    $$('[data-mr-range-output]').forEach(function (salida) {
+    nuevos('[data-mr-range-output]', contexto).forEach(function (salida) {
         var rango = $(salida.getAttribute('data-mr-range-output'));
         if (!rango) return;
         var formato = function (v) { return rango.getAttribute('data-mr-range-format') === 'currency' ? '$' + Number(v).toLocaleString('es-MX') : v; };
@@ -192,7 +203,7 @@
     });
 
     /* ---------- Zona de carga de archivos ---------- */
-    $$('[data-mr-dropzone]').forEach(function (raiz) {
+    nuevos('[data-mr-dropzone]', contexto).forEach(function (raiz) {
         var zona = $('.mr-dropzone', raiz);
         var entrada = $('input[type="file"]', raiz);
         var lista = $('[data-mr-file-list]', raiz);
@@ -211,4 +222,9 @@
         zona.addEventListener('drop', function (e) { mostrar(e.dataTransfer.files); });
         entrada.addEventListener('change', function () { mostrar(entrada.files); });
     });
+    }
+
+    /* Al cambiar el contenido de la página (navegación sin recarga) se puede volver a iniciar: MaristasUI.init(contenedor) */
+    window.MaristasUI = { init: iniciar };
+    iniciar(document);
 })();

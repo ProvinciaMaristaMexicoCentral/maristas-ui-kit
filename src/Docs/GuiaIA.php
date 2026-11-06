@@ -263,7 +263,7 @@ MD;
     }
 
     /** @return array<int, array{titulo: ?string, nota: ?string, codigo: string}> */
-    protected static function ejemplosDe(string $slug): array
+    public static function ejemplosDe(string $slug): array
     {
         $archivo = static::raiz().'/resources/views/docs/pages/'.$slug.'.blade.php';
 

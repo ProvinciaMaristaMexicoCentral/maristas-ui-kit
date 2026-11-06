@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
     <link href="{{ route('maristas-ui.asset', 'maristas-ui.css') }}?v={{ $v }}" rel="stylesheet">
 </head>
-<body class="mr-scope mr-docs">
+<body class="mr-scope mr-docs" data-mr-base="{{ parse_url(route('maristas-ui.docs'), PHP_URL_PATH) }}">
 @php $grupos = \Maristas\UiKit\Docs\Catalogo::grupos(); $actual = $pagina['slug'] ?? 'introduccion'; @endphp
 
 <header class="mr-docbar">
@@ -19,11 +19,9 @@
         <img src="{{ route('maristas-ui.asset', 'maristas-logo.svg') }}" alt="Maristas">
         <span class="mr-docbar-tag">UI Kit</span>
     </a>
-    <div class="mr-docbar-search">
-        <i class="ri-search-line"></i>
-        <input type="search" id="mr-doc-search" placeholder="Buscar un componente…" aria-label="Buscar un componente" autocomplete="off">
-        <kbd>/</kbd>
-    </div>
+    <button type="button" class="mr-docbar-search" data-mr-palette-open aria-label="Buscar en la documentación">
+        <i class="ri-search-line"></i><span>Buscar en la documentación…</span><kbd data-mr-kbd>Ctrl K</kbd>
+    </button>
     <span class="mr-docbar-version">v0.1</span>
 </header>
 
@@ -51,58 +49,29 @@
 
 @include('maristas::docs.partials.modals')
 
+<div class="mr-palette" id="mr-palette" hidden>
+    <div class="mr-palette-box" role="dialog" aria-modal="true" aria-label="Buscar en la documentación">
+        <div class="mr-palette-head">
+            <i class="ri-search-line"></i>
+            <input type="text" id="mr-palette-input" placeholder="Busca un componente, página o ejemplo…" aria-label="Buscar" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="mr-palette-list">
+            <kbd>Esc</kbd>
+        </div>
+        <div class="mr-palette-list" id="mr-palette-list" role="listbox"></div>
+        <div class="mr-palette-foot"><span><kbd>↑</kbd><kbd>↓</kbd> navegar</span><span><kbd>↵</kbd> abrir</span><span><kbd>Esc</kbd> cerrar</span></div>
+    </div>
+</div>
+<script type="application/json" id="mr-search-index">@json(\Maristas\UiKit\Docs\Indice::generar(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG)</script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{{ route('maristas-ui.asset', 'maristas-ui.js') }}?v={{ $v }}"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Tooltips, popovers y el aviso de ejemplo
-        document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(function (el) { new bootstrap.Tooltip(el); });
-        document.querySelectorAll('[data-bs-toggle="popover"]').forEach(function (el) { new bootstrap.Popover(el); });
-        var boton = document.getElementById('kit-toast-btn'), toast = document.getElementById('kit-toast');
-        if (boton && toast) boton.addEventListener('click', function () { bootstrap.Toast.getOrCreateInstance(toast).show(); });
-
-        // Los enlaces dentro de los ejemplos son solo demostración
-        document.addEventListener('click', function (e) {
-            var a = e.target.closest('.mr-example-preview a[href="#"], .mr-example-preview a[href^="#"]');
-            if (a) e.preventDefault();
-        });
-
-        // Buscador del índice: "/" lo enfoca
-        var buscador = document.getElementById('mr-doc-search');
-        document.addEventListener('keydown', function (e) {
-            if (e.key === '/' && !/input|textarea|select/i.test(document.activeElement.tagName)) { e.preventDefault(); buscador.focus(); }
-        });
-        buscador.addEventListener('input', function () {
-            var q = buscador.value.trim().toLowerCase();
-            document.querySelectorAll('.mr-docnav a').forEach(function (a) {
-                a.hidden = q !== '' && a.textContent.toLowerCase().indexOf(q) === -1;
-            });
-            document.querySelectorAll('.mr-docnav .mr-docnav-group').forEach(function (g) {
-                g.hidden = !g.querySelector('a:not([hidden])');
-            });
-        });
-
-        // "En esta página": se arma con los ejemplos y se resalta al leer
-        var toc = document.getElementById('mr-doc-toc');
-        var titulos = document.querySelectorAll('.mr-docmain .mr-example');
-        var enlaces = {};
-        titulos.forEach(function (ex) {
-            var t = ex.querySelector('.mr-example-title');
-            if (!t || !ex.id) return;
-            var a = document.createElement('a');
-            a.href = '#' + ex.id; a.textContent = t.textContent;
-            toc.appendChild(a); enlaces[ex.id] = a;
-        });
-        if (!toc.children.length) toc.closest('.mr-doctoc').style.visibility = 'hidden';
-        var visibles = {};
-        var obs = new IntersectionObserver(function (entradas) {
-            entradas.forEach(function (e) { visibles[e.target.id] = e.isIntersecting; });
-            var primero = Object.keys(enlaces).filter(function (id) { return visibles[id]; })[0];
-            Object.keys(enlaces).forEach(function (id) { enlaces[id].classList.toggle('is-active', id === primero); });
-        }, { rootMargin: '-80px 0px -60% 0px' });
-        titulos.forEach(function (ex) { if (enlaces[ex.id]) obs.observe(ex); });
+    // Los enlaces dentro de los ejemplos son solo demostración
+    document.addEventListener('click', function (e) {
+        var a = e.target.closest('.mr-example-preview a[href^="#"]');
+        if (a) e.preventDefault();
     });
 </script>
+<script src="{{ route('maristas-ui.asset', 'maristas-docs.js') }}?v={{ $v }}"></script>
 @stack('scripts')
 </body>
 </html>
