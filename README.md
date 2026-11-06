@@ -53,6 +53,6 @@ php artisan maristas-ui:lint resources/views/alumnos
 php artisan maristas-ui:lint --estricto            # los avisos también hacen fallar (útil en CI)
 ```
 
-Si una región debe conservar colores fijos a propósito (por ejemplo la vista previa de un correo, que replica la plantilla real), enciérrala entre `{{-- mr-lint:off motivo --}}` y `{{-- mr-lint:on --}}`: el lint no la revisa.
+Si una región debe conservar colores fijos a propósito (por ejemplo la vista previa de un correo, que replica la plantilla real), enciérrala entre `{{-- mr-lint:off motivo --}}` y `{{-- mr-lint:on --}}`: el lint no la revisa. Al recorrer una carpeta se omiten las que estén en `config('maristas-ui.lint.excluir')` (por defecto `emails`).
 
 Solo lee, nunca modifica. **Errores** (hacen fallar el comando): clases `.mr-*` que no existen, componentes `x-maristas::*` inexistentes, propiedades mal escritas, tonos inválidos, colores sueltos en `style` e íconos solos sin `aria-label`. **Avisos**: clases de color de Bootstrap (`text-danger`, `bg-primary`…) y más de un botón principal por vista. La guía para IA le indica al asistente que lo ejecute al terminar cada vista.

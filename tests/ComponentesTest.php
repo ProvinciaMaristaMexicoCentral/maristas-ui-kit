@@ -179,4 +179,19 @@ class ComponentesTest extends TestCase
         $this->assertCount(1, $hallazgos);
         $this->assertSame(1, $hallazgos[0]['linea']);
     }
+
+    public function test_lint_no_revisa_las_carpetas_excluidas(): void
+    {
+        $dir = sys_get_temp_dir().'/mr-lint-'.uniqid();
+        mkdir($dir.'/emails', 0777, true);
+        file_put_contents($dir.'/emails/correo.blade.php', '<div style="color:#ff0000">correo</div>');
+        file_put_contents($dir.'/pantalla.blade.php', '<div>ok</div>');
+
+        $this->artisan('maristas-ui:lint', ['ruta' => $dir])->assertExitCode(0);
+
+        unlink($dir.'/emails/correo.blade.php');
+        unlink($dir.'/pantalla.blade.php');
+        rmdir($dir.'/emails');
+        rmdir($dir);
+    }
 }

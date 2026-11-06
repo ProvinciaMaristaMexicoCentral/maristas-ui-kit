@@ -25,9 +25,24 @@ class LintCommand extends Command
             return self::FAILURE;
         }
 
+        $excluir = array_map(fn ($c) => '/'.trim($c, '/').'/', (array) config('maristas-ui.lint.excluir', ['emails']));
+
         $archivos = is_file($ruta)
             ? [new \SplFileInfo($ruta)]
-            : iterator_to_array(Finder::create()->files()->in($ruta)->name('*.blade.php')->sortByName(), false);
+            : array_values(array_filter(
+                iterator_to_array(Finder::create()->files()->in($ruta)->name('*.blade.php')->sortByName(), false),
+                function ($f) use ($excluir) {
+                    $camino = str_replace('\\', '/', $f->getPathname());
+
+                    foreach ($excluir as $e) {
+                        if (str_contains($camino, $e)) {
+                            return false;
+                        }
+                    }
+
+                    return true;
+                }
+            ));
 
         $linter = new Linter;
         $errores = $avisos = $conProblemas = 0;
