@@ -178,6 +178,17 @@ class Linter
 
         foreach ($m[1] as [$valor, $pos]) {
             if (preg_match('/(?<![\w-])((?:bg|text|border)-(?:primary|secondary|success|danger|warning|info|dark))(?![\w-])/', $valor, $c)) {
+                // Acción destructiva de un menú (dropdown-item text-danger) e indicadores de carga: colores válidos del kit.
+                if (preg_match('/(?<![\w-])(?:dropdown-item|spinner-border|spinner-grow)(?![\w-])/', $valor)) {
+                    continue;
+                }
+
+                // Un ícono (<i>) puede llevar el color del tono: no es un estado suelto.
+                $inicio = strrpos(substr($texto, 0, $pos), '<');
+                if ($inicio !== false && preg_match('/^<i[\s>]/', substr($texto, $inicio, 4))) {
+                    continue;
+                }
+
                 $this->agregar($h, $texto, $pos, self::AVISO, "clase de color de Bootstrap `{$c[1]}`: usa un componente (`state`, `alert`) o un token");
             }
         }
@@ -199,9 +210,60 @@ class Linter
             $principales[] = $pos;
         }
 
+        $modales = $this->regionesDeModal($texto);
+        $principales = array_values(array_filter($principales, fn ($pos) => ! $this->dentroDeModal($pos, $modales) && $this->profundidadCondicional($texto, $pos) === 0));
+
         if (count($principales) > 1) {
             sort($principales);
             $this->agregar($h, $texto, $principales[1], self::AVISO, 'hay '.count($principales).' botones principales en la vista: debería haber uno solo (los de un modal cuentan aparte)');
         }
+    }
+
+    /** @return array<int, array{0:int,1:int}> inicio y fin de cada elemento con clase `modal` (o `mr-modal-open`) */
+    protected function regionesDeModal(string $texto): array
+    {
+        $regiones = [];
+        preg_match_all('/<(div|section)\b[^>]*\bclass\s*=\s*"[^"]*\b(?:modal|mr-modal-open)\b[^"]*"[^>]*>/', $texto, $m, PREG_OFFSET_CAPTURE);
+
+        foreach ($m[0] as [$etiqueta, $inicio]) {
+            $tag = preg_match('/^<(\w+)/', $etiqueta, $t) ? $t[1] : 'div';
+            $prof = 0;
+            $fin = strlen($texto);
+
+            if (preg_match_all('#<'.$tag.'\b|</'.$tag.'>#', $texto, $x, PREG_OFFSET_CAPTURE, $inicio)) {
+                foreach ($x[0] as [$tok, $p]) {
+                    $prof += str_starts_with($tok, '</') ? -1 : 1;
+                    if ($prof === 0) {
+                        $fin = $p;
+                        break;
+                    }
+                }
+            }
+
+            $regiones[] = [$inicio, $fin];
+        }
+
+        return $regiones;
+    }
+
+    protected function dentroDeModal(int $pos, array $regiones): bool
+    {
+        foreach ($regiones as [$a, $b]) {
+            if ($pos > $a && $pos < $b) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /** Cuántos @if (o similares) siguen abiertos en esa posición: los botones dentro son alternativas, no simultáneos. */
+    protected function profundidadCondicional(string $texto, int $pos): int
+    {
+        $antes = substr($texto, 0, $pos);
+        $abre = preg_match_all('/@(?:if|unless|switch|can|canany|cannot|hasrole|hasanyrole|auth|guest)\b/', $antes);
+        $cierra = preg_match_all('/@end(?:if|unless|switch|can|canany|cannot|hasrole|hasanyrole|auth|guest)\b/', $antes);
+
+        return max(0, $abre - $cierra);
     }
 }

@@ -194,4 +194,20 @@ class ComponentesTest extends TestCase
         rmdir($dir.'/emails');
         rmdir($dir);
     }
+
+    public function test_lint_no_marca_iconos_con_color_ni_botones_en_modales_o_condicionales(): void
+    {
+        $linter = new \Maristas\UiKit\Lint\Linter();
+
+        $this->assertSame([], $linter->revisar('<i class="ri-check-line text-success"></i>'));
+        $this->assertSame([], $linter->revisar('<button class="dropdown-item text-danger">Eliminar</button><span class="spinner-border text-primary"></span>'));
+
+        $vista = '<button class="btn btn-primary">Uno</button>'
+            ."@if (\$a)<button class=\"btn btn-primary\">Alterno</button>@endif"
+            .'<div class="modal fade"><button class="btn btn-primary">En modal</button></div>';
+        $this->assertSame([], $linter->revisar($vista));
+
+        $dos = '<button class="btn btn-primary">Uno</button><button class="btn btn-primary">Dos</button>';
+        $this->assertCount(1, $linter->revisar($dos));
+    }
 }
