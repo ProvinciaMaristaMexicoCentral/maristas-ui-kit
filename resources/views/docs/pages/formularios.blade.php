@@ -163,7 +163,7 @@
     <div class="mr-auth-card has-brand">
         <div class="mr-auth-brand">
             <img class="mr-auth-logo" src="…logo-blanco.svg" alt="SIGEM">
-            <div class="mr-auth-photos"><img src="…1.webp" alt=""><img src="…2.webp" alt=""></div>
+            <img class="mr-auth-crest" src="…escudo-blanco.svg" alt="">
             <p>Sistema de Información para la Gestión Marista.</p>
         </div>
         <div class="mr-auth-form">

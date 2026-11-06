@@ -705,12 +705,11 @@ body.mr-palette-open { overflow: hidden; }
 .mr-auth { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem 1rem; background: var(--maristas-soft); }
 .mr-auth-card { display: grid; grid-template-columns: 1fr; width: 100%; max-width: 980px; background: var(--maristas-surface); border-radius: var(--maristas-radius-lg); box-shadow: 0 20px 50px rgba(23, 32, 51, .12); overflow: hidden; }
 .mr-auth-card.is-wide { max-width: 1100px; }
+.mr-auth-card.is-narrow { max-width: 460px; }
 .mr-auth-brand { display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem; padding: 1.5rem; color: #fff; background: linear-gradient(155deg, var(--maristas-brand) 0%, #124f93 100%); }
 .mr-auth-brand img.mr-auth-logo { height: 24px; width: auto; }
 .mr-auth-brand p { margin: 0; color: rgba(255, 255, 255, .8); }
-.mr-auth-photos { display: none; }
-.mr-auth-photos img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 3px solid #fff; background: #fff; margin-left: -14px; }
-.mr-auth-photos img:first-child { margin-left: 0; }
+.mr-auth-crest { display: none; align-self: center; width: 9rem; height: 9rem; opacity: .95; }
 .mr-auth-form { padding: 2rem 1.5rem; display: flex; flex-direction: column; justify-content: center; }
 .mr-auth-title { margin: 0 0 .25rem; font-size: 1.5rem; font-weight: 700; }
 .mr-auth-lead { margin: 0 0 1.75rem; color: var(--maristas-muted); }
@@ -718,7 +717,7 @@ body.mr-palette-open { overflow: hidden; }
 @media (min-width: 992px) {
     .mr-auth-card.has-brand { grid-template-columns: 5fr 6fr; }
     .mr-auth-brand { padding: 2.5rem; min-height: 28rem; }
-    .mr-auth-photos { display: flex; }
+    .mr-auth-crest { display: block; }
 }
 /* Sin panel lateral, el bloque de marca es una franja arriba */
 .mr-auth-card:not(.has-brand) .mr-auth-brand { min-height: 0; flex-direction: row; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; padding: 1.75rem 1.5rem; }
@@ -733,4 +732,4 @@ body.mr-palette-open { overflow: hidden; }
 .mr-password-toggle { position: absolute; right: .4rem; top: 50%; transform: translateY(-50%); width: 2rem; height: 2rem; display: grid; place-items: center; border: 0; border-radius: 8px; background: transparent; color: var(--maristas-muted); }
 .mr-password-toggle:hover { background: var(--maristas-soft); color: var(--maristas-ink); }
 .mr-password-toggle:focus-visible { outline: 2px solid var(--maristas-accent); outline-offset: 1px; }
-
+.mr-auth-badge { width: 3rem; height: 3rem; display: grid; place-items: center; margin-bottom: 1rem; border-radius: 14px; background: var(--maristas-brand-soft); color: var(--maristas-brand); font-size: 1.5rem; }
