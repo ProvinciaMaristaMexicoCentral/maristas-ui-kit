@@ -50,8 +50,6 @@ Versión actual: `v1.0.0`.
 
 **Incluido:** tokens, formularios (secciones, etiquetas, campos obligatorios, acciones de pie, selección múltiple con buscador), botones, tablas de datos con filtros y paginación, tarjetas, alertas, avisos emergentes, navegación, barra principal con menús de usuario, institución y notificaciones, barra de título con migas, pie, pantallas de acceso, pasos, modales y avatares. Además: documentación navegable con búsqueda, el comando `maristas-ui:lint` que revisa vistas contra las reglas del kit y la guía en Markdown para asistentes de IA (`maristas-ui:ia`).
 
-**Pendiente:** calendarios, gráficas y compilar Bootstrap con los tokens propios.
-
 ## Para asistentes de IA
 
 El paquete genera una guía en Markdown (reglas, tokens, props de cada componente, clases `.mr-*` y todos los ejemplos) a partir de sus propias fuentes, para que Claude Code, Cursor o Copilot escriban pantallas que respeten el sistema de diseño.
@@ -74,3 +72,7 @@ php artisan maristas-ui:lint --estricto            # los avisos también hacen f
 Si una región debe conservar colores fijos a propósito (por ejemplo la vista previa de un correo, que replica la plantilla real), enciérrala entre `{{-- mr-lint:off motivo --}}` y `{{-- mr-lint:on --}}`: el lint no la revisa. Al recorrer una carpeta se omiten las que estén en `config('maristas-ui.lint.excluir')` (por defecto `emails`).
 
 Solo lee, nunca modifica. **Errores** (hacen fallar el comando): clases `.mr-*` que no existen, componentes `x-maristas::*` inexistentes, propiedades mal escritas, tonos inválidos, colores sueltos en `style` e íconos solos sin `aria-label`. **Avisos**: clases de color de Bootstrap (`text-danger`, `bg-primary`…) y más de un botón principal por vista. La guía para IA le indica al asistente que lo ejecute al terminar cada vista.
+
+## Licencia
+
+Software propietario de la Provincia Marista México Central, de uso interno. Todos los derechos reservados; consulta el archivo `LICENSE`.
