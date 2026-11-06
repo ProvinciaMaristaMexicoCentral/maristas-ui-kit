@@ -89,4 +89,25 @@ class ExportarDocsTest extends TestCase
             }
         }
     }
+
+    public function test_la_version_mostrada_sale_del_paquete_y_no_esta_escrita_a_mano(): void
+    {
+        $this->assertMatchesRegularExpression('/^(v?\d+\.\d+\.\d+(\+\d+)?|dev)$/', \Maristas\UiKit\Version::actual());
+
+        $this->artisan('maristas-ui:exportar-docs', ['destino' => $this->destino])->assertSuccessful();
+        $html = File::get($this->destino.'/index.html');
+
+        $this->assertStringContainsString('<span class="mr-docbar-version">'.\Maristas\UiKit\Version::actual().'</span>', $html);
+        $this->assertStringNotContainsString('>v0.1<', $html);
+    }
+
+    public function test_la_instalacion_rapida_incluye_el_registro_del_repositorio_privado(): void
+    {
+        $this->artisan('maristas-ui:exportar-docs', ['destino' => $this->destino])->assertSuccessful();
+        $html = File::get($this->destino.'/index.html');
+
+        $this->assertStringContainsString('composer config repositories.maristas-ui-kit vcs', $html);
+        $this->assertStringContainsString('composer require maristas/ui-kit', $html);
+        $this->assertStringContainsString('vendor:publish --tag=maristas-ui-assets --force', $html);
+    }
 }

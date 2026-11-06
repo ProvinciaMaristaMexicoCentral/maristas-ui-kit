@@ -23,7 +23,7 @@
     <button type="button" class="mr-docbar-search" data-mr-palette-open aria-label="Buscar en la documentación">
         <i class="ri-search-line"></i><span>Buscar en la documentación…</span><kbd data-mr-kbd>Ctrl K</kbd>
     </button>
-    <span class="mr-docbar-version">v0.1</span>
+    <span class="mr-docbar-version">{{ \Maristas\UiKit\Version::actual() }}</span>
 </header>
 
 <div class="mr-doclayout">

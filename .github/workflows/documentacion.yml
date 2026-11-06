@@ -36,6 +36,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # trae las etiquetas para mostrar la versión en la documentación
 
       - uses: shivammathur/setup-php@v2
         with:

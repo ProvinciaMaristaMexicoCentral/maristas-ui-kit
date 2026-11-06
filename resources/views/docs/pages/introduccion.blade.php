@@ -15,7 +15,7 @@
     </div>
     <div class="mr-blueprint-title">
         <div><span>Proyecto</span><strong>Maristas UI Kit</strong></div>
-        <div><span>Rev.</span><strong>0.1</strong></div>
+        <div><span>Rev.</span><strong>{{ ltrim(\Maristas\UiKit\Version::actual(), 'v') }}</strong></div>
         <div><span>Escala</span><strong>1:1</strong></div>
     </div>
 </section>
@@ -42,12 +42,22 @@
     @endforeach
 </div>
 
-<x-maristas::example title="Instalación rápida" note="Laravel 9 a 12. El paquete no incluye Bootstrap, Remix Icon ni la fuente Poppins: el proyecto debe tenerlos.">
-    <div class="w-100"><x-maristas::state tone="info">composer require maristas/ui-kit</x-maristas::state></div>
+<x-maristas::example title="Instalación rápida" note="Laravel 9 a 12. El paquete es privado (no está en Packagist): hace falta acceso de lectura al repositorio de GitHub. Tampoco incluye Bootstrap, Remix Icon ni la fuente Poppins: el proyecto debe tenerlos.">
+    <ol class="mb-0 w-100">
+        <li class="mb-2">Registra el repositorio una vez por proyecto: <x-maristas::state tone="info">composer config repositories.maristas-ui-kit vcs …</x-maristas::state></li>
+        <li class="mb-2">Instala el paquete: <x-maristas::state tone="info">composer require maristas/ui-kit</x-maristas::state></li>
+        <li>Publica los assets: <x-maristas::state tone="info">php artisan vendor:publish --tag=maristas-ui-assets --force</x-maristas::state></li>
+    </ol>
     <x-slot:code>
 @verbatim
+# 1. Una vez por proyecto: registrar el repositorio privado
+composer config repositories.maristas-ui-kit vcs https://github.com/ProvinciaMaristaMexicoCentral/maristas-ui-kit.git
+
+# 2. Instalar
 composer require maristas/ui-kit
-php artisan vendor:publish --tag=maristas-ui-assets
+
+# 3. Publicar los assets
+php artisan vendor:publish --tag=maristas-ui-assets --force
 
 {{-- layout, después de Bootstrap y Remix Icon --}}
 <link href="{{ asset('vendor/maristas-ui/maristas-ui.css') }}" rel="stylesheet">
