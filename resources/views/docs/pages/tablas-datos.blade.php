@@ -166,6 +166,34 @@
     </x-slot:code>
 </x-maristas::example>
 
+<x-maristas::example title="Fila con conflicto y barra de acciones fija" note="mr-row-danger resalta una fila con un error. mr-action-bar queda pegada al pie mientras haya algo seleccionado: así no hay que bajar hasta el final para confirmar.">
+    <div class="w-100">
+        <div class="mr-table-wrap"><div class="table-responsive">
+            <table class="table table-sm mb-0 align-middle">
+                <thead><tr><th style="width: 2.5rem"></th><th>Oferta</th><th>Estado</th></tr></thead>
+                <tbody>
+                    <tr><td><input class="form-check-input" type="checkbox" checked aria-label="Importar"></td><td>1º Primaria Matutino</td><td><x-maristas::state tone="success">Lista para importar</x-maristas::state></td></tr>
+                    <tr class="mr-row-danger"><td><input class="form-check-input" type="checkbox" disabled aria-label="No se puede importar"></td><td>2º Primaria Matutino</td><td><x-maristas::state tone="danger">Conflicto de ID</x-maristas::state></td></tr>
+                </tbody>
+            </table>
+        </div></div>
+        <div class="mr-action-bar">
+            <span class="mr-small"><strong>1</strong> cambio seleccionado</span>
+            <x-maristas::button icon="ri-check-double-line">Aplicar cambios seleccionados</x-maristas::button>
+        </div>
+    </div>
+    <x-slot:code>
+@verbatim
+<tr class="mr-row-danger">…</tr>
+
+<div class="mr-action-bar">
+    <span><strong>3</strong> cambios seleccionados</span>
+    <button class="btn btn-primary">Aplicar cambios seleccionados</button>
+</div>
+@endverbatim
+    </x-slot:code>
+</x-maristas::example>
+
 <x-maristas::example title="Tabla compacta" note="Con la clase table-sm: menos relleno vertical para pantallas con muchas filas.">
     <div class="mr-table-wrap w-100"><div class="table-responsive">
         <table class="table table-sm table-hover mb-0">

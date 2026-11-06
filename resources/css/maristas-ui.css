@@ -624,6 +624,10 @@ button.mr-notif.is-new { background: var(--maristas-brand-soft); }
 .mr-dt th[aria-sort="ascending"]::after { content: '\2191'; opacity: 1; color: var(--maristas-brand); }
 .mr-dt th[aria-sort="descending"]::after { content: '\2193'; opacity: 1; color: var(--maristas-brand); }
 .mr-dt tr[hidden] { display: none; }
+/* Fila resaltada por un conflicto o error */
+.mr-scope .table > tbody > tr.mr-row-danger > * { background-color: var(--maristas-danger-soft); }
+/* Barra de acciones fija al pie de la pantalla mientras haya algo seleccionado */
+.mr-action-bar { position: sticky; bottom: 0; z-index: 1020; display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 1rem; padding: .85rem 1.25rem; background: var(--maristas-surface); border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); box-shadow: 0 -4px 18px rgba(23, 32, 51, .1); }
 
 /* Etiquetas, carga de archivos y pasos */
 .mr-tags { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; min-height: 2.5rem; padding: .3rem .5rem; border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); background: var(--maristas-surface); cursor: text; }
