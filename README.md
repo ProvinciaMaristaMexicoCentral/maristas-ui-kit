@@ -4,10 +4,24 @@ Sistema de diseño de los sistemas Maristas: tokens (`--maristas-*`), estilos so
 
 ## Instalación (Laravel 9 a 12)
 
+El paquete es privado y no está en Packagist: Composer necesita saber dónde vive y tener acceso de lectura al repositorio.
+
 ```bash
+# 1. Una sola vez por proyecto: registrar el repositorio (se escribe en composer.json)
+composer config repositories.maristas-ui-kit vcs https://github.com/ProvinciaMaristaMexicoCentral/maristas-ui-kit.git
+
+# 2. Instalar (actualiza composer.json y composer.lock; no se editan a mano)
 composer require maristas/ui-kit
-php artisan vendor:publish --tag=maristas-ui-assets
+
+# 3. Publicar los assets del kit
+php artisan vendor:publish --tag=maristas-ui-assets --force
 ```
+
+**Acceso al repositorio privado.** Hace falta una cuenta de GitHub con permiso de lectura sobre `ProvinciaMaristaMexicoCentral/maristas-ui-kit`. Si Composer pide credenciales, crea un token con permiso `repo` (solo lectura) y regístralo una vez por equipo: `composer config --global github-oauth.github.com <token>`. En servidores y CI, usa la variable de entorno `COMPOSER_AUTH`. Nunca guardes el token en `composer.json` ni en `auth.json` versionado.
+
+**Proyecto que ya usa el kit** (por ejemplo el CRM): basta `composer install`, porque `composer.json` y `composer.lock` ya lo traen. Después, `php artisan vendor:publish --tag=maristas-ui-assets --force` y `npm run build`.
+
+**Actualizar** a una versión nueva: `composer update maristas/ui-kit` y volver a publicar los assets.
 
 En el layout, después de Bootstrap 5 y Remix Icon:
 
