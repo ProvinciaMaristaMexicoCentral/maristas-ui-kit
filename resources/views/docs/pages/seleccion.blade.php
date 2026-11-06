@@ -31,6 +31,25 @@
     </div>
 </x-maristas::example>
 
+<x-maristas::example title="Selección múltiple con buscador y etiquetas" note="Para listas largas: busca dentro del menú y muestra lo elegido como etiquetas que se quitan con su ×. Las casillas se envían con el formulario.">
+    <div class="w-100" style="max-width: 460px;">
+        <label class="form-label" id="kit-ms-label">Instituciones</label>
+        <x-maristas::multiselect name="instituciones[]" placeholder="Selecciona instituciones" search-placeholder="Buscar institución…"
+            :options="['1' => 'Instituto México Primaria', '2' => 'Instituto México Secundaria', '3' => 'Colegio Champagnat', '4' => 'Colegio Cristóbal Colón', '5' => 'Instituto Zaragoza', '6' => 'Colegio Montferrant']" :selected="['2']" />
+    </div>
+    <x-slot:code>
+@verbatim
+<x-maristas::multiselect
+    name="instituciones[]"
+    placeholder="Selecciona instituciones"
+    search-placeholder="Buscar institución…"
+    :options="$instituciones->pluck('nombre', 'id')"
+    :selected="old('instituciones', $usuario->instituciones->pluck('id'))"
+    :invalid="$errors->has('instituciones')" />
+@endverbatim
+    </x-slot:code>
+</x-maristas::example>
+
 <div class="row g-3">
     <div class="col-md-6"><x-maristas::rule>Con 5 opciones o menos usa casillas o botones de opción visibles. Reserva el selector para listas largas.</x-maristas::rule></div>
     <div class="col-md-6"><x-maristas::rule :do="false">No uses un selector múltiple sin mostrar cuántas opciones hay marcadas.</x-maristas::rule></div>

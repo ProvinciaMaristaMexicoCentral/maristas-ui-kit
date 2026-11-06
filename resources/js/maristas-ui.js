@@ -184,14 +184,42 @@
         });
     });
 
-    /* ---------- Selección múltiple en menú ---------- */
+    /* ---------- Selección múltiple en menú (con buscador y etiquetas opcionales) ---------- */
     nuevos('[data-mr-multiselect]', contexto).forEach(function (raiz) {
         var etiqueta = $('[data-mr-multiselect-label]', raiz);
         var base = etiqueta.textContent;
-        raiz.addEventListener('change', function () {
-            var n = $$('input[type="checkbox"]:checked', raiz).length;
-            etiqueta.textContent = n ? base + ' · ' + n : base;
-        });
+        var filtro = $('[data-mr-multiselect-filter]', raiz);
+        var vacio = $('[data-mr-multiselect-empty]', raiz);
+        var chips = $('[data-mr-multiselect-chips]', raiz);
+        var normalizar = function (t) { return t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); };
+        var opciones = function () { return $$('.dropdown-menu label', raiz); };
+        var marcadas = function () { return $$('.dropdown-menu input[type="checkbox"]:checked', raiz); };
+        var pintar = function () {
+            var m = marcadas();
+            etiqueta.textContent = m.length ? base + ' \u00b7 ' + m.length : base;
+            if (!chips) return;
+            chips.textContent = '';
+            m.forEach(function (c) {
+                var texto = c.closest('label').textContent.trim();
+                var tag = document.createElement('span');
+                tag.className = 'mr-tag'; tag.textContent = texto;
+                var quitar = document.createElement('button');
+                quitar.type = 'button'; quitar.setAttribute('aria-label', 'Quitar ' + texto); quitar.innerHTML = '&times;';
+                quitar.addEventListener('click', function () { c.checked = false; c.dispatchEvent(new Event('change', { bubbles: true })); });
+                tag.appendChild(quitar);
+                chips.appendChild(tag);
+            });
+        };
+        raiz.addEventListener('change', pintar);
+        if (filtro) {
+            filtro.addEventListener('input', function () {
+                var q = normalizar(filtro.value.trim()), visibles = 0;
+                opciones().forEach(function (l) { var ok = !q || normalizar(l.textContent).indexOf(q) !== -1; l.hidden = !ok; if (ok) visibles++; });
+                if (vacio) vacio.hidden = visibles > 0;
+            });
+            filtro.addEventListener('keydown', function (e) { if (e.key === 'Enter') e.preventDefault(); });
+        }
+        pintar();
     });
 
     /* ---------- Rango con valor visible ---------- */
