@@ -168,4 +168,15 @@ class ComponentesTest extends TestCase
         $this->get('/ui-kit/_assets/maristas-favicon.svg')->assertOk()->assertHeader('Content-Type', 'image/svg+xml');
         $this->assertStringContainsString('rel="icon"', $html);
     }
+
+    public function test_lint_respeta_regiones_marcadas_para_ignorar(): void
+    {
+        $linter = new \Maristas\UiKit\Lint\Linter();
+        $vista = "<div style=\"color:#ff0000\">fuera</div>\n{{-- mr-lint:off correo --}}\n<div style=\"color:#00ff00\">dentro</div>\n{{-- mr-lint:on --}}\n";
+
+        $hallazgos = $linter->revisar($vista);
+
+        $this->assertCount(1, $hallazgos);
+        $this->assertSame(1, $hallazgos[0]['linea']);
+    }
 }

@@ -68,6 +68,10 @@ class Linter
     {
         $vaciar = fn (array $m) => str_repeat("\n", substr_count($m[0], "\n"));
 
+        // Regiones que el lint no revisa: {{-- mr-lint:off motivo --}} … {{-- mr-lint:on --}}
+        // (por ejemplo la vista previa de un correo, que replica los colores fijos de la plantilla real).
+        $contenido = preg_replace_callback('/\{\{--\s*mr-lint:off.*?--\}\}.*?\{\{--\s*mr-lint:on\s*--\}\}/s', $vaciar, $contenido);
+
         $contenido = preg_replace_callback('/\{\{--.*?--\}\}/s', $vaciar, $contenido);
 
         return preg_replace_callback('/@verbatim.*?@endverbatim/s', $vaciar, $contenido);
