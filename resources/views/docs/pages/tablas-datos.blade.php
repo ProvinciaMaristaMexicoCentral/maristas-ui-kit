@@ -107,6 +107,62 @@
     </x-slot:code>
 </x-maristas::example>
 
+<x-maristas::example title="Con filtros avanzados y paginación del servidor" note="Para listas grandes (Livewire, controlador): la misma pieza, pero buscar, filtrar y paginar lo hace el servidor. Los filtros menos usados van en un panel que se despliega bajo la barra.">
+    <div class="mr-dt w-100">
+        <div class="mr-dt-toolbar">
+            <div class="mr-dt-search"><i class="ri-search-line"></i><input type="search" class="form-control form-control-sm" placeholder="Buscar por folio, correo u oferta" aria-label="Buscar"></div>
+            <button type="button" class="btn btn-light btn-sm" aria-expanded="true" onclick="var p=document.getElementById('mr-demo-panel');p.hidden=!p.hidden;this.setAttribute('aria-expanded',!p.hidden)"><i class="ri-filter-3-line"></i>Filtros<span class="mr-filter-count">2</span></button>
+            <div class="mr-dt-toolbar-end">
+                <x-maristas::button variant="secondary" size="sm" icon="ri-shield-check-line">Por validar</x-maristas::button>
+                <x-maristas::button size="sm" icon="ri-add-line">Nueva oportunidad</x-maristas::button>
+            </div>
+        </div>
+        <div class="mr-dt-panel" id="mr-demo-panel">
+            <div class="row g-3">
+                <div class="col-md-3"><label class="form-label" for="mr-d1">Ciclo escolar</label><select id="mr-d1" class="form-select form-select-sm"><option>2026-2027</option></select></div>
+                <div class="col-md-3"><label class="form-label" for="mr-d2">Estatus</label><select id="mr-d2" class="form-select form-select-sm"><option>Todos</option></select></div>
+                <div class="col-md-3"><label class="form-label" for="mr-d3">Canal</label><select id="mr-d3" class="form-select form-select-sm"><option>Todos</option></select></div>
+                <div class="col-md-3 d-flex align-items-end justify-content-end"><x-maristas::button variant="secondary" size="sm">Limpiar filtros</x-maristas::button></div>
+            </div>
+        </div>
+        <div class="mr-table-wrap"><div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead><tr><th>Folio</th><th>Nombre</th><th>Estado</th></tr></thead>
+                <tbody>
+                    <tr><td><a href="#" class="mr-link">FUNNEL-15037</a></td><td>Lisbeth Alarcón</td><td><x-maristas::state tone="info">Contactado</x-maristas::state></td></tr>
+                    <tr><td><a href="#" class="mr-link">FUNNEL-14967</a></td><td>Eduardo Juárez</td><td><x-maristas::state tone="success">Nuevo</x-maristas::state></td></tr>
+                </tbody>
+            </table>
+        </div></div>
+        <div class="mr-dt-footer">
+            <span class="mr-small">1502 resultados</span>
+            <div class="d-flex align-items-center gap-2">
+                <select class="form-select form-select-sm" style="width: auto" aria-label="Filas por página"><option>25 por página</option></select>
+                <nav aria-label="Paginación"><ul class="pagination pagination-sm mb-0"><li class="page-item active"><span class="page-link">1</span></li><li class="page-item"><a class="page-link" href="#">2</a></li><li class="page-item"><a class="page-link" href="#">3</a></li></ul></nav>
+            </div>
+        </div>
+    </div>
+    <x-slot:code>
+@verbatim
+<div class="mr-dt" x-data="{ abierto: false }">
+    <div class="mr-dt-toolbar">
+        <div class="mr-dt-search"><i class="ri-search-line"></i><input type="search" class="form-control form-control-sm" wire:model.live.debounce.300ms="search"></div>
+        <button class="btn btn-light btn-sm" @click="abierto = !abierto" :aria-expanded="abierto">
+            <i class="ri-filter-3-line"></i>Filtros <span class="mr-filter-count">2</span>
+        </button>
+        <div class="mr-dt-toolbar-end">…acciones de la pantalla…</div>
+    </div>
+    <div class="mr-dt-panel" x-show="abierto" x-cloak>…selects con form-label…</div>
+    <div class="mr-table-wrap"><div class="table-responsive"><table class="table table-hover mb-0">…</table></div></div>
+    <div class="mr-dt-footer">
+        <span class="mr-small">1502 resultados</span>
+        <div>…filas por página…  {{ $items->links() }}</div>
+    </div>
+</div>
+@endverbatim
+    </x-slot:code>
+</x-maristas::example>
+
 <x-maristas::example title="Tabla compacta" note="Con la clase table-sm: menos relleno vertical para pantallas con muchas filas.">
     <div class="mr-table-wrap w-100"><div class="table-responsive">
         <table class="table table-sm table-hover mb-0">

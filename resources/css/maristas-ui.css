@@ -564,6 +564,11 @@ button.mr-notif.is-new { background: var(--maristas-brand-soft); }
 .mr-dt-bulk { display: flex; align-items: center; gap: .6rem; margin-left: auto; padding: .25rem .5rem .25rem .8rem; background: var(--maristas-brand-soft); border-radius: var(--maristas-radius-md); font-size: .82rem; color: var(--maristas-brand); }
 .mr-dt-bulk[hidden] { display: none; }
 .mr-dt-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; margin-top: .75rem; }
+.mr-dt-toolbar-end { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-left: auto; }
+.mr-dt-panel { margin-bottom: .75rem; padding: 1rem; background: var(--maristas-soft); border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); }
+.mr-dt-panel .form-label { font-size: .78rem; font-weight: 600; color: var(--maristas-muted); margin-bottom: .25rem; }
+.mr-dt-footer .pagination { margin: 0; }
+.mr-dt-footer nav { display: flex; }
 .mr-dt th[data-mr-sort] { cursor: pointer; user-select: none; white-space: nowrap; }
 .mr-dt th[data-mr-sort]::after { content: '\21C5'; margin-left: .35rem; font-size: .75rem; opacity: .35; }
 .mr-dt th[aria-sort="ascending"]::after { content: '\2191'; opacity: 1; color: var(--maristas-brand); }
