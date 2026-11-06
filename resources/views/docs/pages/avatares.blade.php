@@ -22,3 +22,8 @@
     </x-slot:code>
 </x-maristas::example>
 
+<div class="row g-3">
+    <div class="col-md-6"><x-maristas::rule>El avatar de una persona es siempre el azul fuerte (el degradado): es el mismo en la lista, en el detalle y en los paneles, así se reconoce a la persona en toda la aplicación.</x-maristas::rule></div>
+    <div class="col-md-6"><x-maristas::rule :do="false">No uses la variante clara (soft) para representar a una persona que también aparece con el azul fuerte en otra pantalla. Reserva soft para contextos decorativos donde no haya otra versión.</x-maristas::rule></div>
+</div>
+
