@@ -301,6 +301,10 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-so
 .mr-box.is-soft { background: var(--maristas-soft); }
 .mr-box.is-warning { background: var(--maristas-warning-soft); border-color: var(--maristas-warning); }
 /* Acciones al pie de un formulario o paso: separadas del contenido por una línea */
+/* Secciones de un formulario largo: título, ayuda corta y los campos, separadas por una línea */
+.mr-form-section + .mr-form-section { margin-top: 1.75rem; padding-top: 1.5rem; border-top: 1px solid var(--maristas-line); }
+.mr-form-section-title { margin: 0 0 .15rem; font-size: 1rem; font-weight: 700; }
+.mr-form-section-hint { margin: 0 0 1rem; font-size: .85rem; color: var(--maristas-muted); }
 .mr-form-actions { display: flex; justify-content: space-between; align-items: center; gap: .75rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--maristas-line); }
 /* Datos clave-valor para revisar antes de confirmar */
 .mr-kv { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .9rem 1.5rem; margin: 0; }

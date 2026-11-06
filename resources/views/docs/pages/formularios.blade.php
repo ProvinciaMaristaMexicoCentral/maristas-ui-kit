@@ -107,6 +107,47 @@
     </x-slot:code>
 </x-maristas::example>
 
+<x-maristas::example title="Formulario largo en secciones" note="Divide un formulario de más de cinco campos en secciones con título y una línea de ayuda. Pon el formulario en una tarjeta de ancho cómodo y las instrucciones en una caja a un lado.">
+    <div class="row g-3 w-100">
+        <div class="col-lg-8">
+            <div class="mr-form-section">
+                <h6 class="mr-form-section-title">Datos de la persona</h6>
+                <p class="mr-form-section-hint">Se toman de SIGEM; revisa que coincidan.</p>
+                <div class="row g-3">
+                    <div class="col-md-6"><label class="form-label mr-req" for="kit-fs1">Nombre</label><input id="kit-fs1" class="form-control"></div>
+                    <div class="col-md-6"><label class="form-label mr-req" for="kit-fs2">Correo</label><input id="kit-fs2" class="form-control" type="email"></div>
+                </div>
+            </div>
+            <div class="mr-form-section">
+                <h6 class="mr-form-section-title">Acceso</h6>
+                <p class="mr-form-section-hint">Define qué puede hacer en el sistema.</p>
+                <div class="row g-3">
+                    <div class="col-md-6"><label class="form-label" for="kit-fs3">Rol</label><select id="kit-fs3" class="form-select"><option>Selecciona un rol</option></select></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4"><div class="mr-box is-soft mr-small">Caja lateral con las instrucciones del formulario.</div></div>
+    </div>
+    <x-slot:code>
+@verbatim
+<div class="row g-3">
+    <div class="col-lg-8">
+        <div class="card"><div class="card-body p-4">
+            <section class="mr-form-section">
+                <h6 class="mr-form-section-title">Datos de la persona</h6>
+                <p class="mr-form-section-hint">Se toman de SIGEM; revisa que coincidan.</p>
+                …campos…
+            </section>
+            <section class="mr-form-section">…</section>
+            <div class="mr-form-actions">…</div>
+        </div></div>
+    </div>
+    <div class="col-lg-4"><div class="mr-box is-soft position-sticky" style="top: 1rem">…instrucciones…</div></div>
+</div>
+@endverbatim
+    </x-slot:code>
+</x-maristas::example>
+
 <x-maristas::example title="Tamaños de campos" note="Pequeño en filtros y celdas de tabla, normal en formularios, grande en pantallas táctiles. Se piden con form-control-sm, form-control-lg, form-select-sm y form-select-lg.">
     <div class="row g-3 w-100">
         <div class="col-md-4">
