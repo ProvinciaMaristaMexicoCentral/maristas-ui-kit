@@ -107,11 +107,13 @@
     </x-slot:code>
 </x-maristas::example>
 
-<x-maristas::example title="Con filtros avanzados y paginación del servidor" note="Para listas grandes (Livewire, controlador): la misma pieza, pero buscar, filtrar y paginar lo hace el servidor. Los filtros menos usados van en un panel que se despliega bajo la barra.">
+<x-maristas::example title="Con filtros avanzados y paginación del servidor" note="Para listas grandes (Livewire, controlador): la misma pieza, pero buscar, filtrar y paginar lo hace el servidor. Los filtros menos usados van en un panel que se despliega bajo la barra. Lo urgente (por ejemplo, registros sin atención) va como chip con mr-filter-danger o mr-filter-warning: lleva el color del tono desde el inicio para que se vea que se puede pulsar.">
     <div class="mr-dt w-100">
         <div class="mr-dt-toolbar">
             <div class="mr-dt-search"><i class="ri-search-line"></i><input type="search" class="form-control form-control-sm" placeholder="Buscar por folio, correo u oferta" aria-label="Buscar"></div>
             <button type="button" class="btn btn-light btn-sm" aria-expanded="true" onclick="var p=document.getElementById('mr-demo-panel');p.hidden=!p.hidden;this.setAttribute('aria-expanded',!p.hidden)"><i class="ri-filter-3-line"></i>Filtros<span class="mr-filter-count">2</span></button>
+            <button type="button" class="mr-filter mr-filter-danger"><i class="ri-error-warning-line"></i>582 sin atención +14 días</button>
+            <button type="button" class="mr-filter mr-filter-warning"><i class="ri-time-line"></i>140 sin atención +7 días</button>
             <div class="mr-dt-toolbar-end">
                 <x-maristas::button variant="secondary" size="sm" icon="ri-shield-check-line">Por validar</x-maristas::button>
                 <x-maristas::button size="sm" icon="ri-add-line">Nueva oportunidad</x-maristas::button>
@@ -150,7 +152,8 @@
         <button class="btn btn-light btn-sm" @click="abierto = !abierto" :aria-expanded="abierto">
             <i class="ri-filter-3-line"></i>Filtros <span class="mr-filter-count">2</span>
         </button>
-        <div class="mr-dt-toolbar-end">…acciones de la pantalla…</div>
+        <button class="mr-filter mr-filter-danger" wire:click="…"><i class="ri-error-warning-line"></i>582 sin atención</button>   {{-- is-active al estar aplicado --}}
+        <div class="mr-dt-toolbar-end">…acciones de la pantalla (una sola primaria)…</div>
     </div>
     <div class="mr-dt-panel" x-show="abierto" x-cloak>…selects con form-label…</div>
     <div class="mr-table-wrap"><div class="table-responsive"><table class="table table-hover mb-0">…</table></div></div>

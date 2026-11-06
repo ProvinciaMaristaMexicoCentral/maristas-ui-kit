@@ -455,6 +455,17 @@ button.mr-notif.is-new { background: var(--maristas-brand-soft); }
 .mr-tl-quote { margin-top: .2rem; color: #3f4a60; font-size: .85rem; overflow-wrap: anywhere; }
 .mr-tl-note { margin-top: .35rem; padding: .65rem .85rem; background: var(--maristas-soft); border-radius: var(--maristas-radius-md); color: var(--maristas-ink); font-size: .875rem; overflow-wrap: anywhere; }
 .mr-filter-count { margin-left: .4rem; opacity: .7; font-weight: 500; }
+.mr-filter { cursor: pointer; transition: background-color .12s, color .12s, box-shadow .12s; }
+.mr-filter:focus-visible { outline: 2px solid var(--maristas-accent); outline-offset: 2px; }
+.mr-filter i { margin-right: .3rem; }
+/* Chips de urgencia: llevan el color del tono desde el inicio para que se lean como accionables. */
+.mr-filter-danger, .mr-filter-warning { border: 1px solid transparent; }
+.mr-filter-danger  { background: var(--maristas-danger-soft);  color: var(--maristas-danger);  border-color: var(--maristas-danger); }
+.mr-filter-warning { background: var(--maristas-warning-soft); color: var(--maristas-warning); border-color: var(--maristas-warning); }
+.mr-filter-danger:hover  { background: var(--maristas-danger);  color: #fff; box-shadow: 0 2px 6px rgba(201,58,58,.3); }
+.mr-filter-warning:hover { background: var(--maristas-warning); color: #fff; box-shadow: 0 2px 6px rgba(169,106,0,.3); }
+.mr-filter-danger.is-active  { background: var(--maristas-danger);  color: #fff; }
+.mr-filter-warning.is-active { background: var(--maristas-warning); color: #fff; }
 .mr-tl-author { display: inline-block; max-width: 14rem; overflow: hidden; text-overflow: ellipsis; vertical-align: bottom; }
 
 /* =====================================================================
