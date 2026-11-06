@@ -148,6 +148,42 @@
     </x-slot:code>
 </x-maristas::example>
 
+<x-maristas::example title="Contraseña y pantalla de acceso" note="mr-password agrega el botón para mostrar u ocultar. Las pantallas de acceso usan mr-auth (fondo), mr-auth-card con has-brand (dos paneles), mr-auth-brand y mr-auth-form. El botón con data-loading-text muestra «Ingresando…» al enviar.">
+    <div class="w-100" style="max-width: 420px;">
+        <label class="form-label" for="kit-pw">Contraseña</label>
+        <div class="mr-password">
+            <input id="kit-pw" class="form-control" type="password" value="secreto123" autocomplete="current-password">
+            <button type="button" class="mr-password-toggle" data-mr-password-toggle aria-label="Mostrar la contraseña" aria-pressed="false"><i class="ri-eye-line"></i></button>
+        </div>
+        <button type="button" class="btn btn-primary w-100 mt-3" data-loading-text="Ingresando…">Ingresar</button>
+    </div>
+    <x-slot:code>
+@verbatim
+<div class="mr-auth">
+    <div class="mr-auth-card has-brand">
+        <div class="mr-auth-brand">
+            <img class="mr-auth-logo" src="…logo-blanco.svg" alt="SIGEM">
+            <div class="mr-auth-photos"><img src="…1.webp" alt=""><img src="…2.webp" alt=""></div>
+            <p>Sistema de Información para la Gestión Marista.</p>
+        </div>
+        <div class="mr-auth-form">
+            <h1 class="mr-auth-title">Módulo CRM</h1>
+            <p class="mr-auth-lead">Inicia sesión con tu correo y contraseña.</p>
+            <form method="POST">
+                <label class="form-label" for="password">Contraseña</label>
+                <div class="mr-password">
+                    <input id="password" class="form-control" type="password">
+                    <button type="button" class="mr-password-toggle" data-mr-password-toggle aria-label="Mostrar la contraseña" aria-pressed="false"><i class="ri-eye-line"></i></button>
+                </div>
+                <button class="btn btn-primary w-100 mt-3" data-loading-text="Ingresando…">Ingresar</button>
+            </form>
+        </div>
+    </div>
+</div>
+@endverbatim
+    </x-slot:code>
+</x-maristas::example>
+
 <x-maristas::example title="Tamaños de campos" note="Pequeño en filtros y celdas de tabla, normal en formularios, grande en pantallas táctiles. Se piden con form-control-sm, form-control-lg, form-select-sm y form-select-lg.">
     <div class="row g-3 w-100">
         <div class="col-md-4">

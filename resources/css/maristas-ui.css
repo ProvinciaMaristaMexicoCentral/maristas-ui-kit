@@ -700,3 +700,37 @@ body.mr-palette-open { overflow: hidden; }
 
 /* Botón de cerrar flotante dentro de un modal sin encabezado propio */
 .mr-scope .modal-content .mr-modal-close { position: absolute; top: 1rem; right: 1rem; z-index: 5; }
+
+/* Pantallas de acceso (login, aviso de privacidad) */
+.mr-auth { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem 1rem; background: var(--maristas-soft); }
+.mr-auth-card { display: grid; grid-template-columns: 1fr; width: 100%; max-width: 980px; background: var(--maristas-surface); border-radius: var(--maristas-radius-lg); box-shadow: 0 20px 50px rgba(23, 32, 51, .12); overflow: hidden; }
+.mr-auth-card.is-wide { max-width: 1100px; }
+.mr-auth-brand { display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem; padding: 1.5rem; color: #fff; background: linear-gradient(155deg, var(--maristas-brand) 0%, #124f93 100%); }
+.mr-auth-brand img.mr-auth-logo { height: 24px; width: auto; }
+.mr-auth-brand p { margin: 0; color: rgba(255, 255, 255, .8); }
+.mr-auth-photos { display: none; }
+.mr-auth-photos img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 3px solid #fff; background: #fff; margin-left: -14px; }
+.mr-auth-photos img:first-child { margin-left: 0; }
+.mr-auth-form { padding: 2rem 1.5rem; display: flex; flex-direction: column; justify-content: center; }
+.mr-auth-title { margin: 0 0 .25rem; font-size: 1.5rem; font-weight: 700; }
+.mr-auth-lead { margin: 0 0 1.75rem; color: var(--maristas-muted); }
+@media (min-width: 576px) { .mr-auth-form { padding: 3rem 3.25rem; } }
+@media (min-width: 992px) {
+    .mr-auth-card.has-brand { grid-template-columns: 5fr 6fr; }
+    .mr-auth-brand { padding: 2.5rem; min-height: 28rem; }
+    .mr-auth-photos { display: flex; }
+}
+/* Sin panel lateral, el bloque de marca es una franja arriba */
+.mr-auth-card:not(.has-brand) .mr-auth-brand { min-height: 0; flex-direction: row; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; padding: 1.75rem 1.5rem; }
+@media (min-width: 576px) { .mr-auth-card:not(.has-brand) .mr-auth-brand { padding: 2rem 3rem; } }
+/* Documento largo (por ejemplo el aviso de privacidad) */
+.mr-auth-doc { padding: 2rem 1.5rem; max-width: 62rem; }
+@media (min-width: 576px) { .mr-auth-doc { padding: 2.5rem 3rem; } }
+.mr-auth-doc p, .mr-auth-doc li { line-height: 1.65; }
+/* Contraseña con botón para mostrar u ocultar */
+.mr-password { position: relative; }
+.mr-password .form-control { padding-right: 2.9rem; }
+.mr-password-toggle { position: absolute; right: .4rem; top: 50%; transform: translateY(-50%); width: 2rem; height: 2rem; display: grid; place-items: center; border: 0; border-radius: 8px; background: transparent; color: var(--maristas-muted); }
+.mr-password-toggle:hover { background: var(--maristas-soft); color: var(--maristas-ink); }
+.mr-password-toggle:focus-visible { outline: 2px solid var(--maristas-accent); outline-offset: 1px; }
+

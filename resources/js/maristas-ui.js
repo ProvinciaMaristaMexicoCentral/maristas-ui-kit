@@ -222,6 +222,20 @@
         pintar();
     });
 
+    /* ---------- Contraseña: mostrar u ocultar ---------- */
+    nuevos('[data-mr-password-toggle]', contexto).forEach(function (boton) {
+        var campo = $('input', boton.closest('.mr-password'));
+        if (!campo) return;
+        var icono = $('i', boton);
+        boton.addEventListener('click', function () {
+            var visible = campo.type === 'password';
+            campo.type = visible ? 'text' : 'password';
+            boton.setAttribute('aria-pressed', visible ? 'true' : 'false');
+            boton.setAttribute('aria-label', visible ? 'Ocultar la contraseña' : 'Mostrar la contraseña');
+            if (icono) icono.className = visible ? 'ri-eye-off-line' : 'ri-eye-line';
+        });
+    });
+
     /* ---------- Rango con valor visible ---------- */
     nuevos('[data-mr-range-output]', contexto).forEach(function (salida) {
         var rango = $(salida.getAttribute('data-mr-range-output'));
@@ -251,6 +265,17 @@
         entrada.addEventListener('change', function () { mostrar(entrada.files); });
     });
     }
+
+    /* Botón de envío con texto de carga: <button type="submit" data-loading-text="Ingresando…"> */
+    document.addEventListener('submit', function (e) {
+        var boton = e.submitter;
+        if (!boton || !boton.hasAttribute('data-loading-text')) return;
+        var texto = boton.getAttribute('data-loading-text') || 'Procesando…';
+        var original = boton.innerHTML;
+        boton.innerHTML = '<span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>' + texto;
+        setTimeout(function () { boton.disabled = true; }, 0);
+        setTimeout(function () { boton.disabled = false; boton.innerHTML = original; }, 10000);
+    });
 
     /* Al cambiar el contenido de la página (navegación sin recarga) se puede volver a iniciar: MaristasUI.init(contenedor) */
     window.MaristasUI = { init: iniciar };
