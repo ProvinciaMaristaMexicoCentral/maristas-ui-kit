@@ -207,6 +207,9 @@ class ComponentesTest extends TestCase
             .'<div class="modal fade"><button class="btn btn-primary">En modal</button></div>';
         $this->assertSame([], $linter->revisar($vista));
 
+        $alternos = '<button class="btn btn-primary" x-show="a">Uno</button><button class="btn btn-primary" x-show="b">Dos</button>';
+        $this->assertSame([], $linter->revisar($alternos));
+
         $dos = '<button class="btn btn-primary">Uno</button><button class="btn btn-primary">Dos</button>';
         $this->assertCount(1, $linter->revisar($dos));
     }

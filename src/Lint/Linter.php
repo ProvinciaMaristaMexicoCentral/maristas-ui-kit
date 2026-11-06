@@ -211,7 +211,9 @@ class Linter
         }
 
         $modales = $this->regionesDeModal($texto);
-        $principales = array_values(array_filter($principales, fn ($pos) => ! $this->dentroDeModal($pos, $modales) && $this->profundidadCondicional($texto, $pos) === 0));
+        $principales = array_values(array_filter($principales, fn ($pos) => ! $this->dentroDeModal($pos, $modales)
+            && $this->profundidadCondicional($texto, $pos) === 0
+            && ! $this->esAlternativaConAlpine($texto, $pos)));
 
         if (count($principales) > 1) {
             sort($principales);
@@ -265,5 +267,18 @@ class Linter
         $cierra = preg_match_all('/@end(?:if|unless|switch|can|canany|cannot|hasrole|hasanyrole|auth|guest)\b/', $antes);
 
         return max(0, $abre - $cierra);
+    }
+
+    /** Un botón que se muestra con x-show / x-if es una alternativa de otro estado de la pantalla, no uno simultáneo. */
+    protected function esAlternativaConAlpine(string $texto, int $pos): bool
+    {
+        $inicio = strrpos(substr($texto, 0, $pos + 1), '<');
+        $fin = strpos($texto, '>', $pos);
+
+        if ($inicio === false || $fin === false) {
+            return false;
+        }
+
+        return (bool) preg_match('/\sx-(?:show|if)\s*=/', substr($texto, $inicio, $fin - $inicio));
     }
 }
