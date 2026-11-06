@@ -6,12 +6,10 @@
     <x-maristas::state tone="neutral">Sin asignar</x-maristas::state>
 </x-maristas::example>
 
-<x-maristas::example title="Chips" note="Dato corto y clicable (teléfono, correo) en gris. El chip de acción es punteado en azul con lápiz y se usa para editar: «Editar contacto», «Editar estudiante». Con candado y atenuado cuando no se puede editar.">
+<x-maristas::example title="Chips" note="Dato corto y clicable (teléfono, correo), en gris. Un chip muestra un dato; la acción de editar es un botón (ver Botones).">
     <div class="mr-chips">
         <a class="mr-chip" href="#estados"><i class="ri-phone-line"></i>55 1234 5678</a>
         <a class="mr-chip" href="#estados"><i class="ri-mail-line"></i>maria.lopez@ejemplo.mx</a>
-        <x-maristas::edit-link target="#kit-editar-modal" label="Editar contacto" />
-        <x-maristas::edit-link target="#kit-editar-modal" :locked="true" locked-label="Estudiante bloqueado" locked-title="Los datos ya fueron confirmados y no se pueden editar" />
     </div>
 </x-maristas::example>
 

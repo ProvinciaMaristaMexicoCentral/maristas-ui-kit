@@ -67,6 +67,7 @@ body:has(.mr-scope) { background: var(--maristas-canvas); }
         .mr-chip i { color: var(--maristas-muted); }
 .mr-block-head { display: flex; align-items: center; gap: .65rem; margin-bottom: .2rem; }
 .mr-block-head .mr-eyebrow { margin: 0; }
+/* Obsoleto: la acción de editar es un botón (mr-btn-dashed). Se conserva en la serie 1.x y se retira en la 2.0. */
 .mr-chip-action { border: 1px dashed #b8c0d0; background: transparent; color: var(--maristas-accent); cursor: pointer; font-weight: 600; }
 button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-soft); color: var(--maristas-brand); }
 .mr-chip-action i { color: inherit; }
@@ -165,6 +166,10 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-so
 }
 .mr-scope .btn-sm { padding: .4rem .8rem; font-size: .8125rem; }
 .mr-scope .btn-lg { padding: .75rem 1.5rem; font-size: 1rem; border-radius: var(--maristas-radius-md); }
+/* Botón punteado: la acción de editar de un bloque («Editar contacto»). Es un botón, no un chip. */
+.mr-scope .btn.mr-btn-dashed { background: transparent; border: 1px dashed #b8c0d0; color: var(--maristas-accent); }
+.mr-scope .btn.mr-btn-dashed:hover:not(:disabled) { background: var(--maristas-brand-soft); border-color: var(--maristas-accent); color: var(--maristas-brand); }
+.mr-scope .btn.mr-btn-dashed:disabled { background: transparent; border-color: var(--maristas-line); color: var(--maristas-muted); opacity: 1; cursor: not-allowed; }
 .mr-scope .btn:focus-visible, .mr-scope .mr-btn-ghost:focus-visible { outline: 2px solid var(--maristas-accent); outline-offset: 2px; box-shadow: none; }
 .mr-scope .btn-primary { background: var(--maristas-brand); border-color: var(--maristas-brand); color: #fff; }
 .mr-scope .btn-primary:hover, .mr-scope .btn-primary:focus, .mr-scope .btn-primary:active { background: var(--maristas-brand-strong); border-color: var(--maristas-brand-strong); color: #fff; }

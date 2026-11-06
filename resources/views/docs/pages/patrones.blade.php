@@ -37,7 +37,7 @@
             </x-maristas::example>
 
             <x-maristas::example title="Acción de editar" note="Botón punteado en azul con lápiz y el nombre de lo que edita: «Editar contacto», «Editar estudiante», «Editar grado». Va al final del bloque. Si no se puede editar en ese momento, el mismo botón aparece con candado, atenuado, y explica el motivo al pasar el cursor.">
-                <div class="mr-chips">
+                <div class="d-flex flex-wrap gap-2">
                     <x-maristas::edit-link target="#kit-editar-modal" label="Editar contacto" />
                     <x-maristas::edit-link target="#kit-editar-modal" label="Editar estudiante" />
                     <x-maristas::edit-link target="#kit-editar-modal" label="Editar grado" />

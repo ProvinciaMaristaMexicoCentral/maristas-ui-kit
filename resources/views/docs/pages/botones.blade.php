@@ -25,6 +25,13 @@
     <x-maristas::button variant="secondary" size="sm" aria-label="Más acciones" title="Más acciones"><i class="ri-more-2-fill"></i></x-maristas::button>
 </x-maristas::example>
 
+<x-maristas::example title="Botón punteado (editar)" note="La acción de editar de un bloque: «Editar contacto», «Editar estudiante». Es un botón pequeño con borde punteado azul y lápiz. Bloqueado, aparece con candado y atenuado, y explica el motivo al pasar el cursor.">
+    <div class="d-flex flex-wrap gap-2">
+        <x-maristas::edit-link target="#kit-editar-modal" label="Editar contacto" />
+        <x-maristas::edit-link target="#kit-editar-modal" :locked="true" locked-label="Estudiante bloqueado" locked-title="Los datos ya fueron confirmados y no se pueden editar" />
+    </div>
+</x-maristas::example>
+
 <x-maristas::example title="Grupo y menú de acciones">
     <div class="btn-group" role="group" aria-label="Vista">
         <button type="button" class="btn btn-primary btn-sm">Lista</button>
