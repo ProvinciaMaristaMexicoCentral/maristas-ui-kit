@@ -29,6 +29,7 @@ class UiKitServiceProvider extends ServiceProvider
             __DIR__.'/../resources/css/maristas-ui.css' => public_path('vendor/maristas-ui/maristas-ui.css'),
             __DIR__.'/../resources/js/maristas-ui.js' => public_path('vendor/maristas-ui/maristas-ui.js'),
             __DIR__.'/../resources/images/maristas-logo.svg' => public_path('vendor/maristas-ui/maristas-logo.svg'),
+            __DIR__.'/../resources/images/maristas-favicon.svg' => public_path('vendor/maristas-ui/maristas-favicon.svg'),
         ], 'maristas-ui-assets');
 
         $this->publishes([

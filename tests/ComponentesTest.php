@@ -165,5 +165,7 @@ class ComponentesTest extends TestCase
         $this->assertContains('/ui-kit/botones#variantes', array_map(fn ($e) => parse_url($e['url'], PHP_URL_PATH).'#'.(parse_url($e['url'], PHP_URL_FRAGMENT) ?? ''), $indice));
 
         $this->get('/ui-kit/_assets/maristas-docs.js')->assertOk();
+        $this->get('/ui-kit/_assets/maristas-favicon.svg')->assertOk()->assertHeader('Content-Type', 'image/svg+xml');
+        $this->assertStringContainsString('rel="icon"', $html);
     }
 }
