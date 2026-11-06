@@ -48,7 +48,7 @@
                         @foreach ($filas as $f)
                             <tr>
                                 <td><input class="form-check-input" type="checkbox" aria-label="Seleccionar {{ $f[1] }}" data-mr-select></td>
-                                <td><a href="#" class="mr-link">{{ $f[0] }}</a></td>
+                                <td><a href="#" class="mr-link-id">{{ $f[0] }}</a></td>
                                 <td><div class="d-flex align-items-center gap-2"><x-maristas::avatar :name="$f[1]" size="sm" soft />{{ $f[1] }}</div></td>
                                 <td>{{ $f[2] }}</td>
                                 <td><x-maristas::state :tone="$f[3][0]">{{ $f[3][1] }}</x-maristas::state></td>
@@ -131,8 +131,8 @@
             <table class="table table-hover align-middle mb-0">
                 <thead><tr><th>Folio</th><th>Nombre</th><th>Estado</th></tr></thead>
                 <tbody>
-                    <tr><td><a href="#" class="mr-link">FUNNEL-15037</a></td><td>Lisbeth Alarcón</td><td><x-maristas::state tone="info">Contactado</x-maristas::state></td></tr>
-                    <tr><td><a href="#" class="mr-link">FUNNEL-14967</a></td><td>Eduardo Juárez</td><td><x-maristas::state tone="success">Nuevo</x-maristas::state></td></tr>
+                    <tr><td><a href="#" class="mr-link-id">FUNNEL-15037</a></td><td>Lisbeth Alarcón</td><td><x-maristas::state tone="info">Contactado</x-maristas::state></td></tr>
+                    <tr><td><a href="#" class="mr-link-id">FUNNEL-14967</a></td><td>Eduardo Juárez</td><td><x-maristas::state tone="success">Nuevo</x-maristas::state></td></tr>
                 </tbody>
             </table>
         </div></div>

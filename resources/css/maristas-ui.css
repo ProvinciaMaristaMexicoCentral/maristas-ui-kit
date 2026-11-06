@@ -237,13 +237,17 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-so
 .mr-body { font-size: var(--maristas-text-md); }
 .mr-small { font-size: var(--maristas-text-sm); color: var(--maristas-muted); }
 .mr-caption { font-size: var(--maristas-text-xs); color: var(--maristas-muted); }
-.mr-link { color: var(--maristas-accent); text-decoration: none; }
-.mr-link:hover { text-decoration: underline; }
+.mr-link, .mr-link-id { color: var(--maristas-accent); text-decoration: none; }
+.mr-link:hover, .mr-link-id:hover { text-decoration: underline; }
+/* Enlace principal de una fila de tabla (el que abre el registro: folio o nombre). Uno por fila. */
+.mr-link-id { font-weight: 600; }
 
 /* ---------- Tablas ---------- */
 .mr-scope .table { --bs-table-bg: transparent; color: var(--maristas-ink); margin-bottom: 0; }
 .mr-scope .table thead th { background: var(--maristas-soft); color: var(--maristas-muted); font-size: .78rem; font-weight: 600; border-bottom: 1px solid var(--maristas-line); white-space: nowrap; padding: .7rem 1rem; }
 .mr-scope .table td { border-color: var(--maristas-line); vertical-align: middle; padding: .8rem 1rem; font-size: .9rem; }
+/* Celda de encabezado de fila (<th scope="row"> en el cuerpo): misma medida que una celda normal para alinearse con su encabezado de columna */
+.mr-scope .table tbody th { border-color: var(--maristas-line); vertical-align: middle; padding: .8rem 1rem; font-size: .9rem; font-weight: 400; }
 .mr-scope .table-hover > tbody > tr:hover > * { background: var(--maristas-soft); color: var(--maristas-ink); }
 .mr-table-wrap { border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); overflow: hidden; background: var(--maristas-surface); }
 .mr-table-wrap .table-responsive { margin: 0; }
