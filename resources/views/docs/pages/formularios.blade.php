@@ -77,6 +77,31 @@
     </x-slot:code>
 </x-maristas::example>
 
+<x-maristas::example title="Etiqueta con acción" note="Cuando la etiqueta lleva un interruptor o un enlace a la derecha, envuélvelos en mr-label-row: el campo queda alineado con sus vecinos.">
+    <div class="row g-3 w-100">
+        <div class="col-md-6"><label class="form-label" for="kit-lr1">Género</label><select id="kit-lr1" class="form-select"><option>Seleccionar</option></select></div>
+        <div class="col-md-6">
+            <div class="mr-label-row">
+                <label class="form-label" for="kit-lr2">CURP (opcional)</label>
+                <div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="kit-lr3"><label class="form-check-label mr-small" for="kit-lr3">Extranjero</label></div>
+            </div>
+            <input id="kit-lr2" class="form-control" type="text" placeholder="CURP (18 caracteres)">
+        </div>
+    </div>
+    <x-slot:code>
+@verbatim
+<div class="mr-label-row">
+    <label class="form-label" for="curp">CURP (opcional)</label>
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="extranjero">
+        <label class="form-check-label mr-small" for="extranjero">Extranjero</label>
+    </div>
+</div>
+<input id="curp" class="form-control">
+@endverbatim
+    </x-slot:code>
+</x-maristas::example>
+
 <x-maristas::example title="Tamaños de campos" note="Pequeño en filtros y celdas de tabla, normal en formularios, grande en pantallas táctiles. Se piden con form-control-sm, form-control-lg, form-select-sm y form-select-lg.">
     <div class="row g-3 w-100">
         <div class="col-md-4">

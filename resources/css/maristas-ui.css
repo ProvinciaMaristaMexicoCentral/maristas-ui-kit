@@ -302,6 +302,10 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-so
 .mr-kv dt { margin: 0 0 .1rem; font-size: .75rem; font-weight: 500; color: var(--maristas-muted); }
 .mr-kv dd { margin: 0; font-weight: 600; word-break: break-word; }
 .mr-kv .is-wide { grid-column: 1 / -1; }
+/* Etiqueta con una acción a la derecha (por ejemplo un interruptor), sin desalinear los campos vecinos */
+.mr-label-row { display: flex; align-items: center; justify-content: space-between; gap: .5rem; min-height: 1.3rem; margin-bottom: .25rem; }
+.mr-label-row .form-label { margin: 0; }
+.mr-label-row .form-check { min-height: 0; margin: 0; padding-top: 0; }
 .mr-scope .valid-feedback { color: var(--maristas-success); font-size: .8rem; }
 .mr-scope .form-text { color: var(--maristas-muted); font-size: .8rem; }
 .mr-scope .form-control:disabled, .mr-scope .form-select:disabled { background: var(--maristas-soft); color: var(--maristas-muted); }
