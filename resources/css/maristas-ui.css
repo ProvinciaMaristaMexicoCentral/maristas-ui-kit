@@ -733,3 +733,24 @@ body.mr-palette-open { overflow: hidden; }
 .mr-password-toggle:hover { background: var(--maristas-soft); color: var(--maristas-ink); }
 .mr-password-toggle:focus-visible { outline: 2px solid var(--maristas-accent); outline-offset: 1px; }
 .mr-auth-badge { width: 3rem; height: 3rem; display: grid; place-items: center; margin-bottom: 1rem; border-radius: 14px; background: var(--maristas-brand-soft); color: var(--maristas-brand); font-size: 1.5rem; }
+
+/* Barra de título con migas de pan */
+.mr-pagebar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; margin: 0 0 1.25rem; }
+.mr-pagebar-title { margin: 0; font-size: .95rem; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; }
+.mr-breadcrumb { display: flex; flex-wrap: wrap; align-items: center; margin: 0; padding: 0; list-style: none; font-size: .8rem; color: var(--maristas-muted); }
+.mr-breadcrumb li + li::before { content: '\203A'; margin: 0 .5rem; opacity: .6; }
+.mr-breadcrumb a { color: var(--maristas-muted); text-decoration: none; }
+.mr-breadcrumb a:hover { color: var(--maristas-brand); text-decoration: underline; }
+.mr-breadcrumb [aria-current] { color: var(--maristas-ink); }
+/* Botón para volver arriba */
+.mr-backtop { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 1030; width: 2.75rem; height: 2.75rem; display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--maristas-brand); color: #fff; font-size: 1.5rem; box-shadow: 0 8px 22px rgba(11, 58, 111, .35); opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity .15s, transform .15s, visibility .15s; }
+.mr-backtop.is-visible { opacity: 1; visibility: visible; transform: none; }
+.mr-backtop:hover { background: #0a2f5a; }
+.mr-backtop:focus-visible { outline: 2px solid var(--maristas-accent); outline-offset: 3px; }
+/* Pie de página */
+.mr-footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.5rem; border-top: 1px solid var(--maristas-line); font-size: .8rem; color: var(--maristas-muted); }
+.mr-toast-success { color: var(--maristas-success); }
+.mr-toast-danger { color: var(--maristas-danger); }
+.mr-toast-warning { color: var(--maristas-warning); }
+.mr-toast-info { color: var(--maristas-info); }
+

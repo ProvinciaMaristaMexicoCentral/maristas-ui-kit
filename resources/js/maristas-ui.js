@@ -222,6 +222,14 @@
         pintar();
     });
 
+    /* ---------- Botón para volver arriba ---------- */
+    nuevos('[data-mr-backtop]', contexto).forEach(function (boton) {
+        var revisar = function () { boton.classList.toggle('is-visible', (window.pageYOffset || document.documentElement.scrollTop) > 300); };
+        window.addEventListener('scroll', revisar, { passive: true });
+        boton.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        revisar();
+    });
+
     /* ---------- Contraseña: mostrar u ocultar ---------- */
     nuevos('[data-mr-password-toggle]', contexto).forEach(function (boton) {
         var campo = $('input', boton.closest('.mr-password'));
@@ -266,6 +274,36 @@
     });
     }
 
+    /* Aviso emergente: MaristasUI.toast('success', 'Guardado') · tonos: success, danger, warning, info.
+       También acepta las clases de estado antiguas (bg-success, alert-danger…). */
+    function toast(tono, mensaje) {
+        var tonos = { success: 'ri-checkbox-circle-line', danger: 'ri-error-warning-line', warning: 'ri-alert-line', info: 'ri-information-line' };
+        var clave = String(tono || 'info').replace(/^(bg|alert|text)-/, '');
+        if (!tonos[clave]) clave = clave === 'ok' ? 'success' : 'info';
+        var capa = document.getElementById('mr-toasts');
+        if (!capa) {
+            var ambito = document.createElement('div');
+            ambito.className = 'mr-scope';
+            capa = document.createElement('div');
+            capa.id = 'mr-toasts';
+            capa.className = 'toast-container position-fixed top-0 end-0 p-3';
+            capa.style.zIndex = 1090;
+            ambito.appendChild(capa);
+            document.body.appendChild(ambito);
+        }
+        var el = document.createElement('div');
+        el.className = 'toast align-items-center';
+        el.setAttribute('role', clave === 'danger' ? 'alert' : 'status');
+        el.setAttribute('aria-live', clave === 'danger' ? 'assertive' : 'polite');
+        el.innerHTML = '<div class="d-flex"><div class="toast-body d-flex align-items-start gap-2"><i class="' + tonos[clave] + ' fs-5 mr-toast-' + clave + '"></i><span></span></div><button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button></div>';
+        el.querySelector('span').textContent = mensaje;
+        capa.appendChild(el);
+        if (window.bootstrap && window.bootstrap.Toast) {
+            el.addEventListener('hidden.bs.toast', function () { el.remove(); });
+            window.bootstrap.Toast.getOrCreateInstance(el, { delay: 5000 }).show();
+        }
+    }
+
     /* Botón de envío con texto de carga: <button type="submit" data-loading-text="Ingresando…"> */
     document.addEventListener('submit', function (e) {
         var boton = e.submitter;
@@ -278,6 +316,6 @@
     });
 
     /* Al cambiar el contenido de la página (navegación sin recarga) se puede volver a iniciar: MaristasUI.init(contenedor) */
-    window.MaristasUI = { init: iniciar };
+    window.MaristasUI = { init: iniciar, toast: toast };
     iniciar(document);
 })();

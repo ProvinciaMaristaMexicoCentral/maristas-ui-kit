@@ -28,3 +28,28 @@
     </nav>
 </x-maristas::example>
     
+
+<x-maristas::example title="Título de pantalla con migas de pan" note="El último elemento es la página actual y no lleva enlace.">
+    <div class="w-100">
+        <x-maristas::page-bar title="Detalle del funnel" :items="[['name' => 'Inicio', 'href' => '#'], ['name' => 'Lista de funnels', 'href' => '#'], ['name' => 'Detalle del funnel']]" />
+    </div>
+    <x-slot:code>
+@verbatim
+<x-maristas::page-bar title="Detalle del funnel"
+    :items="[['name' => 'Inicio', 'href' => route('dashboard')], ['name' => 'Detalle del funnel']]" />
+@endverbatim
+    </x-slot:code>
+</x-maristas::example>
+
+<x-maristas::example title="Pie de página y botón para volver arriba" note="Incluye el botón una sola vez en el diseño: aparece al bajar y vuelve al inicio con desplazamiento suave.">
+    <div class="w-100 mr-box p-0 overflow-hidden">
+        <x-maristas::footer product="SIGEM" version="V.2.0">Maristas | 2026</x-maristas::footer>
+    </div>
+    <x-slot:code>
+@verbatim
+<x-maristas::footer product="SIGEM" version="V.2.0">Maristas | {{ now()->year }}</x-maristas::footer>
+<x-maristas::back-to-top />
+@endverbatim
+    </x-slot:code>
+</x-maristas::example>
+

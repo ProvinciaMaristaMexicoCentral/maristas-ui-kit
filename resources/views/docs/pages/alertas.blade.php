@@ -19,3 +19,18 @@
     </div>
 </x-maristas::example>
     
+
+<x-maristas::example title="Aviso temporal desde JavaScript" note="Para respuestas de acciones (guardado, error). MaristasUI.toast(tono, mensaje) crea el aviso, lo muestra cinco segundos y lo quita. Tonos: success, danger, warning, info.">
+    <x-maristas::button variant="secondary" size="sm" onclick="MaristasUI.toast('success', 'Los cambios se guardaron.')">Éxito</x-maristas::button>
+    <x-maristas::button variant="secondary" size="sm" onclick="MaristasUI.toast('danger', 'No se pudo guardar. Intenta de nuevo.')">Error</x-maristas::button>
+    <x-maristas::button variant="secondary" size="sm" onclick="MaristasUI.toast('warning', 'Falta un dato obligatorio.')">Advertencia</x-maristas::button>
+    <x-slot:code>
+@verbatim
+MaristasUI.toast('success', 'Los cambios se guardaron.');
+
+// Desde Livewire, con el evento que ya escucha el layout:
+$this->dispatch('alert', status: 'success', message: 'Guardado');
+@endverbatim
+    </x-slot:code>
+</x-maristas::example>
+
