@@ -5,6 +5,7 @@ namespace Maristas\UiKit;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Maristas\UiKit\Console\ExportarDocsCommand;
 use Maristas\UiKit\Console\GuiaIACommand;
 use Maristas\UiKit\Console\LintCommand;
 use Maristas\UiKit\Http\DocsController;
@@ -37,7 +38,7 @@ class UiKitServiceProvider extends ServiceProvider
         ], 'maristas-ui-config');
 
         if ($this->app->runningInConsole()) {
-            $this->commands([GuiaIACommand::class, LintCommand::class]);
+            $this->commands([GuiaIACommand::class, LintCommand::class, ExportarDocsCommand::class]);
         }
 
         $this->registrarDocumentacion();

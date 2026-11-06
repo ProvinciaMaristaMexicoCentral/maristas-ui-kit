@@ -12,6 +12,12 @@ class Indice
 {
     protected static ?array $cache = null;
 
+    /** Olvida el índice generado (sus direcciones dependen de la raíz de URL del momento). */
+    public static function reiniciar(): void
+    {
+        static::$cache = null;
+    }
+
     /** @return array<int, array{tipo: string, titulo: string, pagina: string, grupo: string, texto: string, url: string}> */
     public static function generar(): array
     {

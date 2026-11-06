@@ -44,6 +44,14 @@ vendor/bin/phpunit
 vendor/bin/testbench serve      # documentación en http://127.0.0.1:8000/ui-kit
 ```
 
+Para generar la documentación como sitio estático (HTML sin PHP, por ejemplo para GitHub Pages):
+
+```bash
+vendor/bin/testbench maristas-ui:exportar-docs _site --base=/maristas-ui-kit
+```
+
+`--base` es la ruta donde se publicará (sin dominio); déjala vacía si va en la raíz. Escribe `<página>/index.html`, los assets en `_assets/` y las guías `ia.md` e `ia-resumen.md`.
+
 ## Estado
 
 Versión actual: `v1.0.3`.
