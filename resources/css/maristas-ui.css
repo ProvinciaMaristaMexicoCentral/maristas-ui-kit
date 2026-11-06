@@ -609,6 +609,10 @@ button.mr-notif.is-new { background: var(--maristas-brand-soft); }
 .mr-stepper:not(.mr-stepper-vertical) .mr-stepper-item:not(:last-child)::after { content: ''; flex: 1; height: 2px; background: var(--maristas-line); margin: 0 .25rem; }
 .mr-stepper-dot { width: 28px; height: 28px; border-radius: 50%; flex: none; display: grid; place-items: center; font-size: .78rem; font-weight: 700; background: var(--maristas-soft); color: var(--maristas-muted); border: 2px solid var(--maristas-line); }
 .mr-stepper-label { font-weight: 600; }
+/* Paso en el que se puede hacer clic (volver a un paso completado) */
+.mr-stepper-link { display: flex; align-items: center; gap: .6rem; padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; }
+.mr-stepper-link:disabled { cursor: default; }
+.mr-stepper-link:focus-visible { outline: 2px solid var(--maristas-accent); outline-offset: 3px; border-radius: 999px; }
 .mr-stepper-item.is-done .mr-stepper-dot { background: var(--maristas-brand); border-color: var(--maristas-brand); color: #fff; }
 .mr-stepper-item.is-done::after { background: var(--maristas-brand) !important; }
 .mr-stepper-item.is-done { color: var(--maristas-ink); }

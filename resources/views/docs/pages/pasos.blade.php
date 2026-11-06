@@ -7,6 +7,14 @@
     </ol>
 </x-maristas::example>
 
+<x-maristas::example title="Pasos en los que se puede hacer clic" note="Para volver a un paso ya completado, envuelve el punto y la etiqueta en un botón mr-stepper-link. El paso pendiente va deshabilitado.">
+    <ol class="mr-stepper w-100" aria-label="Avance del registro">
+        <li class="mr-stepper-item is-done"><button type="button" class="mr-stepper-link"><span class="mr-stepper-dot"><i class="ri-check-line"></i></span><span class="mr-stepper-label">Contacto</span></button></li>
+        <li class="mr-stepper-item is-current" aria-current="step"><button type="button" class="mr-stepper-link"><span class="mr-stepper-dot">2</span><span class="mr-stepper-label">Aspirante</span></button></li>
+        <li class="mr-stepper-item"><button type="button" class="mr-stepper-link" disabled><span class="mr-stepper-dot">3</span><span class="mr-stepper-label">Datos</span></button></li>
+    </ol>
+</x-maristas::example>
+
 <x-maristas::example title="Pasos verticales con descripción" note="Cuando cada paso necesita una explicación o una fecha.">
     <ol class="mr-stepper mr-stepper-vertical" style="max-width: 420px;">
         <li class="mr-stepper-item is-done"><span class="mr-stepper-dot"><i class="ri-check-line"></i></span><span><span class="mr-stepper-label">Solicitud enviada</span><span class="d-block mr-small">16 de julio, 11:47 a. m.</span></span></li>
