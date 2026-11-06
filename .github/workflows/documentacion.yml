@@ -1,0 +1,71 @@
+# Publica la documentación del kit en GitHub Pages.
+#
+# Corre en cada push a main que cambie algo que afecta a la documentación (src, resources, config,
+# composer.json o este archivo). Los cambios solo de README, LICENSE o tests no la disparan.
+# También se puede lanzar a mano desde la pestaña Actions.
+#
+# Antes de usarlo: Settings > Pages > Source = "GitHub Actions", y en Visibility = "Private"
+# para que solo la vea la organización.
+name: Documentación
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'resources/**'
+      - 'config/**'
+      - 'composer.json'
+      - 'testbench.yaml'
+      - '.github/workflows/documentacion.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Una publicación a la vez; si llega otra, espera a que termine la actual.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  construir:
+    name: Probar y exportar
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: none
+
+      - name: Instalar dependencias
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: Pruebas del kit
+        run: vendor/bin/phpunit
+
+      - name: Configurar Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Exportar la documentación
+        run: vendor/bin/testbench maristas-ui:exportar-docs _site --base="${{ steps.pages.outputs.base_path }}"
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  publicar:
+    name: Publicar en Pages
+    needs: construir
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+    steps:
+      - id: despliegue
+        uses: actions/deploy-pages@v4
