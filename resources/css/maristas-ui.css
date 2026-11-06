@@ -201,6 +201,8 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-so
 .mr-scope .alert .btn-close { position: static; padding: .35rem; margin-left: auto; flex-shrink: 0; }
 .mr-scope .modal-content { border: 0; border-radius: var(--maristas-radius-lg); box-shadow: 0 20px 50px rgba(23, 32, 51, .2); }
 .mr-scope .modal-header, .mr-scope .modal-footer { border-color: var(--maristas-line); }
+/* Fondo de un modal que Livewire muestra o quita sin usar el JavaScript de Bootstrap */
+.mr-scope .modal.mr-modal-open, .modal.mr-modal-open { display: block; background: rgba(23, 32, 51, .45); }
 
 .mr-scroll { max-height: 190px; overflow-y: auto; }
 
