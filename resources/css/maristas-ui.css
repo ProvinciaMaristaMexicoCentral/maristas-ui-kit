@@ -295,6 +295,9 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-so
 /* Caja neutra para agrupar un bloque dentro de un formulario o modal */
 .mr-box { padding: .85rem 1rem; background: var(--maristas-surface); border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); }
 .mr-box.is-muted { opacity: .55; }
+.mr-box.mr-box-sm { padding: .5rem .7rem; }
+.mr-box.is-soft { background: var(--maristas-soft); }
+.mr-box.is-warning { background: var(--maristas-warning-soft); border-color: var(--maristas-warning); }
 /* Acciones al pie de un formulario o paso: separadas del contenido por una línea */
 .mr-form-actions { display: flex; justify-content: space-between; align-items: center; gap: .75rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--maristas-line); }
 /* Datos clave-valor para revisar antes de confirmar */

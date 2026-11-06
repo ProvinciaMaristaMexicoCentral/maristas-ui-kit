@@ -32,6 +32,11 @@
         </div>
         <div class="col-12">
             <div class="mr-box">Usa <code>mr-box</code> para agrupar un bloque dentro de un formulario, por ejemplo un registro similar que el asesor debe revisar.</div>
+            <div class="d-flex flex-wrap gap-2 mt-2">
+                <div class="mr-box mr-box-sm">mr-box-sm: compacta</div>
+                <div class="mr-box mr-box-sm is-soft">is-soft: fondo suave</div>
+                <div class="mr-box mr-box-sm is-warning">is-warning: pide atención</div>
+            </div>
         </div>
     </div>
     <x-slot:code>
