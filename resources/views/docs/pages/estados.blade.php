@@ -27,3 +27,32 @@
     <div class="col-md-6"><x-maristas::rule :do="false">No inventes colores nuevos para un estado ni pongas una oración dentro de la etiqueta.</x-maristas::rule></div>
 </div>
     
+
+<x-maristas::example title="Distribución por estado" note="Una barra segmentada con una leyenda que dice el nombre, el porcentaje y, si lo necesitas, lleva al listado filtrado. Los colores son de los tonos del kit, no de Bootstrap.">
+    <div class="mr-box w-100" style="max-width: 360px;">
+        <div class="mr-seg" role="img" aria-label="Nuevo 28%, Contactado 20%, Conversión futura 18%, Perdido 34%">
+            <span class="mr-tone-success" style="width: 28%"></span>
+            <span class="mr-tone-info" style="width: 20%"></span>
+            <span class="mr-tone-warning" style="width: 18%"></span>
+            <span class="mr-tone-muted" style="width: 34%"></span>
+        </div>
+        <ul class="mr-legend">
+            <li><a href="#"><span class="mr-dot mr-tone-success"></span>Nuevo<span class="mr-legend-value">28%</span></a></li>
+            <li><a href="#"><span class="mr-dot mr-tone-info"></span>Contactado<span class="mr-legend-value">20%</span></a></li>
+            <li><a href="#"><span class="mr-dot mr-tone-warning"></span>Conversión futura<span class="mr-legend-value">18%</span></a></li>
+            <li><a href="#"><span class="mr-dot mr-tone-muted"></span>Perdido<span class="mr-legend-value">34%</span></a></li>
+        </ul>
+    </div>
+    <x-slot:code>
+@verbatim
+<div class="mr-seg" role="img" aria-label="Nuevo 28%, Perdido 72%">
+    <span class="mr-tone-success" style="width: 28%"></span>
+    <span class="mr-tone-muted" style="width: 72%"></span>
+</div>
+<ul class="mr-legend">
+    <li><a href="…"><span class="mr-dot mr-tone-success"></span>Nuevo<span class="mr-legend-value">28%</span></a></li>
+</ul>
+{{-- Tonos: success, warning, danger, info, brand, muted --}}
+@endverbatim
+    </x-slot:code>
+</x-maristas::example>
