@@ -2,6 +2,8 @@
 
 Sistema de diseño de los sistemas Maristas: tokens (`--maristas-*`), estilos sobre Bootstrap 5 (`.mr-*`) y componentes Blade (`<x-maristas::…>`).
 
+**Documentación en línea:** https://friendly-couscous-rk6w8p6.pages.github.io/ (sitio privado: se abre con tu cuenta de GitHub si tienes acceso a este repositorio; se publica solo en cada cambio a `main` que afecta a la documentación).
+
 ## Instalación (Laravel 9 a 12)
 
 El paquete es privado y no está en Packagist: Composer necesita saber dónde vive y tener acceso de lectura al repositorio.
