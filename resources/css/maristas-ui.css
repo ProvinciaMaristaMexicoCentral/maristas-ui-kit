@@ -764,7 +764,7 @@ body.mr-palette-open { overflow: hidden; }
 .mr-page { padding-left: var(--maristas-gutter); padding-right: var(--maristas-gutter); }
 .mr-topbar-full, .mr-topbar-full .mr-topbar-nav { border-radius: 0; }
 .mr-topbar-full .mr-topbar-main, .mr-topbar-full .mr-topbar-nav { padding-left: var(--maristas-gutter); padding-right: var(--maristas-gutter); }
-.mr-footer-full { padding-left: var(--maristas-gutter); padding-right: var(--maristas-gutter); }
+.mr-footer.mr-footer-full { padding-left: var(--maristas-gutter); padding-right: var(--maristas-gutter); }
 
 /* Pie de página */
 .mr-footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.5rem; border-top: 1px solid var(--maristas-line); font-size: .8rem; color: var(--maristas-muted); }
