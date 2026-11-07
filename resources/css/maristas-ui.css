@@ -266,7 +266,8 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-so
 .mr-scope .page-item.active .page-link { background: var(--maristas-brand); color: #fff; }
 .mr-scope .page-item.disabled .page-link { background: transparent; color: var(--maristas-muted); opacity: .5; }
 .mr-scope .dropdown-menu { border: 1px solid var(--maristas-line); border-radius: 12px; box-shadow: 0 12px 32px rgba(23, 32, 51, .12); padding: .35rem; }
-.mr-scope .dropdown-item { border-radius: var(--maristas-radius-sm); font-size: .875rem; padding: .45rem .75rem; }
+.mr-scope .dropdown-item { border-radius: var(--maristas-radius-sm); font-size: .875rem; padding: .45rem .75rem; display: flex; align-items: center; gap: .5rem; }
+.mr-scope .dropdown-item > i { font-size: 1rem; flex: none; }
 .mr-scope .dropdown-item:hover, .mr-scope .dropdown-item:focus { background: var(--maristas-soft); color: var(--maristas-ink); }
 .mr-scope .dropdown-item.active { background: var(--maristas-brand-soft); color: var(--maristas-brand); }
 .mr-scope .dropdown-divider { border-color: var(--maristas-line); }
