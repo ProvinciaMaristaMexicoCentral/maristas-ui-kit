@@ -4,7 +4,7 @@ Sistema de diseño de los sistemas Maristas: tokens (`--maristas-*`), estilos so
 
 **Documentación en línea:** https://friendly-couscous-rk6w8p6.pages.github.io/ (sitio privado: se abre con tu cuenta de GitHub si tienes acceso a este repositorio; se publica solo en cada cambio a `main` que afecta a la documentación).
 
-## Instalación (Laravel 9 a 12)
+## Instalación (Laravel 9 a 13)
 
 El paquete es privado y no está en Packagist: Composer necesita saber dónde vive y tener acceso de lectura al repositorio.
 
@@ -56,7 +56,7 @@ vendor/bin/testbench maristas-ui:exportar-docs _site --base=/maristas-ui-kit
 
 ## Estado
 
-Versión actual: `v1.0.5`.
+Versión actual: `v1.0.6`.
 
 **Incluido:** tokens, formularios (secciones, etiquetas, campos obligatorios, acciones de pie, selección múltiple con buscador), botones, tablas de datos con filtros y paginación, tarjetas, alertas, avisos emergentes, navegación, barra principal con menús de usuario, institución y notificaciones, barra de título con migas, pie, pantallas de acceso, pasos, modales y avatares. Además: documentación navegable con búsqueda, el comando `maristas-ui:lint` que revisa vistas contra las reglas del kit y la guía en Markdown para asistentes de IA (`maristas-ui:ia`).
 
