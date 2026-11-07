@@ -42,7 +42,7 @@ Eres un asistente que escribe pantallas para un sistema Maristas. Este kit (`mar
 
 ## Cómo está construido
 
-- Laravel 9–12, Blade, **Bootstrap 5** como base (CSS y JS). Sin Alpine, Livewire ni jQuery obligatorios: el JavaScript del kit (`maristas-ui.js`) es puro.
+- Laravel 9–13, Blade, **Bootstrap 5** como base (CSS y JS). Sin Alpine, Livewire ni jQuery obligatorios: el JavaScript del kit (`maristas-ui.js`) es puro.
 - Íconos: Remix Icon (`ri-*`). Fuente: Poppins.
 - Tokens CSS con prefijo `--maristas-*`; clases propias con prefijo `.mr-*`.
 - Componentes Blade anónimos con el prefijo `x-maristas::` (por ejemplo `<x-maristas::button>`).
