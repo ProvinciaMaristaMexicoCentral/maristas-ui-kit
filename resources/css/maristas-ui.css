@@ -42,6 +42,9 @@
     /* Espaciado (múltiplos de 4px) */
     --maristas-space-1: .25rem; --maristas-space-2: .5rem; --maristas-space-3: .75rem;
     --maristas-space-4: 1rem;   --maristas-space-5: 1.5rem; --maristas-space-6: 2rem;
+
+    /* Margen lateral de la página (crece con la ventana; cada sistema puede redefinirlo en su :root) */
+    --maristas-gutter: clamp(2rem, 7vw, 9rem);
 }
 
 body:has(.mr-scope) { background: var(--maristas-canvas); }
@@ -757,6 +760,12 @@ body.mr-palette-open { overflow: hidden; }
 .mr-backtop.is-visible { opacity: 1; visibility: visible; transform: none; }
 .mr-backtop:hover { background: #0a2f5a; }
 .mr-backtop:focus-visible { outline: 2px solid var(--maristas-accent); outline-offset: 3px; }
+/* Margen lateral de página: contenido, barra principal y pie comparten --maristas-gutter para alinearse */
+.mr-page { padding-left: var(--maristas-gutter); padding-right: var(--maristas-gutter); }
+.mr-topbar-full, .mr-topbar-full .mr-topbar-nav { border-radius: 0; }
+.mr-topbar-full .mr-topbar-main, .mr-topbar-full .mr-topbar-nav { padding-left: var(--maristas-gutter); padding-right: var(--maristas-gutter); }
+.mr-footer-full { padding-left: var(--maristas-gutter); padding-right: var(--maristas-gutter); }
+
 /* Pie de página */
 .mr-footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.5rem; border-top: 1px solid var(--maristas-line); font-size: .8rem; color: var(--maristas-muted); }
 .mr-toast-success { color: var(--maristas-success); }

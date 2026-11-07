@@ -72,6 +72,10 @@ class ComponentesTest extends TestCase
         $this->assertStringContainsString('x-maristas::button', $guia);
         $this->assertStringContainsString('variant = \'primary\'', $guia);
         $this->assertStringContainsString('`mr-dt-toolbar`', $guia);
+        $this->assertStringContainsString('`--maristas-gutter`', $guia);
+        $this->assertStringContainsString('`mr-page`', $guia);
+        $this->assertStringContainsString('`mr-topbar-full`', $guia);
+        $this->assertStringContainsString('`mr-footer-full`', $guia);
         $this->assertStringNotContainsString('x-maristas::example`', $guia);
 
         foreach (\Maristas\UiKit\Docs\Catalogo::paginas() as $slug => $pagina) {

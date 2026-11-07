@@ -19,7 +19,7 @@ class Catalogo
                 'colores' => ['titulo' => 'Colores', 'descripcion' => 'La marca es el azul institucional. Los estados (éxito, atención, error, información) son independientes de la marca y nunca se usan como acento decorativo.'],
                 'tipografia' => ['titulo' => 'Tipografía', 'descripcion' => 'Una sola familia, Poppins, en pesos 400, 500, 600 y 700. La jerarquía se logra con tamaño y peso, no con mayúsculas ni con color.'],
                 'iconos' => ['titulo' => 'Íconos', 'descripcion' => 'Usamos Remix Icon (<code>ri-*</code>), en estilo de línea. Haz clic en un ícono para copiar su clase. Un ícono acompaña al texto; si va solo, necesita <code>aria-label</code>.'],
-                'forma' => ['titulo' => 'Forma y espacio', 'descripcion' => 'Tres radios según el tamaño del elemento, una sola sombra para las tarjetas y espaciado en múltiplos de 4px.'],
+                'forma' => ['titulo' => 'Forma y espacio', 'descripcion' => 'Tres radios según el tamaño del elemento, una sola sombra para las tarjetas, espaciado en múltiplos de 4px y un margen de página compartido.'],
                 'accesibilidad' => ['titulo' => 'Accesibilidad', 'descripcion' => 'Mínimos que todo componente del kit cumple y que toda pantalla debe respetar.'],
             ],
             'Entradas' => [
