@@ -755,6 +755,17 @@ body.mr-palette-open { overflow: hidden; }
 .mr-breadcrumb a { color: var(--maristas-muted); text-decoration: none; }
 .mr-breadcrumb a:hover { color: var(--maristas-brand); text-decoration: underline; }
 .mr-breadcrumb [aria-current] { color: var(--maristas-ink); }
+/* Banner de encabezado de pantalla */
+.mr-banner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 1.5rem; margin-bottom: 1.25rem; padding: 1.25rem 1.5rem; color: #fff; border-radius: var(--maristas-radius-lg); background: linear-gradient(105deg, var(--maristas-brand-strong), var(--maristas-brand)); }
+.mr-banner-main { display: flex; align-items: center; gap: 1rem; min-width: 0; }
+.mr-banner-icon { display: grid; place-items: center; flex: none; width: 2.75rem; height: 2.75rem; border-radius: var(--maristas-radius-md); background: rgb(255 255 255 / .14); font-size: 1.4rem; }
+.mr-banner-eyebrow { font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; opacity: .75; }
+.mr-banner-title { margin: 0; font-size: 1.4rem; font-weight: 600; line-height: 1.25; color: inherit; }
+.mr-banner-lead { margin: .2rem 0 0; font-size: .9rem; opacity: .85; max-width: 62ch; }
+.mr-banner-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+.mr-banner-actions .btn-light { background: #fff; color: var(--maristas-brand); border-color: #fff; }
+.mr-banner-actions .btn-outline-light { color: #fff; border-color: rgb(255 255 255 / .6); }
+@media (max-width: 575.98px) { .mr-banner { padding: 1rem; } .mr-banner-actions .btn { flex: 1 1 100%; } }
 /* Botón para volver arriba */
 .mr-backtop { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 1030; width: 2.75rem; height: 2.75rem; display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--maristas-brand); color: #fff; font-size: 1.5rem; box-shadow: 0 8px 22px rgba(11, 58, 111, .35); opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity .15s, transform .15s, visibility .15s; }
 .mr-backtop.is-visible { opacity: 1; visibility: visible; transform: none; }

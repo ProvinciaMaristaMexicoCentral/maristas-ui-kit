@@ -41,6 +41,24 @@
     </x-slot:code>
 </x-maristas::example>
 
+<x-maristas::example title="Banner de encabezado" note="Para la cabecera de una pantalla con título, texto de apoyo y acciones. Los botones llevan variant light (principal) y outline-light (secundario).">
+    <div class="w-100">
+        <x-maristas::banner title="Eventos" eyebrow="Gestión" icon="ri-calendar-event-line" description="Administra las convocatorias y actividades.">
+            <x-maristas::button variant="outline-light" icon="ri-price-tag-3-line">Categorías</x-maristas::button>
+            <x-maristas::button variant="light" icon="ri-add-line">Nuevo evento</x-maristas::button>
+        </x-maristas::banner>
+    </div>
+    <x-slot:code>
+@verbatim
+<x-maristas::banner title="Eventos" eyebrow="Gestión" icon="ri-calendar-event-line"
+    description="Administra las convocatorias y actividades.">
+    <x-maristas::button variant="outline-light" icon="ri-price-tag-3-line">Categorías</x-maristas::button>
+    <x-maristas::button variant="light" icon="ri-add-line">Nuevo evento</x-maristas::button>
+</x-maristas::banner>
+@endverbatim
+    </x-slot:code>
+</x-maristas::example>
+
 <x-maristas::example title="Pie de página y botón para volver arriba" note="Incluye el botón una sola vez en el diseño: aparece al bajar y vuelve al inicio con desplazamiento suave.">
     <div class="w-100 mr-box p-0 overflow-hidden">
         <x-maristas::footer product="SIGEM" version="V.2.0">Maristas | 2026</x-maristas::footer>

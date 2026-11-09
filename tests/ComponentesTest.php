@@ -37,6 +37,17 @@ class ComponentesTest extends TestCase
         }
     }
 
+    public function test_el_banner_muestra_titulo_descripcion_y_acciones(): void
+    {
+        $html = Blade::render('<x-maristas::banner title="Eventos" eyebrow="Gestión" description="Texto de apoyo" icon="ri-add-line"><button>Nuevo</button></x-maristas::banner>');
+
+        $this->assertStringContainsString('mr-banner', $html);
+        $this->assertStringContainsString('Eventos', $html);
+        $this->assertStringContainsString('Gestión', $html);
+        $this->assertStringContainsString('Texto de apoyo', $html);
+        $this->assertStringContainsString('mr-banner-actions', $html);
+    }
+
     public function test_la_pagina_de_documentacion_responde(): void
     {
         $this->get('/ui-kit')->assertOk()->assertSee('Maristas UI Kit');
