@@ -258,6 +258,7 @@
         var entrada = $('input[type="file"]', raiz);
         var lista = $('[data-mr-file-list]', raiz);
         var mostrar = function (archivos) {
+            if (!lista) return;
             Array.prototype.forEach.call(archivos, function (a) {
                 var li = document.createElement('li');
                 li.className = 'mr-file';
@@ -269,7 +270,15 @@
         };
         ['dragenter', 'dragover'].forEach(function (ev) { zona.addEventListener(ev, function (e) { e.preventDefault(); zona.classList.add('is-over'); }); });
         ['dragleave', 'drop'].forEach(function (ev) { zona.addEventListener(ev, function (e) { e.preventDefault(); zona.classList.remove('is-over'); }); });
-        zona.addEventListener('drop', function (e) { mostrar(e.dataTransfer.files); });
+        /* Al soltar, el archivo se adjunta al input (así Livewire o un formulario normal lo reciben) y 'change' lo lista. */
+        zona.addEventListener('drop', function (e) {
+            var soltados = e.dataTransfer.files;
+            if (!soltados.length) return;
+            var dt = new DataTransfer();
+            Array.prototype.forEach.call(entrada.multiple ? soltados : [soltados[0]], function (f) { dt.items.add(f); });
+            entrada.files = dt.files;
+            entrada.dispatchEvent(new Event('change', { bubbles: true }));
+        });
         entrada.addEventListener('change', function () { mostrar(entrada.files); });
     });
     }
