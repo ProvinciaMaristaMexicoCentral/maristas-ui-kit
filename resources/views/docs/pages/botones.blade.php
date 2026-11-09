@@ -5,6 +5,19 @@
     <x-maristas::button variant="success" icon="ri-check-line">Aprobar</x-maristas::button>
 </x-maristas::example>
 
+<x-maristas::example title="Sobre fondo oscuro" note="Con variant light (principal, blanco) y outline-light (fantasma: transparente, se aclara al pasar el cursor). Úsalos en banners y portadas.">
+    <div class="w-100 d-flex flex-wrap gap-2 p-4 rounded" style="background: var(--maristas-brand-strong)">
+        <x-maristas::button variant="light" icon="ri-add-line">Principal</x-maristas::button>
+        <x-maristas::button variant="outline-light" icon="ri-price-tag-3-line">Fantasma</x-maristas::button>
+    </div>
+    <x-slot:code>
+@verbatim
+<x-maristas::button variant="light" icon="ri-add-line">Principal</x-maristas::button>
+<x-maristas::button variant="outline-light" icon="ri-price-tag-3-line">Fantasma</x-maristas::button>
+@endverbatim
+    </x-slot:code>
+</x-maristas::example>
+
 <x-maristas::example title="Tamaños" note="Pequeño dentro de tarjetas, tablas y barras de herramientas; normal para la acción principal de la página; grande en pantallas táctiles o para una acción única y destacada.">
     <x-maristas::button size="sm">Pequeño</x-maristas::button>
     <x-maristas::button>Normal</x-maristas::button>
