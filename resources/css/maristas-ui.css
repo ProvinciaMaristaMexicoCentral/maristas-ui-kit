@@ -768,7 +768,14 @@ body.mr-palette-open { overflow: hidden; }
 /* Botón fantasma para fondos oscuros (banner, hero): transparente, borde tenue; al hover se aclara. */
 .mr-scope .btn-outline-light { background: transparent; border-color: rgb(255 255 255 / .55); color: #fff; }
 .mr-scope .btn-outline-light:hover, .mr-scope .btn-outline-light:focus, .mr-scope .btn-outline-light:active { background: rgb(255 255 255 / .16); border-color: #fff; color: #fff; }
-@media (max-width: 575.98px) { .mr-banner { padding: 1rem; } .mr-banner-actions .btn { flex: 1 1 100%; } }
+@media (max-width: 575.98px) {
+    .mr-banner { padding: 1rem; gap: .85rem; }
+    .mr-banner-icon { display: none; }
+    .mr-banner-title { font-size: 1.2rem; }
+    .mr-banner-lead { font-size: .85rem; }
+    .mr-banner-actions { width: 100%; gap: .5rem; }
+    .mr-banner-actions .btn { flex: 1 1 7.5rem; justify-content: center; padding: .45rem .6rem; font-size: .85rem; white-space: nowrap; }
+}
 /* Botón para volver arriba */
 .mr-backtop { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 1030; width: 2.75rem; height: 2.75rem; display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--maristas-brand); color: #fff; font-size: 1.5rem; box-shadow: 0 8px 22px rgba(11, 58, 111, .35); opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity .15s, transform .15s, visibility .15s; }
 .mr-backtop.is-visible { opacity: 1; visibility: visible; transform: none; }
