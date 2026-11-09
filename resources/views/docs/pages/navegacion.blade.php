@@ -41,7 +41,7 @@
     </x-slot:code>
 </x-maristas::example>
 
-<x-maristas::example title="Banner de encabezado" note="Para la cabecera de una pantalla con título, texto de apoyo y acciones. Los botones llevan variant light (principal) y outline-light (secundario).">
+<x-maristas::example title="Banner de encabezado" note="Para la cabecera de una pantalla con título, texto de apoyo y acciones. Los botones llevan variant light (principal, blanco) y outline-light (secundario, fantasma sobre fondo oscuro).">
     <div class="w-100">
         <x-maristas::banner title="Eventos" eyebrow="Gestión" icon="ri-calendar-event-line" description="Administra las convocatorias y actividades.">
             <x-maristas::button variant="outline-light" icon="ri-price-tag-3-line">Categorías</x-maristas::button>
