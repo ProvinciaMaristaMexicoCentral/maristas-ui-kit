@@ -65,6 +65,18 @@ class ComponentesTest extends TestCase
         $this->assertStringContainsString('ri-tent-line', $html);
     }
 
+    public function test_el_indicador_con_icono_y_nota_los_muestra_y_sin_ellos_no_cambia(): void
+    {
+        $con = Blade::render('<x-maristas::stat icon="ri-user-3-line" label="Alumno" value="9034" hint="Nota" />');
+        $sin = Blade::render('<x-maristas::stat label="Activos" value="248" />');
+
+        foreach (['mr-stat-with-icon', 'ri-user-3-line', 'mr-stat-hint', 'Nota', '9034'] as $esperado) {
+            $this->assertStringContainsString($esperado, $con);
+        }
+        $this->assertStringNotContainsString('mr-stat-with-icon', $sin);
+        $this->assertStringNotContainsString('mr-stat-body', $sin);
+    }
+
     public function test_la_pagina_de_documentacion_responde(): void
     {
         $this->get('/ui-kit')->assertOk()->assertSee('Maristas UI Kit');
