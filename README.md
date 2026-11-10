@@ -54,7 +54,7 @@ vendor/bin/testbench maristas-ui:exportar-docs _site --base=/maristas-ui-kit
 
 ## Estado
 
-Versión actual: `v1.1.5`.
+Versión actual: `v1.1.6`.
 
 **Incluido:** tokens, formularios (secciones, etiquetas, campos obligatorios, acciones de pie, selección múltiple con buscador), botones, tablas de datos con filtros y paginación, tarjetas, alertas, avisos emergentes, navegación, barra principal con menús de usuario, institución y notificaciones, barra de título con migas, pie, pantallas de acceso, pasos, modales y avatares. Además: documentación navegable con búsqueda, el comando `maristas-ui:lint` que revisa vistas contra las reglas del kit y la guía en Markdown para asistentes de IA (`maristas-ui:ia`).
 
