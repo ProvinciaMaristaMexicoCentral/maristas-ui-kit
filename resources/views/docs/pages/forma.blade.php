@@ -1,6 +1,6 @@
 <h6 class="mb-2">Radios y sombra</h6>
 <div class="d-flex flex-wrap gap-3 mb-4">
-    @foreach ([['sm', '8px', 'Chips, filtros'], ['md', '10px', 'Botones, campos'], ['lg', '16px', 'Tarjetas, modales']] as [$n, $px, $uso])
+    @foreach ([['xs', '6px', 'Código, atajos'], ['sm', '8px', 'Chips, filtros, ítems de menú'], ['md', '10px', 'Botones, campos, menús, avisos'], ['lg', '16px', 'Tarjetas, modales']] as [$n, $px, $uso])
         <div class="text-center">
             <div style="width: 96px; height: 64px; background: var(--maristas-brand-soft); border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-{{ $n }});"></div>
             <code class="small d-block mt-1">--maristas-radius-{{ $n }}</code>
@@ -12,6 +12,13 @@
         <code class="small d-block mt-1">--maristas-shadow-card</code>
         <span class="text-muted small">Tarjetas</span>
     </div>
+    @foreach ([['sm', 'Sobre imágenes'], ['float', 'Menús, avisos'], ['modal', 'Modales']] as [$n, $uso])
+        <div class="text-center">
+            <div style="padding: 12px; background: var(--maristas-canvas); border-radius: var(--maristas-radius-lg);"><div style="width: 72px; height: 40px; background: var(--maristas-surface); border-radius: var(--maristas-radius-md); box-shadow: var(--maristas-shadow-{{ $n }});"></div></div>
+            <code class="small d-block mt-1">--maristas-shadow-{{ $n }}</code>
+            <span class="text-muted small">{{ $uso }}</span>
+        </div>
+    @endforeach
 </div>
 
 <h6 class="mb-2">Escala de espaciado</h6>

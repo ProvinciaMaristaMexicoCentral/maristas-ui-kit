@@ -4,8 +4,10 @@
     <div class="mr-type-row"><code>.mr-h2 · 1.25rem · 700</code><span class="mr-h2">Actividades programadas</span></div>
     <div class="mr-type-row"><code>.mr-h3 · 1.1rem · 600</code><span class="mr-h3">NI 5º PRIMARIA</span></div>
     <div class="mr-type-row"><code>.mr-body · 1rem · 400</code><span class="mr-body">Texto de párrafo y valores de formulario.</span></div>
-    <div class="mr-type-row"><code>.mr-small · .85rem</code><span class="mr-small">Etiquetas, fechas y datos secundarios.</span></div>
-    <div class="mr-type-row"><code>.mr-caption · .75rem</code><span class="mr-caption">Leyendas, contadores y metadatos.</span></div>
+    <div class="mr-type-row"><code>--maristas-text-base · .875rem</code><span style="font-size: var(--maristas-text-base);">Botones, campos, tablas y menús.</span></div>
+    <div class="mr-type-row"><code>.mr-small · .8125rem</code><span class="mr-small">Etiquetas y datos secundarios.</span></div>
+    <div class="mr-type-row"><code>.mr-caption · .75rem</code><span class="mr-caption">Fechas, contadores y leyendas.</span></div>
+    <div class="mr-type-row"><code>--maristas-text-2xs · .7rem</code><span style="font-size: var(--maristas-text-2xs); font-weight: 700; letter-spacing: .06em; text-transform: uppercase;">Encabezados de grupo</span></div>
 </div>
 
 <h6 class="mb-2">Pesos</h6>
