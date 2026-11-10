@@ -194,6 +194,8 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-hover); 
 }
 .mr-scope .btn-sm { min-height: var(--maristas-control-h-sm); padding: .35rem .8rem; font-size: var(--maristas-control-text-sm); }
 .mr-scope .btn-lg { min-height: var(--maristas-control-h-lg); padding: .65rem 1.5rem; font-size: var(--maristas-control-text-lg); border-radius: var(--maristas-radius-md); }
+/* Un botón sin relleno (p-0) o de tipo enlace es texto: no fuerza altura mínima, para que quepa dentro de una pastilla o una línea de texto */
+.mr-scope .btn.p-0, .mr-scope .btn-link { min-height: 0; }
 /* Botón punteado: la acción de editar de un bloque («Editar contacto»). Es un botón, no un chip. */
 .mr-scope .btn.mr-btn-dashed { background: transparent; border: 1px dashed var(--maristas-line-strong); color: var(--maristas-accent); }
 .mr-scope .btn.mr-btn-dashed:hover:not(:disabled) { background: var(--maristas-hover); border-color: var(--maristas-accent); color: var(--maristas-accent); }
