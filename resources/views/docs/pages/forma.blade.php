@@ -25,6 +25,17 @@
     @endforeach
 </div>
 
+<h6 class="mb-2">Tamaño de los controles</h6>
+<p class="text-muted small mb-2">Botón, campo y selector del mismo tamaño miden lo mismo y usan la misma letra, para que queden alineados en una barra o formulario.</p>
+<div class="table-responsive mb-4"><table class="table table-sm mb-0">
+    <thead><tr><th>Tamaño</th><th>Alto</th><th>Letra</th><th>Clases</th></tr></thead>
+    <tbody>
+        <tr><td><code>sm</code></td><td>32px</td><td>13px</td><td><code>btn-sm</code>, <code>form-control-sm</code>, <code>form-select-sm</code></td></tr>
+        <tr><td>normal</td><td>40px</td><td>14px</td><td><code>btn</code>, <code>form-control</code>, <code>form-select</code></td></tr>
+        <tr><td><code>lg</code></td><td>48px</td><td>16px</td><td><code>btn-lg</code>, <code>form-control-lg</code>, <code>form-select-lg</code></td></tr>
+    </tbody>
+</table></div>
+
 <h6 class="mb-2">Margen de página</h6>
 <p class="text-muted small mb-2">El margen lateral de la página es el token <code>--maristas-gutter</code> (<code>clamp(2rem, 7vw, 9rem)</code>): crece con la ventana. El contenido (<code>.mr-page</code>), la barra principal (<code>.mr-topbar-full</code>, sin esquinas redondeadas) y el pie (<code>.mr-footer-full</code>) lo comparten para quedar alineados. Si un sistema necesita otro valor, lo redefine en su <code>:root</code>; no lo reemplaza con un <code>.container</code> de Bootstrap.</p>
 <pre class="mb-4"><code>&lt;x-maristas::topbar class="mr-topbar-full"&gt;…&lt;/x-maristas::topbar&gt;

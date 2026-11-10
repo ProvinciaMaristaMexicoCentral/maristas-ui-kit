@@ -47,6 +47,16 @@
     --maristas-icon-gap: .5rem;
     --maristas-icon-gap-sm: .35rem;
 
+    /* Controles: botón, campo y selector del mismo tamaño miden lo mismo y usan la misma letra */
+    --maristas-control-h-sm: 2rem;  --maristas-control-h: 2.5rem;  --maristas-control-h-lg: 3rem;
+    --maristas-control-text-sm: .8125rem; --maristas-control-text: .875rem; --maristas-control-text-lg: 1rem;
+    --maristas-label-text: .8rem;
+
+    /* Estados de interacción: uno solo para todo el kit */
+    --maristas-hover: var(--maristas-soft);                       /* hover neutro; el azul claro es solo para lo activo o seleccionado */
+    --maristas-focus-ring: 0 0 0 3px rgba(47, 111, 237, .15);    /* campos; botones y enlaces usan contorno de 2px */
+    --maristas-disabled-opacity: .5;
+
     /* Margen lateral de la página (crece con la ventana; cada sistema puede redefinirlo en su :root) */
     --maristas-gutter: clamp(2rem, 7vw, 9rem);
 }
@@ -70,13 +80,13 @@ body:has(.mr-scope) { background: var(--maristas-canvas); }
         .mr-relation { color: var(--maristas-muted); margin-bottom: .65rem; }
         .mr-chips { display: flex; flex-wrap: wrap; gap: .5rem; }
         .mr-chip { display: inline-flex; align-items: center; gap: var(--maristas-icon-gap-sm); padding: .3rem .7rem; border-radius: 999px; background: var(--maristas-soft); color: var(--maristas-ink); font-size: .85rem; text-decoration: none; transition: background .15s; }
-        a.mr-chip:hover { background: var(--maristas-brand-soft); color: var(--maristas-brand); }
+        a.mr-chip:hover { background: var(--maristas-line); color: var(--maristas-ink); }
         .mr-chip i { color: var(--maristas-muted); }
 .mr-block-head { display: flex; align-items: center; gap: .65rem; margin-bottom: .2rem; }
 .mr-block-head .mr-eyebrow { margin: 0; }
 /* Obsoleto: la acción de editar es un botón (mr-btn-dashed). Se conserva en la serie 1.x y se retira en la 2.0. */
 .mr-chip-action { border: 1px dashed #b8c0d0; background: transparent; color: var(--maristas-accent); cursor: pointer; font-weight: 600; }
-button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-soft); color: var(--maristas-brand); }
+button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-hover); }
 .mr-chip-action i { color: inherit; }
 .mr-chip-action:disabled { color: var(--maristas-muted); cursor: not-allowed; border-color: var(--maristas-line); }
 .mr-pill { display: inline-block; padding: .15rem .6rem; border-radius: 999px; background: var(--maristas-brand-soft); color: var(--maristas-brand); font-size: .78rem; font-weight: 600; text-transform: capitalize; }
@@ -147,7 +157,7 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-so
         /* Propiedades (pestaña Detalles) */
         .mr-prop { margin-bottom: .9rem; }
         .mr-prop:last-child { margin-bottom: 0; }
-        .mr-prop-label { font-size: .75rem; color: var(--maristas-muted); margin-bottom: .15rem; }
+        .mr-prop-label { font-size: var(--maristas-label-text); font-weight: 500; color: var(--maristas-muted); margin-bottom: .15rem; }
         .min-w-0 { min-width: 0; }
         .mr-scope .card-title { font-weight: 700; font-size: 1rem; }
 
@@ -168,15 +178,15 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-so
 .mr-scope .btn,
 .mr-scope .mr-btn-ghost {
     display: inline-flex; align-items: center; justify-content: center; gap: var(--maristas-icon-gap);
-    border-radius: var(--maristas-radius-md); font-weight: 600; font-size: .875rem; line-height: 1.25;
-    padding: .5rem 1rem; transition: background-color .15s, border-color .15s, color .15s;
+    border-radius: var(--maristas-radius-md); font-weight: 600; font-size: var(--maristas-control-text); line-height: 1.25;
+    min-height: var(--maristas-control-h); padding: .5rem 1rem; transition: background-color .15s, border-color .15s, color .15s;
 }
-.mr-scope .btn-sm { padding: .4rem .8rem; font-size: .8125rem; }
-.mr-scope .btn-lg { padding: .75rem 1.5rem; font-size: 1rem; border-radius: var(--maristas-radius-md); }
+.mr-scope .btn-sm { min-height: var(--maristas-control-h-sm); padding: .35rem .8rem; font-size: var(--maristas-control-text-sm); }
+.mr-scope .btn-lg { min-height: var(--maristas-control-h-lg); padding: .65rem 1.5rem; font-size: var(--maristas-control-text-lg); border-radius: var(--maristas-radius-md); }
 /* Botón punteado: la acción de editar de un bloque («Editar contacto»). Es un botón, no un chip. */
 .mr-scope .btn.mr-btn-dashed { background: transparent; border: 1px dashed #b8c0d0; color: var(--maristas-accent); }
-.mr-scope .btn.mr-btn-dashed:hover:not(:disabled) { background: var(--maristas-brand-soft); border-color: var(--maristas-accent); color: var(--maristas-brand); }
-.mr-scope .btn.mr-btn-dashed:disabled { background: transparent; border-color: var(--maristas-line); color: var(--maristas-muted); opacity: 1; cursor: not-allowed; }
+.mr-scope .btn.mr-btn-dashed:hover:not(:disabled) { background: var(--maristas-hover); border-color: var(--maristas-accent); color: var(--maristas-accent); }
+
 .mr-scope .btn:focus-visible, .mr-scope .mr-btn-ghost:focus-visible { outline: 2px solid var(--maristas-accent); outline-offset: 2px; box-shadow: none; }
 .mr-scope .btn-primary { background: var(--maristas-brand); border-color: var(--maristas-brand); color: #fff; }
 .mr-scope .btn-primary:hover, .mr-scope .btn-primary:focus, .mr-scope .btn-primary:active { background: var(--maristas-brand-strong); border-color: var(--maristas-brand-strong); color: #fff; }
@@ -188,24 +198,24 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-so
 }
 .mr-scope .btn-danger { background: var(--maristas-danger); border-color: var(--maristas-danger); color: #fff; }
 .mr-scope .btn-success { background: var(--maristas-success); border-color: var(--maristas-success); color: #fff; }
-/* Deshabilitado: tono azul claro de la marca, nunca gris */
-.mr-scope .btn:disabled, .mr-scope .btn.disabled { opacity: .45; cursor: not-allowed; pointer-events: none; }
-.mr-scope .btn-primary:disabled { background: var(--maristas-brand-soft); border-color: var(--maristas-brand-soft); color: var(--maristas-brand); opacity: .75; }
+/* Deshabilitado: el mismo control con --maristas-disabled-opacity. El principal además cambia al azul claro de la marca, nunca a gris. */
+.mr-scope .btn:disabled, .mr-scope .btn.disabled { opacity: var(--maristas-disabled-opacity); cursor: not-allowed; pointer-events: none; }
+.mr-scope .btn-primary:disabled, .mr-scope .btn-primary.disabled { background: var(--maristas-brand-soft); border-color: var(--maristas-brand-soft); color: var(--maristas-brand); }
 
 /* ---------- Formularios ---------- */
 .mr-scope .form-control, .mr-scope .form-select {
-    border-radius: var(--maristas-radius-md); border-color: var(--maristas-line); font-size: .9rem; padding: .55rem .8rem;
+    border-radius: var(--maristas-radius-md); border-color: var(--maristas-line); font-size: var(--maristas-control-text); padding: .5rem .8rem; min-height: var(--maristas-control-h);
 }
 .mr-scope .form-select { padding-right: 2.25rem; }
 /* Tamaños: sm, normal (por defecto) y lg. Van después de la regla base para ganar por orden. */
-.mr-scope .form-control-sm, .mr-scope .form-select-sm { padding: .35rem .65rem; font-size: .8125rem; border-radius: var(--maristas-radius-sm); min-height: 0; }
+.mr-scope .form-control-sm, .mr-scope .form-select-sm { padding: .3rem .65rem; font-size: var(--maristas-control-text-sm); border-radius: var(--maristas-radius-sm); min-height: var(--maristas-control-h-sm); }
 .mr-scope .form-select-sm { padding-right: 2rem; }
-.mr-scope .form-control-lg, .mr-scope .form-select-lg { padding: .75rem 1rem; font-size: 1rem; border-radius: var(--maristas-radius-md); }
+.mr-scope .form-control-lg, .mr-scope .form-select-lg { padding: .65rem 1rem; font-size: var(--maristas-control-text-lg); min-height: var(--maristas-control-h-lg); border-radius: var(--maristas-radius-md); }
 .mr-scope .form-select-lg { padding-right: 2.5rem; }
-.mr-scope .input-group-sm > .form-control, .mr-scope .input-group-sm > .input-group-text, .mr-scope .input-group-sm > .btn { padding: .35rem .65rem; font-size: .8125rem; }
-.mr-scope .input-group-lg > .form-control, .mr-scope .input-group-lg > .input-group-text, .mr-scope .input-group-lg > .btn { padding: .75rem 1rem; font-size: 1rem; }
-.mr-scope .form-control:focus, .mr-scope .form-select:focus { border-color: var(--maristas-accent); box-shadow: 0 0 0 3px rgba(47, 111, 237, .15); }
-.mr-scope .form-label { font-size: .8rem; color: var(--maristas-muted); font-weight: 500; }
+.mr-scope .input-group-sm > .form-control, .mr-scope .input-group-sm > .input-group-text, .mr-scope .input-group-sm > .btn { padding: .3rem .65rem; font-size: var(--maristas-control-text-sm); min-height: var(--maristas-control-h-sm); }
+.mr-scope .input-group-lg > .form-control, .mr-scope .input-group-lg > .input-group-text, .mr-scope .input-group-lg > .btn { padding: .65rem 1rem; font-size: var(--maristas-control-text-lg); min-height: var(--maristas-control-h-lg); }
+.mr-scope .form-control:focus, .mr-scope .form-select:focus { border-color: var(--maristas-accent); box-shadow: var(--maristas-focus-ring); }
+.mr-scope .form-label { font-size: var(--maristas-label-text); color: var(--maristas-muted); font-weight: 500; }
 
 /* ---------- Badges, alertas y modales ---------- */
 .mr-scope .badge { font-weight: 600; }
@@ -222,7 +232,9 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-so
 /* ---------- Dato en línea con ícono e icono-botón ---------- */
 .mr-fact-inline { display: inline-flex; align-items: center; gap: .6rem; padding: .6rem .9rem; border-radius: var(--maristas-radius-md); background: var(--maristas-soft); }
 .mr-fact-inline i { font-size: 1.15rem; color: var(--maristas-brand); }
-.mr-scope .btn.mr-btn-icon { width: 2rem; height: 2rem; padding: 0; flex: none; }
+.mr-scope .btn.mr-btn-icon { width: var(--maristas-control-h); height: var(--maristas-control-h); min-height: 0; padding: 0; flex: none; }
+.mr-scope .btn-sm.mr-btn-icon { width: var(--maristas-control-h-sm); height: var(--maristas-control-h-sm); }
+.mr-scope .btn-lg.mr-btn-icon { width: var(--maristas-control-h-lg); height: var(--maristas-control-h-lg); }
 
 
 /* ---------- Estados reutilizables ---------- */
@@ -269,9 +281,9 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-so
 .mr-scope .nav-pills .nav-link:hover { background: var(--maristas-soft); color: var(--maristas-ink); }
 .mr-scope .nav-pills .nav-link.active { background: var(--maristas-brand); color: #fff; }
 .mr-scope .page-link { border: 0; border-radius: var(--maristas-radius-sm); color: var(--maristas-ink); margin: 0 2px; font-size: .85rem; min-width: 36px; text-align: center; }
-.mr-scope .page-link:hover { background: var(--maristas-brand-soft); color: var(--maristas-brand); }
+.mr-scope .page-link:hover { background: var(--maristas-hover); color: var(--maristas-ink); }
 .mr-scope .page-item.active .page-link { background: var(--maristas-brand); color: #fff; }
-.mr-scope .page-item.disabled .page-link { background: transparent; color: var(--maristas-muted); opacity: .5; }
+.mr-scope .page-item.disabled .page-link { background: transparent; color: var(--maristas-muted); opacity: var(--maristas-disabled-opacity); }
 .mr-scope .dropdown-menu { border: 1px solid var(--maristas-line); border-radius: 12px; box-shadow: 0 12px 32px rgba(23, 32, 51, .12); padding: .35rem; }
 .mr-scope .dropdown-item { color: var(--maristas-ink); border-radius: var(--maristas-radius-sm); font-size: .875rem; padding: .45rem .75rem; display: flex; align-items: center; gap: var(--maristas-icon-gap); }
 .mr-scope .dropdown-item > i { font-size: 1rem; flex: none; }
@@ -303,7 +315,7 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-so
 @media (prefers-reduced-motion: reduce) { .mr-skeleton { animation: none; } }
 
 /* ---------- Formularios: grupos, validación y controles ---------- */
-.mr-scope .input-group-text { background: var(--maristas-soft); border-color: var(--maristas-line); color: var(--maristas-muted); font-size: .9rem; }
+.mr-scope .input-group-text { background: var(--maristas-soft); border-color: var(--maristas-line); color: var(--maristas-muted); font-size: var(--maristas-control-text); }
 .mr-scope .input-group > .form-control:not(:first-child), .mr-scope .input-group > .btn:not(:first-child) { border-top-left-radius: 0; border-bottom-left-radius: 0; }
 .mr-scope .input-group > .form-control:not(:last-child), .mr-scope .input-group-text:not(:last-child) { border-top-right-radius: 0; border-bottom-right-radius: 0; }
 .mr-scope .form-control.is-invalid, .mr-scope .form-select.is-invalid { border-color: var(--maristas-danger); background-image: none; }
@@ -326,7 +338,7 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-so
 .mr-form-actions { display: flex; justify-content: space-between; align-items: center; gap: .75rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--maristas-line); }
 /* Datos clave-valor para revisar antes de confirmar */
 .mr-kv { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .9rem 1.5rem; margin: 0; }
-.mr-kv dt { margin: 0 0 .1rem; font-size: .75rem; font-weight: 500; color: var(--maristas-muted); }
+.mr-kv dt { margin: 0 0 .1rem; font-size: var(--maristas-label-text); font-weight: 500; color: var(--maristas-muted); }
 .mr-kv dd { margin: 0; font-weight: 600; word-break: break-word; }
 .mr-kv .is-wide { grid-column: 1 / -1; }
 /* Etiqueta con una acción a la derecha (por ejemplo un interruptor), sin desalinear los campos vecinos */
@@ -337,6 +349,7 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-so
 .mr-scope .form-text { color: var(--maristas-muted); font-size: .8rem; }
 .mr-scope .form-control:disabled, .mr-scope .form-select:disabled { background: var(--maristas-soft); color: var(--maristas-muted); }
 .mr-scope .form-check-input { border-color: #b8c0d0; }
+.mr-scope .form-check-label { font-size: var(--maristas-control-text); }
 .mr-scope .form-check.form-check-sm, .mr-scope .form-check.form-check-lg { display: flex; align-items: center; gap: .6rem; padding-left: 0; }
 .mr-scope .form-check.form-check-sm .form-check-input, .mr-scope .form-check.form-check-lg .form-check-input { margin: 0; float: none; flex: none; }
 .mr-scope .form-check.form-check-sm .form-check-label, .mr-scope .form-check.form-check-lg .form-check-label { margin: 0; }
@@ -345,7 +358,7 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-so
 .mr-scope .form-check.form-check-sm .form-check-label { font-size: .8rem; }
 .mr-scope .form-check.form-check-lg .form-check-label { font-size: 1rem; }
 .mr-scope .form-check-input:checked { background-color: var(--maristas-brand); border-color: var(--maristas-brand); }
-.mr-scope .form-check-input:focus { box-shadow: 0 0 0 3px rgba(47, 111, 237, .15); border-color: var(--maristas-accent); }
+.mr-scope .form-check-input:focus { box-shadow: var(--maristas-focus-ring); border-color: var(--maristas-accent); }
 .mr-scope .form-range::-webkit-slider-thumb { background: var(--maristas-brand); }
 
 
@@ -357,10 +370,10 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-so
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e"); background-size: contain; background-position: left center; background-repeat: no-repeat;
     transition: background-color .15s, background-position .15s;
 }
-.mr-scope .form-switch .form-check-input:focus { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e"); border-color: var(--maristas-accent); box-shadow: 0 0 0 3px rgba(47, 111, 237, .2); }
+.mr-scope .form-switch .form-check-input:focus { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e"); border-color: var(--maristas-accent); box-shadow: var(--maristas-focus-ring); }
 .mr-scope .form-switch .form-check-input:checked { background-color: var(--maristas-brand); border-color: var(--maristas-brand); background-position: right center; background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e"); }
-.mr-scope .form-switch .form-check-input:disabled { opacity: .5; cursor: not-allowed; }
-.mr-scope .form-switch .form-check-label { cursor: pointer; font-size: .9rem; margin: 0; }
+.mr-scope .form-switch .form-check-input:disabled { opacity: var(--maristas-disabled-opacity); cursor: not-allowed; }
+.mr-scope .form-switch .form-check-label { cursor: pointer; font-size: var(--maristas-control-text); margin: 0; }
 .mr-scope .form-switch.form-switch-sm { --mr-sw-w: 2.1rem; --mr-sw-h: 1.15rem; }
 .mr-scope .form-switch.form-switch-sm .form-check-label { font-size: .8rem; }
 .mr-scope .form-switch.form-switch-lg { --mr-sw-w: 3.5rem; --mr-sw-h: 1.9rem; }
@@ -415,12 +428,12 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-so
 .mr-icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); gap: .5rem; }
 .mr-icon-tile { display: flex; flex-direction: column; align-items: center; gap: .35rem; padding: .85rem .5rem; border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); background: var(--maristas-surface); color: var(--maristas-ink); font-size: var(--maristas-text-xs); cursor: pointer; text-align: center; }
 .mr-icon-tile i { font-size: 1.4rem; color: var(--maristas-brand); }
-.mr-icon-tile:hover { background: var(--maristas-brand-soft); }
+.mr-icon-tile:hover { background: var(--maristas-hover); }
 
 /* ---------- Documentación del kit (/ui-kit) ---------- */
 .mr-doc-nav { position: sticky; top: 1.5rem; max-height: calc(100vh - 3rem); overflow-y: auto; display: flex; flex-direction: column; gap: .15rem; padding-right: .25rem; scrollbar-width: thin; }
 .mr-doc-nav a { padding: .35rem .75rem; border-radius: var(--maristas-radius-sm); color: var(--maristas-muted); text-decoration: none; font-size: var(--maristas-text-sm); }
-.mr-doc-nav a:hover { background: var(--maristas-brand-soft); color: var(--maristas-brand); }
+.mr-doc-nav a:hover { background: var(--maristas-hover); color: var(--maristas-ink); }
 .mr-doc-nav a.is-active { background: var(--maristas-brand-soft); color: var(--maristas-brand); font-weight: 600; }
 .mr-doc-section { scroll-margin-top: 1.5rem; }
 /* En el kit el salto a una sección es directo: la animación de Bootstrap recorre miles de píxeles y desorienta */
@@ -563,7 +576,7 @@ button.mr-notif.is-new { background: var(--maristas-brand-soft); }
 .mr-docnav-group { display: flex; flex-direction: column; gap: .1rem; }
 .mr-docnav-group .mr-caption { padding: 0 .75rem; margin-bottom: .2rem; text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; font-weight: 700; color: var(--maristas-muted); }
 .mr-docnav a { padding: .38rem .75rem; border-radius: var(--maristas-radius-sm); color: var(--maristas-ink); text-decoration: none; font-size: .86rem; }
-.mr-docnav a:hover { background: var(--maristas-brand-soft); color: var(--maristas-brand); }
+.mr-docnav a:hover { background: var(--maristas-hover); color: var(--maristas-ink); }
 .mr-docnav a.is-active { background: var(--maristas-brand-soft); color: var(--maristas-brand); font-weight: 600; }
 .mr-docnav [hidden] { display: none !important; }
 
@@ -635,7 +648,6 @@ button.mr-notif.is-new { background: var(--maristas-brand-soft); }
 .mr-dt-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; margin-top: .75rem; }
 .mr-dt-toolbar-end { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-left: auto; }
 .mr-dt-panel { margin-bottom: .75rem; padding: 1rem; background: var(--maristas-soft); border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); }
-.mr-dt-panel .form-label { font-size: .78rem; font-weight: 600; color: var(--maristas-muted); margin-bottom: .25rem; }
 .mr-dt-footer .pagination { margin: 0; }
 .mr-dt-footer nav { display: flex; }
 .mr-dt th[data-mr-sort] { cursor: pointer; user-select: none; white-space: nowrap; }
@@ -649,9 +661,9 @@ button.mr-notif.is-new { background: var(--maristas-brand-soft); }
 .mr-action-bar { position: sticky; bottom: 0; z-index: 1020; display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 1rem; padding: .85rem 1.25rem; background: var(--maristas-surface); border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); box-shadow: 0 -4px 18px rgba(23, 32, 51, .1); }
 
 /* Etiquetas, carga de archivos y pasos */
-.mr-tags { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; min-height: 2.5rem; padding: .3rem .5rem; border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); background: var(--maristas-surface); cursor: text; }
-.mr-tags:focus-within { border-color: var(--maristas-accent); box-shadow: 0 0 0 3px rgba(47,111,237,.15); }
-.mr-tags input[type="text"] { flex: 1; min-width: 6rem; border: 0; outline: none; background: transparent; font-size: .9rem; padding: .15rem; }
+.mr-tags { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; min-height: var(--maristas-control-h); padding: .3rem .5rem; border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); background: var(--maristas-surface); cursor: text; }
+.mr-tags:focus-within { border-color: var(--maristas-accent); box-shadow: var(--maristas-focus-ring); }
+.mr-tags input[type="text"] { flex: 1; min-width: 6rem; border: 0; outline: none; background: transparent; font-size: var(--maristas-control-text); padding: .15rem; }
 .mr-tag { display: inline-flex; align-items: center; gap: var(--maristas-icon-gap-sm); padding: .15rem .3rem .15rem .65rem; border-radius: 999px; background: var(--maristas-brand-soft); color: var(--maristas-brand); font-size: .8rem; font-weight: 600; }
 .mr-tag button { border: 0; background: transparent; color: inherit; line-height: 1; font-size: 1rem; width: 1.2rem; height: 1.2rem; border-radius: 50%; padding: 0; }
 .mr-tag button:hover { background: rgba(11,58,111,.15); }
@@ -674,7 +686,7 @@ button.mr-notif.is-new { background: var(--maristas-brand-soft); }
 /* Paso en el que se puede hacer clic (volver a un paso completado) */
 .mr-stepper-link { display: flex; align-items: center; gap: .6rem; padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; }
 .mr-stepper-link:disabled { cursor: default; }
-.mr-stepper-link:focus-visible { outline: 2px solid var(--maristas-accent); outline-offset: 3px; border-radius: 999px; }
+.mr-stepper-link:focus-visible { outline: 2px solid var(--maristas-accent); outline-offset: 2px; border-radius: 999px; }
 .mr-stepper-item.is-done .mr-stepper-dot { background: var(--maristas-brand); border-color: var(--maristas-brand); color: #fff; }
 .mr-stepper-item.is-done::after { background: var(--maristas-brand) !important; }
 .mr-stepper-item.is-done { color: var(--maristas-ink); }
@@ -749,7 +761,7 @@ body.mr-palette-open { overflow: hidden; }
 .mr-password .form-control { padding-right: 2.9rem; }
 .mr-password-toggle { position: absolute; right: .4rem; top: 50%; transform: translateY(-50%); width: 2rem; height: 2rem; display: grid; place-items: center; border: 0; border-radius: 8px; background: transparent; color: var(--maristas-muted); }
 .mr-password-toggle:hover { background: var(--maristas-soft); color: var(--maristas-ink); }
-.mr-password-toggle:focus-visible { outline: 2px solid var(--maristas-accent); outline-offset: 1px; }
+.mr-password-toggle:focus-visible { outline: 2px solid var(--maristas-accent); outline-offset: 2px; }
 .mr-auth-badge { width: 3rem; height: 3rem; display: grid; place-items: center; margin-bottom: 1rem; border-radius: 14px; background: var(--maristas-brand-soft); color: var(--maristas-brand); font-size: 1.5rem; }
 
 /* Barra de título con migas de pan */
@@ -800,7 +812,7 @@ body.mr-palette-open { overflow: hidden; }
 .mr-backtop { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 1030; width: 2.75rem; height: 2.75rem; display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--maristas-brand); color: #fff; font-size: 1.5rem; box-shadow: 0 8px 22px rgba(11, 58, 111, .35); opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity .15s, transform .15s, visibility .15s; }
 .mr-backtop.is-visible { opacity: 1; visibility: visible; transform: none; }
 .mr-backtop:hover { background: #0a2f5a; }
-.mr-backtop:focus-visible { outline: 2px solid var(--maristas-accent); outline-offset: 3px; }
+.mr-backtop:focus-visible { outline: 2px solid var(--maristas-accent); outline-offset: 2px; }
 /* Margen lateral de página: contenido, barra principal y pie comparten --maristas-gutter para alinearse */
 .mr-page { padding-left: var(--maristas-gutter); padding-right: var(--maristas-gutter); }
 .mr-topbar-full, .mr-topbar-full .mr-topbar-nav { border-radius: 0; }
