@@ -372,7 +372,7 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-brand-so
 .mr-stat-delta { font-size: var(--maristas-text-xs); font-weight: 600; }
 .mr-stat-delta.is-up { color: var(--maristas-success); }
 .mr-stat-delta.is-down { color: var(--maristas-danger); }
-.mr-stat-with-icon { display: flex; align-items: center; gap: .9rem; }
+.mr-stat-with-icon { display: flex; flex-direction: row; align-items: center; gap: .9rem; }
 .mr-stat-body { min-width: 0; }
 .mr-stat-hint { font-size: var(--maristas-text-xs); color: var(--maristas-muted); }
 /* Distribución: barra segmentada y leyenda con punto de color */
