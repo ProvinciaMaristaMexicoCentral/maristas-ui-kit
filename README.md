@@ -2,11 +2,11 @@
 
 Sistema de diseño de los sistemas Maristas: tokens (`--maristas-*`), estilos sobre Bootstrap 5 (`.mr-*`) y componentes Blade (`<x-maristas::…>`).
 
-**Documentación en línea:** https://friendly-couscous-rk6w8p6.pages.github.io/ (sitio privado: se abre con tu cuenta de GitHub si tienes acceso a este repositorio; se publica solo en cada cambio a `main` que afecta a la documentación).
+**Documentación en línea:** https://provinciamaristamexicocentral.github.io/maristas-ui-kit/ (sitio público; se publica solo en cada cambio a `main` que afecta a la documentación).
 
 ## Instalación (Laravel 9 a 13)
 
-El paquete es privado y no está en Packagist: Composer necesita saber dónde vive y tener acceso de lectura al repositorio.
+El repositorio es público, pero el paquete no está en Packagist: Composer necesita saber dónde vive.
 
 ```bash
 # 1. Una sola vez por proyecto: registrar el repositorio (se escribe en composer.json)
@@ -19,7 +19,7 @@ composer require maristas/ui-kit
 php artisan vendor:publish --tag=maristas-ui-assets --force
 ```
 
-**Acceso al repositorio privado.** Hace falta una cuenta de GitHub con permiso de lectura sobre `ProvinciaMaristaMexicoCentral/maristas-ui-kit`. Si Composer pide credenciales, crea un token con permiso `repo` (solo lectura) y regístralo una vez por equipo: `composer config --global github-oauth.github.com <token>`. En servidores y CI, usa la variable de entorno `COMPOSER_AUTH`. Nunca guardes el token en `composer.json` ni en `auth.json` versionado.
+**Acceso.** Al ser público, no hace falta cuenta ni token de GitHub para instalarlo. Solo si Composer llega al límite de peticiones anónimas de GitHub, registra un token sin permisos especiales: `composer config --global github-oauth.github.com <token>` (en servidores y CI, con la variable de entorno `COMPOSER_AUTH`). Nunca guardes el token en `composer.json` ni en `auth.json` versionado.
 
 **Proyecto que ya usa el kit** (por ejemplo el CRM): basta `composer install`, porque `composer.json` y `composer.lock` ya lo traen. Después, `php artisan vendor:publish --tag=maristas-ui-assets --force` y `npm run build`.
 
