@@ -230,7 +230,17 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-hover); 
 
 /* ---------- Badges, alertas y modales ---------- */
 .mr-scope .badge { font-weight: 600; }
-.mr-scope .alert { border: 0; border-radius: var(--maristas-radius-md); }
+.mr-scope .alert { border: 1px solid transparent; border-radius: var(--maristas-radius-md); color: var(--maristas-ink); font-size: var(--maristas-text-base); }
+/* Alertas con los colores de estado del kit (no los de Bootstrap): fondo suave, borde tenue, ícono en el tono y texto oscuro para leerse bien */
+.mr-scope .alert-info    { background: var(--maristas-info-soft);    border-color: color-mix(in srgb, var(--maristas-info) 25%, transparent); }
+.mr-scope .alert-success { background: var(--maristas-success-soft); border-color: color-mix(in srgb, var(--maristas-success) 25%, transparent); }
+.mr-scope .alert-warning { background: var(--maristas-warning-soft); border-color: color-mix(in srgb, var(--maristas-warning) 25%, transparent); }
+.mr-scope .alert-danger  { background: var(--maristas-danger-soft);  border-color: color-mix(in srgb, var(--maristas-danger) 25%, transparent); }
+.mr-scope .alert-info > i:first-child    { color: var(--maristas-info); }
+.mr-scope .alert-success > i:first-child { color: var(--maristas-success); }
+.mr-scope .alert-warning > i:first-child { color: var(--maristas-warning); }
+.mr-scope .alert-danger > i:first-child  { color: var(--maristas-danger); }
+.mr-scope .alert .alert-link { color: inherit; }
 .mr-scope .alert-dismissible { padding-right: 1rem; }
 .mr-scope .alert .btn-close { position: static; padding: .35rem; margin-left: auto; flex-shrink: 0; }
 .mr-scope .modal-content { border: 0; border-radius: var(--maristas-radius-lg); box-shadow: var(--maristas-shadow-modal); }
@@ -317,7 +327,12 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-hover); 
 .mr-scope .progress-bar.is-warning { background: var(--maristas-warning); }
 .mr-scope .progress-bar.is-danger { background: var(--maristas-danger); }
 .mr-scope .spinner-border { color: var(--maristas-brand); }
-.mr-scope .toast { border: 0; border-radius: var(--maristas-radius-md); box-shadow: var(--maristas-shadow-float); }
+.mr-scope .toast { background: var(--maristas-surface); border: 1px solid var(--maristas-line); border-left-width: 4px; border-radius: var(--maristas-radius-md); box-shadow: var(--maristas-shadow-float); color: var(--maristas-ink); font-size: var(--maristas-text-base); }
+/* Aviso temporal: fondo sólido (el de Bootstrap es semitransparente) y una franja del color del tono a la izquierda */
+.mr-scope .toast:has(.mr-toast-success) { border-left-color: var(--maristas-success); }
+.mr-scope .toast:has(.mr-toast-danger)  { border-left-color: var(--maristas-danger); }
+.mr-scope .toast:has(.mr-toast-warning) { border-left-color: var(--maristas-warning); }
+.mr-scope .toast:has(.mr-toast-info)    { border-left-color: var(--maristas-info); }
 .mr-scope .tooltip-inner { background: var(--maristas-ink); border-radius: var(--maristas-radius-sm); font-size: var(--maristas-text-xs); }
 .mr-scope .popover { border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); box-shadow: var(--maristas-shadow-float); }
 .mr-scope .offcanvas { border: 0; box-shadow: var(--maristas-shadow-modal); }
