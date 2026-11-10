@@ -4,8 +4,9 @@
 # composer.json o este archivo). Los cambios solo de README, LICENSE o tests no la disparan.
 # También se puede lanzar a mano desde la pestaña Actions.
 #
-# Antes de usarlo: Settings > Pages > Source = "GitHub Actions", y en Visibility = "Private"
-# para que solo la vea la organización.
+# Antes de usarlo: Settings > Pages > Source = "GitHub Actions". El repositorio es público, así que
+# el sitio también lo es y vive en https://<organización>.github.io/<repositorio>/ (el base se toma
+# de configure-pages).
 name: Documentación
 
 on:
