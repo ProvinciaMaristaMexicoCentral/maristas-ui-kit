@@ -48,6 +48,23 @@ class ComponentesTest extends TestCase
         $this->assertStringContainsString('mr-banner-actions', $html);
     }
 
+    public function test_la_tarjeta_con_portada_muestra_titulo_etiquetas_datos_y_acciones(): void
+    {
+        $html = Blade::render('<x-maristas::cover-card title="Encuentro" subtitle="Convivencia" image="/x.jpg"><x-slot:tags><span>Etiqueta</span></x-slot:tags><x-slot:meta><div>Sede</div></x-slot:meta><x-slot:actions><button>Ver</button></x-slot:actions></x-maristas::cover-card>');
+
+        foreach (['mr-cover-card', 'Encuentro', 'Convivencia', 'url(\'/x.jpg\')', 'mr-cover-tags', 'mr-cover-meta', 'mr-cover-actions'] as $esperado) {
+            $this->assertStringContainsString($esperado, $html);
+        }
+    }
+
+    public function test_la_tarjeta_con_portada_sin_imagen_muestra_un_icono(): void
+    {
+        $html = Blade::render('<x-maristas::cover-card title="Sin imagen" icon="ri-tent-line" />');
+
+        $this->assertStringContainsString('mr-cover-empty', $html);
+        $this->assertStringContainsString('ri-tent-line', $html);
+    }
+
     public function test_la_pagina_de_documentacion_responde(): void
     {
         $this->get('/ui-kit')->assertOk()->assertSee('Maristas UI Kit');

@@ -776,6 +776,21 @@ body.mr-palette-open { overflow: hidden; }
     .mr-banner-actions { width: 100%; gap: .5rem; }
     .mr-banner-actions .btn { flex: 1 1 7.5rem; justify-content: center; padding: .45rem .6rem; font-size: .85rem; white-space: nowrap; }
 }
+/* Tarjeta con portada */
+.mr-cover-card { overflow: hidden; transition: transform .2s ease, box-shadow .2s ease; }
+.mr-cover-card:hover { transform: translateY(-3px); }
+.mr-cover { position: relative; height: 180px; display: grid; place-items: center; background: var(--maristas-soft) center / cover no-repeat; }
+.mr-cover-empty { font-size: 2.5rem; color: var(--maristas-muted); }
+.mr-cover-tags { position: absolute; top: .9rem; left: .9rem; right: .9rem; display: flex; justify-content: space-between; align-items: flex-start; gap: .5rem; }
+.mr-cover-tags .mr-state { box-shadow: 0 1px 3px rgba(15, 23, 42, .15); }
+.mr-cover-body { display: flex; flex-direction: column; padding: 1.25rem; }
+.mr-cover-title { margin: 0 0 .25rem; font-size: 1.05rem; font-weight: 600; color: var(--maristas-ink); }
+.mr-cover-subtitle { margin-bottom: .75rem; font-size: .85rem; color: var(--maristas-muted); }
+.mr-cover-meta { display: flex; flex-direction: column; gap: .4rem; margin: .5rem 0 1rem; font-size: .85rem; color: var(--maristas-muted); }
+.mr-cover-meta > * { display: flex; align-items: flex-start; gap: .5rem; }
+.mr-cover-text { margin: 0 0 1rem; font-size: .85rem; line-height: 1.5; color: var(--maristas-muted); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.mr-cover-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: auto; padding-top: .5rem; }
+.mr-cover-actions > .btn:only-child { flex: 1 1 100%; }
 /* Botón para volver arriba */
 .mr-backtop { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 1030; width: 2.75rem; height: 2.75rem; display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--maristas-brand); color: #fff; font-size: 1.5rem; box-shadow: 0 8px 22px rgba(11, 58, 111, .35); opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity .15s, transform .15s, visibility .15s; }
 .mr-backtop.is-visible { opacity: 1; visibility: visible; transform: none; }
