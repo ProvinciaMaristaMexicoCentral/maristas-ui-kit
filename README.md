@@ -19,8 +19,6 @@ composer require maristas/ui-kit
 php artisan vendor:publish --tag=maristas-ui-assets --force
 ```
 
-**Acceso.** Al ser público, no hace falta cuenta ni token de GitHub para instalarlo. Solo si Composer llega al límite de peticiones anónimas de GitHub, registra un token sin permisos especiales: `composer config --global github-oauth.github.com <token>` (en servidores y CI, con la variable de entorno `COMPOSER_AUTH`). Nunca guardes el token en `composer.json` ni en `auth.json` versionado.
-
 **Proyecto que ya usa el kit** (por ejemplo el CRM): basta `composer install`, porque `composer.json` y `composer.lock` ya lo traen. Después, `php artisan vendor:publish --tag=maristas-ui-assets --force` y `npm run build`.
 
 **Actualizar** a una versión nueva: `composer update maristas/ui-kit` y volver a publicar los assets.
