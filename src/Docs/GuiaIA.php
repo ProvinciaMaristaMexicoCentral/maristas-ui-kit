@@ -187,6 +187,10 @@ MD;
         $familias = [];
 
         foreach (array_unique($m[1]) as $clase) {
+            if (isset(\Maristas\UiKit\Lint\Linter::OBSOLETAS[preg_replace('/^mr-event-.*/', 'mr-event', $clase)])) {
+                continue;
+            }
+
             $base = explode('-', $clase)[1] ?? $clase;
             $familias[$base][] = $clase;
         }
@@ -203,6 +207,13 @@ MD;
         foreach ($familias as $base => $clases) {
             sort($clases);
             $lineas[] = '- **'.$base.'**: '.implode(', ', array_map(fn ($c) => '`'.$c.'`', $clases));
+        }
+
+        $lineas[] = '';
+        $lineas[] = 'Obsoletas (funcionan en la serie 1.x, se retiran en la 2.0; no las uses en código nuevo):';
+
+        foreach (\Maristas\UiKit\Lint\Linter::OBSOLETAS as $clase => $reemplazo) {
+            $lineas[] = '- `'.$clase.'` → '.$reemplazo;
         }
 
         return implode("\n", $lineas);

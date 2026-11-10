@@ -17,6 +17,15 @@ class Linter
         'alert' => ['info', 'success', 'warning', 'danger'],
     ];
 
+    /** Clases que siguen funcionando en la serie 1.x pero se retiran en la 2.0, con su reemplazo. */
+    public const OBSOLETAS = [
+        'mr-avatar' => '<x-maristas::avatar size="lg">',
+        'mr-pill' => '<x-maristas::state>',
+        'mr-events' => 'la línea de tiempo `.mr-tl`',
+        'mr-event' => 'la línea de tiempo `.mr-tl`',
+        'mr-chip-action' => 'un botón `btn mr-btn-dashed`',
+    ];
+
     /** Atributos HTML/framework que cualquier componente acepta. */
     protected const ATRIBUTOS_LIBRES = ['class', 'id', 'style', 'title', 'role', 'name', 'value', 'type', 'href', 'target', 'rel', 'disabled', 'hidden', 'for'];
 
@@ -58,6 +67,7 @@ class Linter
         $this->coloresDeBootstrap($texto, $hallazgos);
         $this->botonesPrincipales($texto, $hallazgos);
         $this->margenEnIconos($texto, $hallazgos);
+        $this->clasesObsoletas($texto, $hallazgos);
 
         usort($hallazgos, fn ($a, $b) => $a['linea'] <=> $b['linea']);
 
@@ -191,6 +201,23 @@ class Linter
                 }
 
                 $this->agregar($h, $texto, $pos, self::AVISO, "clase de color de Bootstrap `{$c[1]}`: usa un componente (`state`, `alert`) o un token");
+            }
+        }
+    }
+
+    protected function clasesObsoletas(string $texto, array &$h): void
+    {
+        preg_match_all('/(?<![\w:-])class\s*=\s*"([^"]*)"/', $texto, $m, PREG_OFFSET_CAPTURE);
+
+        foreach ($m[1] as [$valor, $pos]) {
+            preg_match_all('/(?<![\w-])(mr-[a-z0-9-]+)(?![\w-])/', $valor, $c);
+
+            foreach ($c[1] as $clase) {
+                $base = preg_replace('/^mr-event-.*/', 'mr-event', $clase);
+
+                if (isset(self::OBSOLETAS[$base])) {
+                    $this->agregar($h, $texto, $pos, self::AVISO, "clase obsoleta `{$clase}` (se retira en la 2.0): usa ".self::OBSOLETAS[$base]);
+                }
             }
         }
     }

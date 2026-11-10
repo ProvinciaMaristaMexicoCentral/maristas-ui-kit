@@ -84,6 +84,7 @@ body:has(.mr-scope) { background: var(--maristas-canvas); }
         .mr-hero { padding: 1.5rem 1.5rem 1.25rem; }
         .mr-hero-top { display: flex; flex-wrap: wrap; gap: 1.25rem; justify-content: space-between; align-items: flex-start; }
         .mr-person { display: flex; gap: 1rem; align-items: center; min-width: 0; }
+        /* Obsoleto: usa <x-maristas::avatar size="lg"> (.mr-av-lg). Se conserva en la serie 1.x y se retira en la 2.0. */
         .mr-avatar { width: 64px; height: 64px; border-radius: 50%; flex: none; display: grid; place-items: center; font-size: 1.35rem; font-weight: 700; color: #fff; background: linear-gradient(135deg, var(--maristas-brand), var(--maristas-accent)); }
         .mr-eyebrow { font-size: var(--maristas-text-sm); color: var(--maristas-muted); margin-bottom: .2rem; }
         .mr-name { font-size: var(--maristas-text-xl); line-height: 1.15; font-weight: 700; margin: 0 0 .2rem; text-wrap: balance; }
@@ -99,6 +100,7 @@ body:has(.mr-scope) { background: var(--maristas-canvas); }
 button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-hover); }
 .mr-chip-action i { color: inherit; }
 .mr-chip-action:disabled { color: var(--maristas-muted); cursor: not-allowed; border-color: var(--maristas-line); }
+/* Obsoleto: usa <x-maristas::state> (.mr-state). Se conserva en la serie 1.x y se retira en la 2.0. */
 .mr-pill { display: inline-block; padding: .15rem .6rem; border-radius: 999px; background: var(--maristas-brand-soft); color: var(--maristas-brand); font-size: var(--maristas-text-xs); font-weight: 600; text-transform: capitalize; }
         .mr-actions { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
         .mr-btn-main { border-radius: var(--maristas-radius-md); padding: .5rem 1rem; font-weight: 600; }
@@ -173,6 +175,7 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-hover); 
         .mr-filters { display: flex; flex-wrap: wrap; gap: .35rem; }
         .mr-filter { border: 0; background: var(--maristas-soft); color: var(--maristas-muted); border-radius: 999px; padding: .25rem .8rem; font-size: var(--maristas-text-sm); font-weight: 600; cursor: pointer; transition: background-color .12s, color .12s, box-shadow .12s; }
         .mr-filter.is-active { background: var(--maristas-brand); color: #fff; }
+        /* Obsoleto: usa la línea de tiempo .mr-tl (agrupada por día). Se conserva en la serie 1.x y se retira en la 2.0. */
         .mr-events { list-style: none; margin: 0; padding: 0; position: relative; }
         .mr-event { display: flex; gap: .9rem; padding-bottom: 1.25rem; position: relative; }
         .mr-event:not(:last-child)::before { content: ''; position: absolute; left: 17px; top: 38px; bottom: 0; width: 2px; background: var(--maristas-line); }

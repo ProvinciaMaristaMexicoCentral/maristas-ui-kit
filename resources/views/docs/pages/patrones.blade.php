@@ -1,7 +1,7 @@
             <x-maristas::example title="Cabecera de perfil" note="Nombre como protagonista, relación en una línea, contacto como chips clicables y una sola acción principal.">
                 <div class="w-100 d-flex flex-wrap gap-3 justify-content-between align-items-start">
                     <div class="mr-person">
-                        <div class="mr-avatar" aria-hidden="true">ML</div>
+                        <x-maristas::avatar name="María López" size="lg" aria-hidden="true" />
                         <div class="min-w-0">
                             <h3 class="mr-name">María López</h3>
                             <div class="mr-relation">Responsable de Ana Sofía Pérez López</div>
