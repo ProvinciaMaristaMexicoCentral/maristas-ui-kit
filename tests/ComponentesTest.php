@@ -77,6 +77,15 @@ class ComponentesTest extends TestCase
         $this->assertStringNotContainsString('mr-stat-body', $sin);
     }
 
+    public function test_la_tarjeta_con_portada_puede_dejar_de_llenar_la_altura(): void
+    {
+        $llena = Blade::render('<x-maristas::cover-card title="A" />');
+        $natural = Blade::render('<x-maristas::cover-card title="A" :fill="false" />');
+
+        $this->assertStringContainsString('h-100', $llena);
+        $this->assertStringNotContainsString('h-100', $natural);
+    }
+
     public function test_la_pagina_de_documentacion_responde(): void
     {
         $this->get('/ui-kit')->assertOk()->assertSee('Maristas UI Kit');
