@@ -327,12 +327,8 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-hover); 
 .mr-scope .progress-bar.is-warning { background: var(--maristas-warning); }
 .mr-scope .progress-bar.is-danger { background: var(--maristas-danger); }
 .mr-scope .spinner-border { color: var(--maristas-brand); }
-.mr-scope .toast { background: var(--maristas-surface); border: 1px solid var(--maristas-line); border-left-width: 4px; border-radius: var(--maristas-radius-md); box-shadow: var(--maristas-shadow-float); color: var(--maristas-ink); font-size: var(--maristas-text-base); }
-/* Aviso temporal: fondo sólido (el de Bootstrap es semitransparente) y una franja del color del tono a la izquierda */
-.mr-scope .toast:has(.mr-toast-success) { border-left-color: var(--maristas-success); }
-.mr-scope .toast:has(.mr-toast-danger)  { border-left-color: var(--maristas-danger); }
-.mr-scope .toast:has(.mr-toast-warning) { border-left-color: var(--maristas-warning); }
-.mr-scope .toast:has(.mr-toast-info)    { border-left-color: var(--maristas-info); }
+.mr-scope .toast { background: var(--maristas-surface); border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); box-shadow: var(--maristas-shadow-float); color: var(--maristas-ink); font-size: var(--maristas-text-base); }
+/* Aviso temporal: fondo sólido (el de Bootstrap es semitransparente); el tono lo da el color del ícono */
 .mr-scope .tooltip-inner { background: var(--maristas-ink); border-radius: var(--maristas-radius-sm); font-size: var(--maristas-text-xs); }
 .mr-scope .popover { border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); box-shadow: var(--maristas-shadow-float); }
 .mr-scope .offcanvas { border: 0; box-shadow: var(--maristas-shadow-modal); }
@@ -409,14 +405,17 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-hover); 
 /* ---------- Tarjetas y KPI ---------- */
 .mr-card-flat { box-shadow: none !important; border: 1px solid var(--maristas-line) !important; }
 .mr-card-accent { border-left: 4px solid var(--maristas-brand) !important; }
+/* Dentro de una fila de la cuadrícula todas las tarjetas miden lo mismo */
 .mr-stat { padding: 1.1rem 1.25rem; }
+.row > * > .mr-stat { height: 100%; }
 .mr-stat-label { font-size: var(--maristas-text-sm); color: var(--maristas-muted); }
-.mr-stat-value { font-size: var(--maristas-text-xl); font-weight: 700; line-height: 1.15; margin: .15rem 0; font-variant-numeric: tabular-nums; }
+.mr-stat-value { font-size: var(--maristas-text-xl); font-weight: 700; line-height: 1.15; margin: .15rem 0; font-variant-numeric: tabular-nums; overflow-wrap: normal; }
 .mr-stat-delta { font-size: var(--maristas-text-xs); font-weight: 600; }
 .mr-stat-delta.is-up { color: var(--maristas-success); }
 .mr-stat-delta.is-down { color: var(--maristas-danger); }
-.mr-stat-with-icon { display: flex; flex-direction: row; align-items: center; gap: .9rem; }
-.mr-stat-body { min-width: 0; }
+/* Con ícono: si la tarjeta es angosta, el ícono pasa arriba en vez de apretar el valor */
+.mr-stat-with-icon { display: flex; flex-flow: row wrap; align-items: center; align-content: flex-start; gap: .75rem .9rem; }
+.mr-stat-body { flex: 1 1 5.5rem; min-width: 0; }
 .mr-stat-hint { font-size: var(--maristas-text-xs); color: var(--maristas-muted); }
 /* Distribución: barra segmentada y leyenda con punto de color */
 .mr-seg { display: flex; height: .6rem; border-radius: 999px; overflow: hidden; background: var(--maristas-soft); gap: 2px; }

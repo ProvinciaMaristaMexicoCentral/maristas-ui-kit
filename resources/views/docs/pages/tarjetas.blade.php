@@ -6,16 +6,16 @@
     </div>
 </x-maristas::example>
 
-<x-maristas::example title="Indicadores con ícono y nota" note="Con icon aparece un cuadro de color a la izquierda; hint agrega una nota corta debajo del valor. Para resúmenes de una ficha o un expediente.">
+<x-maristas::example title="Indicadores con ícono y nota" note="Con icon aparece un cuadro de color a la izquierda; hint agrega una nota corta debajo del valor. El valor es una cifra (un conteo o un total); una fecha o un folio va en una lista de datos, no en un indicador.">
     <div class="row g-3 w-100">
-        <div class="col-md-3"><x-maristas::stat icon="ri-user-3-line" label="Alumno" value="9034" /></div>
-        <div class="col-md-3"><x-maristas::stat icon="ri-building-line" label="Colegio" value="10" hint="Marista Norte" /></div>
-        <div class="col-md-3"><x-maristas::stat icon="ri-graduation-cap-line" label="Grado" value="2" hint="Nivel 3 · Programa 1" /></div>
-        <div class="col-md-3"><x-maristas::stat icon="ri-calendar-check-line" label="Registro" value="05/11/2026" hint="Requisitos v1" /></div>
+        <div class="col-md-3"><x-maristas::stat icon="ri-user-3-line" label="Alumnos" value="1,248" hint="Ciclo actual" /></div>
+        <div class="col-md-3"><x-maristas::stat icon="ri-building-line" label="Colegios" value="10" hint="En la provincia" /></div>
+        <div class="col-md-3"><x-maristas::stat icon="ri-graduation-cap-line" label="Grupos" value="86" hint="Activos" /></div>
+        <div class="col-md-3"><x-maristas::stat icon="ri-calendar-check-line" label="Registros" value="342" hint="Este mes" /></div>
     </div>
     <x-slot:code>
 @verbatim
-<x-maristas::stat icon="ri-graduation-cap-line" label="Grado" value="2" hint="Nivel 3 · Programa 1" />
+<x-maristas::stat icon="ri-graduation-cap-line" label="Grupos" value="86" hint="Activos" />
 @endverbatim
     </x-slot:code>
 </x-maristas::example>
