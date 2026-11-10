@@ -1,8 +1,8 @@
 <x-maristas::example title="Pestañas con subrayado">
     <ul class="nav nav-tabs mr-tabs w-100">
-        <li class="nav-item"><a class="nav-link active" href="#navegacion"><i class="ri-history-line me-1"></i>Seguimiento</a></li>
-        <li class="nav-item"><a class="nav-link" href="#navegacion"><i class="ri-mail-line me-1"></i>Comunicación</a></li>
-        <li class="nav-item"><a class="nav-link" href="#navegacion"><i class="ri-user-line me-1"></i>Detalles</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#navegacion"><i class="ri-history-line"></i>Seguimiento</a></li>
+        <li class="nav-item"><a class="nav-link" href="#navegacion"><i class="ri-mail-line"></i>Comunicación</a></li>
+        <li class="nav-item"><a class="nav-link" href="#navegacion"><i class="ri-user-line"></i>Detalles</a></li>
     </ul>
 </x-maristas::example>
 

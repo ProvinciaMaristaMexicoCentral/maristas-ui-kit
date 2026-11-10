@@ -53,10 +53,10 @@
     <div class="dropdown">
         <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Acciones</button>
         <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#botones"><i class="ri-user-shared-line me-2"></i>Reasignar</a></li>
-            <li><a class="dropdown-item" href="#botones"><i class="ri-history-line me-2"></i>Ver historial</a></li>
+            <li><a class="dropdown-item" href="#botones"><i class="ri-user-shared-line"></i>Reasignar</a></li>
+            <li><a class="dropdown-item" href="#botones"><i class="ri-history-line"></i>Ver historial</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item text-danger" href="#botones"><i class="ri-delete-bin-line me-2"></i>Eliminar</a></li>
+            <li><a class="dropdown-item text-danger" href="#botones"><i class="ri-delete-bin-line"></i>Eliminar</a></li>
         </ul>
     </div>
 </x-maristas::example>

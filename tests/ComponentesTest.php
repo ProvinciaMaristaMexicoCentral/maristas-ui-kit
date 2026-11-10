@@ -173,6 +173,7 @@ class ComponentesTest extends TestCase
         $this->assertStringContainsString('ícono solo sin `aria-label`', $mensajes);
         $this->assertStringContainsString('text-danger', $mensajes);
         $this->assertStringContainsString('2 botones principales', $mensajes);
+        $this->assertStringContainsString('ícono con `me-2`', $mensajes);
     }
 
     public function test_el_lint_no_marca_una_vista_correcta(): void

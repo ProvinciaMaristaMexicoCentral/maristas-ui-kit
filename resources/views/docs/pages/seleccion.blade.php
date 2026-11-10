@@ -23,7 +23,7 @@
 <x-maristas::example title="Selección múltiple" note="Un menú con casillas que no se cierra al elegir; el botón resume cuántas hay marcadas.">
     <div class="dropdown" data-mr-multiselect>
         <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"><i class="ri-filter-3-line"></i><span data-mr-multiselect-label>Grados</span></button>
-        <div class="dropdown-menu p-2" style="min-width: 220px;">
+        <div class="dropdown-menu" style="min-width: 220px;">
             @foreach (['Preescolar', 'Primaria', 'Secundaria', 'Bachillerato'] as $grado)
                 <label class="dropdown-item d-flex align-items-center gap-2 mb-0"><input class="form-check-input mt-0" type="checkbox" value="{{ $grado }}">{{ $grado }}</label>
             @endforeach

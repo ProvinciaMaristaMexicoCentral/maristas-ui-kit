@@ -57,6 +57,7 @@ class Linter
         $this->iconosSinNombre($texto, $hallazgos);
         $this->coloresDeBootstrap($texto, $hallazgos);
         $this->botonesPrincipales($texto, $hallazgos);
+        $this->margenEnIconos($texto, $hallazgos);
 
         usort($hallazgos, fn ($a, $b) => $a['linea'] <=> $b['linea']);
 
@@ -191,6 +192,18 @@ class Linter
 
                 $this->agregar($h, $texto, $pos, self::AVISO, "clase de color de Bootstrap `{$c[1]}`: usa un componente (`state`, `alert`) o un token");
             }
+        }
+    }
+
+    /** La separación ícono-texto la da el componente (--maristas-icon-gap); un margen me-N o ms-N la duplica y desalinea. */
+    protected function margenEnIconos(string $texto, array &$h): void
+    {
+        $contenedor = '(?:btn|dropdown-item|nav-link|mr-topbar-btn|mr-topbar-link|mr-chip|mr-state|mr-filter)';
+        $patron = '#class\s*=\s*"[^"]*(?<![\w-])'.$contenedor.'(?![\w-])[^"]*"[^>]*>\s*<i\s+class="[^"]*(?<![\w-])((?:me|ms|mx)-[0-9])(?![\w-])#';
+        preg_match_all($patron, $texto, $m, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
+
+        foreach ($m as $c) {
+            $this->agregar($h, $texto, $c[0][1], self::AVISO, "ícono con `{$c[1][0]}`: el componente ya separa ícono y texto; quita el margen");
         }
     }
 

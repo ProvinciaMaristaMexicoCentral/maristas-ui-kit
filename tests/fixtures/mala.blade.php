@@ -8,5 +8,6 @@
     <span class="text-danger">x</span>
     <x-maristas::button>Uno</x-maristas::button>
     <x-maristas::button variant="primary">Dos</x-maristas::button>
+    <a class="dropdown-item" href="#"><i class="ri-edit-line me-2"></i>Editar</a>
     {{-- <div class="mr-comentado"> --}}
 </div>

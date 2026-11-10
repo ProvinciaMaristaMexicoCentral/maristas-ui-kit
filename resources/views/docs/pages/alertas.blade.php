@@ -12,7 +12,7 @@
     <div class="toast-container position-static">
         <div id="kit-toast" class="toast align-items-center" role="status" aria-live="polite" aria-atomic="true">
             <div class="d-flex">
-                <div class="toast-body"><i class="ri-checkbox-circle-line text-success me-1"></i>Nota publicada.</div>
+                <div class="toast-body d-flex align-items-start gap-2"><i class="ri-checkbox-circle-line fs-5 mr-toast-success"></i><span>Nota publicada.</span></div>
                 <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
             </div>
         </div>
