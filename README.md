@@ -6,20 +6,17 @@ Sistema de diseño de los sistemas Maristas: tokens (`--maristas-*`), estilos so
 
 ## Instalación (Laravel 9 a 13)
 
-El repositorio es público, pero el paquete no está en Packagist: Composer necesita saber dónde vive.
+El paquete está en Packagist: https://packagist.org/packages/maristas/ui-kit
 
 ```bash
-# 1. Una sola vez por proyecto: registrar el repositorio (se escribe en composer.json)
-composer config repositories.maristas-ui-kit vcs https://github.com/ProvinciaMaristaMexicoCentral/maristas-ui-kit.git
-
-# 2. Instalar (actualiza composer.json y composer.lock; no se editan a mano)
+# 1. Instalar (actualiza composer.json y composer.lock; no se editan a mano)
 composer require maristas/ui-kit
 
-# 3. Publicar los assets del kit
+# 2. Publicar los assets del kit
 php artisan vendor:publish --tag=maristas-ui-assets --force
 ```
 
-**Proyecto que ya usa el kit** (por ejemplo el CRM): basta `composer install`, porque `composer.json` y `composer.lock` ya lo traen. Después, `php artisan vendor:publish --tag=maristas-ui-assets --force` y `npm run build`.
+**Proyecto que ya usa el kit** (por ejemplo el CRM): basta `composer install`, porque `composer.json` y `composer.lock` ya lo traen. Si todavía tiene el bloque `repositories` con el repositorio de GitHub, puede quitarse: Packagist ya lo resuelve. Después, `php artisan vendor:publish --tag=maristas-ui-assets --force` y `npm run build`.
 
 **Actualizar** a una versión nueva: `composer update maristas/ui-kit` y volver a publicar los assets.
 

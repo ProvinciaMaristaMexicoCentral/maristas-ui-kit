@@ -101,12 +101,12 @@ class ExportarDocsTest extends TestCase
         $this->assertStringNotContainsString('>v0.1<', $html);
     }
 
-    public function test_la_instalacion_rapida_incluye_el_registro_del_repositorio_privado(): void
+    public function test_la_instalacion_rapida_no_pide_registrar_el_repositorio(): void
     {
         $this->artisan('maristas-ui:exportar-docs', ['destino' => $this->destino])->assertSuccessful();
         $html = File::get($this->destino.'/index.html');
 
-        $this->assertStringContainsString('composer config repositories.maristas-ui-kit vcs', $html);
+        $this->assertStringNotContainsString('composer config repositories', $html);
         $this->assertStringContainsString('composer require maristas/ui-kit', $html);
         $this->assertStringContainsString('vendor:publish --tag=maristas-ui-assets --force', $html);
     }

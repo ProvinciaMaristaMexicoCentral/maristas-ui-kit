@@ -42,21 +42,17 @@
     @endforeach
 </div>
 
-<x-maristas::example title="Instalación rápida" note="Laravel 9 a 13. El repositorio es público, pero el paquete no está en Packagist: Composer necesita saber dónde vive. Tampoco incluye Bootstrap, Remix Icon ni la fuente Poppins: el proyecto debe tenerlos.">
+<x-maristas::example title="Instalación rápida" note="Laravel 9 a 13. El paquete está en Packagist. Tampoco incluye Bootstrap, Remix Icon ni la fuente Poppins: el proyecto debe tenerlos.">
     <ol class="mb-0 w-100">
-        <li class="mb-2">Registra el repositorio una vez por proyecto: <x-maristas::state tone="info">composer config repositories.maristas-ui-kit vcs …</x-maristas::state></li>
         <li class="mb-2">Instala el paquete: <x-maristas::state tone="info">composer require maristas/ui-kit</x-maristas::state></li>
         <li>Publica los assets: <x-maristas::state tone="info">php artisan vendor:publish --tag=maristas-ui-assets --force</x-maristas::state></li>
     </ol>
     <x-slot:code>
 @verbatim
-# 1. Una vez por proyecto: registrar el repositorio
-composer config repositories.maristas-ui-kit vcs https://github.com/ProvinciaMaristaMexicoCentral/maristas-ui-kit.git
-
-# 2. Instalar
+# 1. Instalar
 composer require maristas/ui-kit
 
-# 3. Publicar los assets
+# 2. Publicar los assets
 php artisan vendor:publish --tag=maristas-ui-assets --force
 
 {{-- layout, después de Bootstrap y Remix Icon --}}
