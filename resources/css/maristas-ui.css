@@ -150,7 +150,8 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-hover); 
         .mr-fact { min-width: 0; padding: .25rem 1.25rem; }
         .mr-fact:first-child { padding-left: 0; }
         .mr-fact + .mr-fact { border-left: 1px solid var(--maristas-line); }
-        @media (max-width: 767.98px) { .mr-fact, .mr-fact:first-child { padding: .75rem 0; border-left: 0; } .mr-fact + .mr-fact { border-top: 1px solid var(--maristas-line); } }
+        /* Apilados: solo una línea horizontal entre datos (sin la vertical de escritorio) y el mismo aire arriba y abajo */
+        @media (max-width: 767.98px) { .mr-fact, .mr-fact:first-child { padding: 1rem 0; } .mr-fact:first-child { padding-top: 0; } .mr-fact:last-child { padding-bottom: 0; } .mr-fact + .mr-fact { border-left: 0; border-top: 1px solid var(--maristas-line); } }
         .mr-fact-value { font-weight: 600; line-height: 1.3; word-break: break-word; }
         .mr-fact-sub { font-size: var(--maristas-text-sm); color: var(--maristas-muted); line-height: 1.4; }
         .mr-fact .form-select { border-color: var(--maristas-line); background-color: #fff; font-weight: 600; }
