@@ -44,7 +44,7 @@
 </table></div>
 
 <h6 class="mb-2">Margen de página</h6>
-<p class="text-muted small mb-2">El margen lateral de la página es el token <code>--maristas-gutter</code> (<code>clamp(2rem, 7vw, 9rem)</code>): crece con la ventana. El contenido (<code>.mr-page</code>), la barra principal (<code>.mr-topbar-full</code>, sin esquinas redondeadas) y el pie (<code>.mr-footer-full</code>) lo comparten para quedar alineados. Si un sistema necesita otro valor, lo redefine en su <code>:root</code>; no lo reemplaza con un <code>.container</code> de Bootstrap.</p>
+<p class="text-muted small mb-2">El margen lateral de la página es el token <code>--maristas-gutter</code> (<code>clamp(2rem, 7vw, 9rem)</code>): crece con la ventana. En teléfono (menos de 576px) baja a <code>1rem</code> para no perder ancho útil. El contenido (<code>.mr-page</code>), la barra principal (<code>.mr-topbar-full</code>, sin esquinas redondeadas) y el pie (<code>.mr-footer-full</code>) lo comparten para quedar alineados. Si un sistema necesita otro valor, lo redefine en su <code>:root</code>; no lo reemplaza con un <code>.container</code> de Bootstrap.</p>
 <pre class="mb-4"><code>&lt;x-maristas::topbar class="mr-topbar-full"&gt;…&lt;/x-maristas::topbar&gt;
 &lt;main class="mr-page"&gt;…&lt;/main&gt;
 &lt;x-maristas::footer class="mr-footer-full"&gt;…&lt;/x-maristas::footer&gt;</code></pre>

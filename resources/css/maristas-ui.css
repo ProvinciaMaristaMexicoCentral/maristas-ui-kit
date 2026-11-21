@@ -70,6 +70,10 @@
     /* Margen lateral de la página (crece con la ventana; cada sistema puede redefinirlo en su :root) */
     --maristas-gutter: clamp(2rem, 7vw, 9rem);
 }
+/* En teléfono el mínimo de 2rem por lado deja muy poco ancho útil */
+@media (max-width: 575.98px) {
+    :root { --maristas-gutter: 1rem; }
+}
 
 body:has(.mr-scope) { background: var(--maristas-canvas); }
 .mr-scope { color: var(--maristas-ink); font-family: var(--maristas-font); }
@@ -524,6 +528,14 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-hover); 
     .mr-topbar-link { width: 100%; padding: .65rem .75rem; border-bottom: 0; border-radius: var(--maristas-radius-sm); }
     .mr-topbar-link.is-active { background: rgba(255,255,255,.14); }
     .mr-scope .mr-topbar-nav .dropdown-menu { position: static !important; transform: none !important; width: 100%; box-shadow: none; margin: .15rem 0 .35rem; }
+}
+/* Teléfono: la barra compacta para que marca y herramientas quepan sin pegarse al borde (los menús se abren igual) */
+@media (max-width: 575.98px) {
+    .mr-topbar-main { gap: .5rem; }
+    .mr-topbar-tools { gap: .15rem; }
+    .mr-topbar-btn { padding: .4rem .45rem; }
+    .mr-topbar-btn:has(.mr-topbar-count) { padding: .4rem .6rem; }
+    .mr-topbar-btn > .ri-arrow-down-s-line { display: none; }
 }
 
 .mr-scroll-menu { max-height: 20rem; overflow-y: auto; }
