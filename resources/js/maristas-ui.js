@@ -47,6 +47,21 @@
         if (window.Livewire && Livewire.hook) Livewire.hook('morphed', function () { requestAnimationFrame(reubicarMenusFiltros); });
     });
 
+    /* ---------- Tooltips en pantallas táctiles (sin hover, como iPhone): se abren y cierran al tocar; tocar fuera los cierra ----------
+       Cambia el disparador por defecto de Bootstrap antes de que la página cree sus tooltips (este archivo carga después de Bootstrap). */
+    var tooltipsTactiles = function () {
+        if (!window.bootstrap || !bootstrap.Tooltip) return;
+        bootstrap.Tooltip.Default.trigger = 'click';
+        document.addEventListener('click', function (e) {
+            $$('[aria-describedby^="tooltip"]').forEach(function (el) {
+                if (el.contains(e.target)) return;
+                var tip = bootstrap.Tooltip.getInstance(el);
+                if (tip) tip.hide();
+            });
+        }, true);
+    };
+    if (window.matchMedia && window.matchMedia('(hover: none)').matches) tooltipsTactiles();
+
     /* ---------- Ejemplos: pestañas Vista previa / Código y copiar ---------- */
     document.addEventListener('click', function (e) {
         var tab = e.target.closest('[data-mr-tab]');
