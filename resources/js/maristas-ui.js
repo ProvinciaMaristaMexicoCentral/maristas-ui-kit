@@ -33,6 +33,18 @@
         if (link) setTimeout(function () { mostrarPestana(link, true); }, 0);
     });
 
+    /* ---------- Menú de filtros (x-maristas::filter-menu): si Livewire vuelve a pintar la barra y el botón se mueve, el menú abierto lo sigue ---------- */
+    var reubicarMenusFiltros = function () {
+        if (!window.bootstrap || !bootstrap.Dropdown) return;
+        $$('.mr-filter-menu > [data-bs-toggle="dropdown"][aria-expanded="true"]').forEach(function (boton) {
+            var menu = bootstrap.Dropdown.getInstance(boton);
+            if (menu) menu.update();
+        });
+    };
+    document.addEventListener('livewire:init', function () {
+        if (window.Livewire && Livewire.hook) Livewire.hook('morphed', function () { requestAnimationFrame(reubicarMenusFiltros); });
+    });
+
     /* ---------- Ejemplos: pestañas Vista previa / Código y copiar ---------- */
     document.addEventListener('click', function (e) {
         var tab = e.target.closest('[data-mr-tab]');

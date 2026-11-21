@@ -717,7 +717,17 @@ button.mr-notif { width: 100%; border: 0; background: transparent; }
     .mr-dt-toolbar-end:has(> .mr-action-main) { flex: 1 1 100%; margin-left: 0; }
     .mr-action-main.btn, .mr-action-main > .btn, .mr-action-main > * > .btn { width: 100%; justify-content: center; }
 }
+/* Obsoleto: usa <x-maristas::filter-menu>. Se conserva en la serie 1.x y se retira en la 2.0. */
 .mr-dt-panel { margin-bottom: .75rem; padding: 1rem; background: var(--maristas-soft); border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); }
+/* Menú de filtros (x-maristas::filter-menu): el mismo menú del kit, con los campos en dos columnas (una en teléfono) */
+.mr-filter-menu-panel { width: min(34rem, calc(100vw - 2rem)); padding: 0 0 .5rem; }
+.mr-filter-menu-panel .mr-menu-head { padding: .6rem .9rem; margin-bottom: 0; }
+.mr-filter-menu-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem 1rem; max-height: min(60vh, 30rem); overflow-y: auto; padding: .75rem .9rem .35rem; }
+.mr-filter-menu-grid .form-label { margin-bottom: .3rem; }
+.mr-filter-menu-grid .form-text { margin-top: .25rem; }
+.mr-filter-menu .btn[aria-expanded="true"] .mr-filter-menu-caret { transform: rotate(180deg); }
+.mr-filter-menu-caret { transition: transform .15s; }
+@media (max-width: 575.98px) { .mr-filter-menu-grid { grid-template-columns: 1fr; } }
 .mr-dt-footer .pagination { margin: 0; flex-wrap: wrap; row-gap: .25rem; }
 .mr-dt-footer nav { display: flex; min-width: 0; max-width: 100%; }
 /* Celda que sí parte su texto (text-wrap): ancho mínimo para que no se aplaste cuando la tabla se desplaza */
