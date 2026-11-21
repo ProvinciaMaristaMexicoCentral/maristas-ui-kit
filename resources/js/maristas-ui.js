@@ -20,6 +20,19 @@
         boton.setAttribute('aria-expanded', abierto ? 'true' : 'false');
     });
 
+    /* ---------- Pestañas (.mr-tabs): si no caben y se desplazan, la elegida se acomoda a la vista ---------- */
+    var mostrarPestana = function (link, suave) {
+        var tira = link && link.closest('.mr-tabs');
+        if (!tira || tira.scrollWidth <= tira.clientWidth) return;
+        var r = link.getBoundingClientRect(), t = tira.getBoundingClientRect();
+        var izquierda = tira.scrollLeft + (r.left - t.left) - (t.width - r.width) / 2;
+        tira.scrollTo({ left: Math.max(0, izquierda), behavior: suave ? 'smooth' : 'auto' });
+    };
+    document.addEventListener('click', function (e) {
+        var link = e.target.closest('.mr-tabs .nav-link');
+        if (link) setTimeout(function () { mostrarPestana(link, true); }, 0);
+    });
+
     /* ---------- Ejemplos: pestañas Vista previa / Código y copiar ---------- */
     document.addEventListener('click', function (e) {
         var tab = e.target.closest('[data-mr-tab]');
@@ -158,6 +171,7 @@
     function iniciar(contexto) {
     contexto = contexto || document;
     nuevos('[data-mr-table]', contexto).forEach(iniciarTabla);
+    $$('.mr-tabs .nav-link.active', contexto).forEach(function (link) { mostrarPestana(link, false); });
 
     /* ---------- Etiquetas ---------- */
     nuevos('[data-mr-tags]', contexto).forEach(function (raiz) {

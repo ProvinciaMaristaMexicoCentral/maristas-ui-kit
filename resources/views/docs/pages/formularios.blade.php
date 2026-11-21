@@ -1,4 +1,4 @@
-<x-maristas::example title="Campos">
+<x-maristas::example title="Campos" note="En teléfono los campos suben a 16px de letra: con menos, Safari de iPhone hace zoom a la página al enfocarlos.">
     <div class="row g-3 w-100">
         <div class="col-md-6">
             <label class="form-label" for="kit-nombre">Nombre</label>

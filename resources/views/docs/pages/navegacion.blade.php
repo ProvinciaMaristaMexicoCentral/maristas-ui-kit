@@ -1,4 +1,4 @@
-<x-maristas::example title="Pestañas con subrayado">
+<x-maristas::example title="Pestañas con subrayado" note="Siempre van en una sola fila: si no caben (por ejemplo en teléfono), se desplazan hacia los lados.">
     <ul class="nav nav-tabs mr-tabs w-100">
         <li class="nav-item"><a class="nav-link active" href="#navegacion"><i class="ri-history-line"></i>Seguimiento</a></li>
         <li class="nav-item"><a class="nav-link" href="#navegacion"><i class="ri-mail-line"></i>Comunicación</a></li>

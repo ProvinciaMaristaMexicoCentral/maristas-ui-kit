@@ -70,9 +70,13 @@
     /* Margen lateral de la página (crece con la ventana; cada sistema puede redefinirlo en su :root) */
     --maristas-gutter: clamp(2rem, 7vw, 9rem);
 }
-/* En teléfono el mínimo de 2rem por lado deja muy poco ancho útil */
+/* En teléfono el mínimo de 2rem por lado deja muy poco ancho útil.
+   Los campos usan 16px: con menos, Safari de iPhone hace zoom a la página al enfocarlos. */
 @media (max-width: 575.98px) {
     :root { --maristas-gutter: 1rem; }
+    .mr-scope :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), select, textarea) { font-size: 1rem; }
+    /* Paginación: solo anterior, la página actual y sus vecinas, y siguiente */
+    .mr-dt-footer .page-item:not(:first-child):not(:last-child):not(.active):not(:has(+ .active)):not(.active + .page-item) { display: none; }
 }
 
 body:has(.mr-scope) { background: var(--maristas-canvas); }
@@ -95,6 +99,9 @@ body:has(.mr-scope) { background: var(--maristas-canvas); }
         .mr-relation { color: var(--maristas-muted); margin-bottom: .65rem; }
         .mr-chips { display: flex; flex-wrap: wrap; gap: .5rem; }
         .mr-chip { display: inline-flex; align-items: center; gap: var(--maristas-icon-gap-sm); padding: .3rem .7rem; border-radius: 999px; background: var(--maristas-soft); color: var(--maristas-ink); font-size: var(--maristas-text-sm); text-decoration: none; transition: background .15s; }
+        /* Un texto largo (correo) no desborda: con el texto en un <span> se recorta con puntos suspensivos */
+        .mr-chip { max-width: 100%; min-width: 0; }
+        .mr-chip > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         a.mr-chip:hover { background: var(--maristas-line); color: var(--maristas-ink); }
         .mr-chip i { color: var(--maristas-muted); }
 .mr-block-head { display: flex; align-items: center; gap: .65rem; margin-bottom: .2rem; }
@@ -167,6 +174,12 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-hover); 
         .mr-tabs .nav-link:hover { color: var(--maristas-ink) !important; }
         .mr-tabs .nav-link.active { color: var(--maristas-brand) !important; box-shadow: inset 0 -2px 0 var(--maristas-brand); }
         .mr-tabs .nav-link::after, .mr-tabs .nav-link::before { display: none !important; }
+        /* Siempre en una sola fila: si no caben, se desplazan hacia los lados (sin barra visible) */
+        .mr-tabs { flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+        .mr-tabs::-webkit-scrollbar { display: none; }
+        .mr-tabs .nav-item { flex-shrink: 0; }
+        .mr-tabs .nav-link { white-space: nowrap; }
+        @media (max-width: 575.98px) { .mr-tabs .nav-link { padding: .7rem .75rem; } }
 
         /* Propiedades (pestaña Detalles) */
         .mr-prop { margin-bottom: .9rem; }
@@ -201,7 +214,7 @@ button.mr-chip-action:hover:not(:disabled) { background: var(--maristas-hover); 
 /* Un botón sin relleno (p-0) o de tipo enlace es texto: no fuerza altura mínima, para que quepa dentro de una pastilla o una línea de texto */
 .mr-scope .btn.p-0, .mr-scope .btn-link { min-height: 0; }
 /* Botón punteado: la acción de editar de un bloque («Editar contacto»). Es un botón, no un chip. */
-.mr-scope .btn.mr-btn-dashed { background: transparent; border: 1px dashed var(--maristas-line-strong); color: var(--maristas-accent); }
+.mr-scope .btn.mr-btn-dashed { background: transparent; border: 1px dashed var(--maristas-line-strong); color: var(--maristas-accent); white-space: nowrap; flex-shrink: 0; }
 .mr-scope .btn.mr-btn-dashed:hover:not(:disabled) { background: var(--maristas-hover); border-color: var(--maristas-accent); color: var(--maristas-accent); }
 
 .mr-scope .btn:focus-visible, .mr-scope .mr-btn-ghost:focus-visible { outline: 2px solid var(--maristas-accent); outline-offset: 2px; box-shadow: none; }
@@ -682,8 +695,12 @@ button.mr-notif { width: 100%; border: 0; background: transparent; }
 .mr-dt-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; margin-top: .75rem; }
 .mr-dt-toolbar-end { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-left: auto; }
 .mr-dt-panel { margin-bottom: .75rem; padding: 1rem; background: var(--maristas-soft); border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); }
-.mr-dt-footer .pagination { margin: 0; }
-.mr-dt-footer nav { display: flex; }
+.mr-dt-footer .pagination { margin: 0; flex-wrap: wrap; row-gap: .25rem; }
+.mr-dt-footer nav { display: flex; min-width: 0; max-width: 100%; }
+/* Celda que sí parte su texto (text-wrap): ancho mínimo para que no se aplaste cuando la tabla se desplaza */
+.mr-dt td.text-wrap { min-width: 12rem; }
+/* Estado vacío dentro de una tabla más ancha que la pantalla: se queda a la vista en vez de centrarse en todo el ancho */
+.mr-dt td > .mr-empty { position: sticky; left: 0; width: min(100%, calc(100vw - 2 * var(--maristas-gutter) - 3rem)); white-space: normal; }
 .mr-dt th[data-mr-sort] { cursor: pointer; user-select: none; white-space: nowrap; }
 .mr-dt th[data-mr-sort]::after { content: '\21C5'; margin-left: .35rem; font-size: var(--maristas-text-xs); opacity: .35; }
 .mr-dt th[aria-sort="ascending"]::after { content: '\2191'; opacity: 1; color: var(--maristas-brand); }
