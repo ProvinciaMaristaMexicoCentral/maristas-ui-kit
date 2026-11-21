@@ -909,3 +909,39 @@ body.mr-palette-open { overflow: hidden; }
 .mr-toast-warning { color: var(--maristas-warning); }
 .mr-toast-info { color: var(--maristas-info); }
 
+
+/* ---------- Comportamiento nativo del navegador (guías Modern Web Guidance) ---------- */
+/* El scroll de una lista o menú no arrastra la página al llegar al final (sobre todo en iPhone) */
+.mr-filter-menu-grid, .mr-multi-options, .mr-scroll-menu, .mr-doc-nav { overscroll-behavior: contain; }
+.mr-tabs, .mr-scope .table-responsive { overscroll-behavior-x: contain; }
+
+/* Títulos con líneas parejas; párrafos sin una palabra suelta al final (donde no hay soporte se ignora) */
+.mr-pagebar-title, .mr-empty-title, .mr-scope .card-title, .mr-scope .modal-title, .mr-cover-title { text-wrap: balance; }
+.mr-pagelead, .mr-empty, .mr-scope .form-text, .mr-caption { text-wrap: pretty; }
+
+/* Cajas de texto que crecen con lo que se escribe, entre un mínimo y un máximo (mr-fixed-size para no hacerlo) */
+.mr-scope textarea.form-control:not(.mr-fixed-size) { field-sizing: content; min-block-size: 5.5rem; max-block-size: 18rem; }
+
+/* Pestañas que no caben: se desvanecen en el borde por donde hay más, como pista de que se deslizan */
+@property --mr-fade-inicio { syntax: '<length>'; inherits: false; initial-value: 0px; }
+@property --mr-fade-fin { syntax: '<length>'; inherits: false; initial-value: 0px; }
+@keyframes mr-fade-scroll {
+    0% { --mr-fade-inicio: 0px; --mr-fade-fin: 1.75rem; }
+    8% { --mr-fade-inicio: 1.75rem; }
+    92% { --mr-fade-fin: 1.75rem; }
+    100% { --mr-fade-inicio: 1.75rem; --mr-fade-fin: 0px; }
+}
+@supports (animation-timeline: scroll()) {
+    .mr-tabs {
+        mask-image: linear-gradient(to right, transparent, #000 var(--mr-fade-inicio), #000 calc(100% - var(--mr-fade-fin)), transparent);
+        animation: mr-fade-scroll linear both;
+        animation-timeline: scroll(self inline);
+    }
+}
+
+/* Quien pidió reducir el movimiento en su sistema no ve desplazamientos ni saltos */
+@media (prefers-reduced-motion: reduce) {
+    .mr-cover-card, .mr-backtop, .mr-filter-menu-caret, .mr-docmain, .mr-chip, .mr-filter, .mr-tile { transition: none; }
+    .mr-cover-card:hover { transform: none; }
+    .mr-backtop { transform: none; }
+}

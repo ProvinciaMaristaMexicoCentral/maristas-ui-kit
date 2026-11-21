@@ -8,6 +8,8 @@
 
     var $ = function (sel, ctx) { return (ctx || document).querySelector(sel); };
     var $$ = function (sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); };
+    /* Desplazamientos suaves solo si la persona no pidió reducir el movimiento en su sistema */
+    var movimiento = function () { return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'; };
     var normalizar = function (s) { return (s || '').toString().normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim(); };
 
     /* ---------- Barra principal en pantallas angostas ---------- */
@@ -26,7 +28,7 @@
         if (!tira || tira.scrollWidth <= tira.clientWidth) return;
         var r = link.getBoundingClientRect(), t = tira.getBoundingClientRect();
         var izquierda = tira.scrollLeft + (r.left - t.left) - (t.width - r.width) / 2;
-        tira.scrollTo({ left: Math.max(0, izquierda), behavior: suave ? 'smooth' : 'auto' });
+        tira.scrollTo({ left: Math.max(0, izquierda), behavior: suave ? movimiento() : 'auto' });
     };
     document.addEventListener('click', function (e) {
         var link = e.target.closest('.mr-tabs .nav-link');
@@ -252,7 +254,7 @@
     nuevos('[data-mr-backtop]', contexto).forEach(function (boton) {
         var revisar = function () { boton.classList.toggle('is-visible', (window.pageYOffset || document.documentElement.scrollTop) > 300); };
         window.addEventListener('scroll', revisar, { passive: true });
-        boton.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        boton.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: movimiento() }); });
         revisar();
     });
 
