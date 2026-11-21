@@ -694,6 +694,12 @@ button.mr-notif { width: 100%; border: 0; background: transparent; }
 .mr-dt-bulk[hidden] { display: none; }
 .mr-dt-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; margin-top: .75rem; }
 .mr-dt-toolbar-end { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-left: auto; }
+/* Acción principal de una barra (mr-action-main, en el botón o en su envoltura): en teléfono va primero y a todo el ancho */
+@media (max-width: 575.98px) {
+    .mr-action-main { order: -1; flex: 1 1 100%; width: 100%; margin-left: 0 !important; }
+    .mr-dt-toolbar-end:has(> .mr-action-main) { flex: 1 1 100%; margin-left: 0; }
+    .mr-action-main.btn, .mr-action-main > .btn, .mr-action-main > * > .btn { width: 100%; justify-content: center; }
+}
 .mr-dt-panel { margin-bottom: .75rem; padding: 1rem; background: var(--maristas-soft); border: 1px solid var(--maristas-line); border-radius: var(--maristas-radius-md); }
 .mr-dt-footer .pagination { margin: 0; flex-wrap: wrap; row-gap: .25rem; }
 .mr-dt-footer nav { display: flex; min-width: 0; max-width: 100%; }

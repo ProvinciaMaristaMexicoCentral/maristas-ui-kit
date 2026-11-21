@@ -107,7 +107,7 @@
     </x-slot:code>
 </x-maristas::example>
 
-<x-maristas::example title="Con filtros avanzados y paginación del servidor" note="Para listas grandes (Livewire, controlador): la misma pieza, pero buscar, filtrar y paginar lo hace el servidor. Los filtros menos usados van en un panel que se despliega bajo la barra. Lo urgente (por ejemplo, registros sin atención) va como chip con mr-filter-danger o mr-filter-warning: lleva el color del tono desde el inicio para que se vea que se puede pulsar.">
+<x-maristas::example title="Con filtros avanzados y paginación del servidor" note="Para listas grandes (Livewire, controlador): la misma pieza, pero buscar, filtrar y paginar lo hace el servidor. Los filtros menos usados van en un panel que se despliega bajo la barra. Lo urgente (por ejemplo, registros sin atención) va como chip con mr-filter-danger o mr-filter-warning: lleva el color del tono desde el inicio para que se vea que se puede pulsar. La acción principal lleva mr-action-main: en teléfono va primero y a todo el ancho.">
     <div class="mr-dt w-100">
         <div class="mr-dt-toolbar">
             <div class="mr-dt-search"><i class="ri-search-line"></i><input type="search" class="form-control form-control-sm" placeholder="Buscar por folio, correo u oferta" aria-label="Buscar"></div>
@@ -116,7 +116,7 @@
             <button type="button" class="mr-filter mr-filter-warning"><i class="ri-time-line"></i>140 sin atención +7 días</button>
             <div class="mr-dt-toolbar-end">
                 <x-maristas::button variant="secondary" size="sm" icon="ri-shield-check-line">Por validar</x-maristas::button>
-                <x-maristas::button size="sm" icon="ri-add-line">Nueva oportunidad</x-maristas::button>
+                <x-maristas::button size="sm" icon="ri-add-line" class="mr-action-main">Nueva oportunidad</x-maristas::button>
             </div>
         </div>
         <div class="mr-dt-panel" id="mr-demo-panel">
