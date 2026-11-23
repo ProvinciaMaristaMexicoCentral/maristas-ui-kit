@@ -347,7 +347,7 @@
         el.className = 'toast align-items-center';
         el.setAttribute('role', clave === 'danger' ? 'alert' : 'status');
         el.setAttribute('aria-live', clave === 'danger' ? 'assertive' : 'polite');
-        el.innerHTML = '<div class="d-flex"><div class="toast-body d-flex align-items-start gap-2"><i class="' + tonos[clave] + ' fs-5 mr-toast-' + clave + '"></i><span></span></div><button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button></div>';
+        el.innerHTML = '<div class="d-flex"><div class="toast-body d-flex align-items-center gap-2"><i class="' + tonos[clave] + ' fs-5 mr-toast-' + clave + '"></i><span></span></div><button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button></div>';
         el.querySelector('span').textContent = mensaje;
         capa.appendChild(el);
         if (window.bootstrap && window.bootstrap.Toast) {
