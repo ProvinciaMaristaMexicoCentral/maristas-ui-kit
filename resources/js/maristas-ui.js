@@ -278,12 +278,23 @@
         var campo = $('input', boton.closest('.mr-password'));
         if (!campo) return;
         var icono = $('i', boton);
+        // En teléfono, tocar el botón le quita el foco al campo y se cierra el teclado.
+        // Se evita que el botón tome el foco y, si el campo lo tenía, se le devuelve con el cursor en su lugar.
+        var campoTeniaFoco = false;
+        boton.addEventListener('pointerdown', function () { campoTeniaFoco = document.activeElement === campo; });
+        boton.addEventListener('mousedown', function (e) { e.preventDefault(); });
         boton.addEventListener('click', function () {
             var visible = campo.type === 'password';
+            var inicio = campo.selectionStart, fin = campo.selectionEnd;
             campo.type = visible ? 'text' : 'password';
             boton.setAttribute('aria-pressed', visible ? 'true' : 'false');
             boton.setAttribute('aria-label', visible ? 'Ocultar la contraseña' : 'Mostrar la contraseña');
             if (icono) icono.className = visible ? 'ri-eye-off-line' : 'ri-eye-line';
+            if (campoTeniaFoco || document.activeElement === campo) {
+                campo.focus({ preventScroll: true });
+                try { if (inicio !== null) campo.setSelectionRange(inicio, fin); } catch (err) { /* sin selección en este tipo */ }
+            }
+            campoTeniaFoco = false;
         });
     });
 
